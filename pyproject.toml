@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fews-openapi-py-client"
-version = "v1-2025-10-01T17:11:28Z"
+version = "v0.1.0"
 description = "A client library for accessing Delft-FEWS Web Services REST API v1"
 authors = []
 readme = "README.md"
