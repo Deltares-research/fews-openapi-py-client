@@ -89,9 +89,11 @@ def _get_kwargs(
 
     params["onlyCurrent"] = json_only_current
 
-    json_document_format: Union[Unset, str] = UNSET
-    if not isinstance(document_format, Unset):
+    
+    if not isinstance(document_format, str):
         json_document_format = document_format.value
+    else:
+        json_document_format = document_format
 
     params["documentFormat"] = json_document_format
 
