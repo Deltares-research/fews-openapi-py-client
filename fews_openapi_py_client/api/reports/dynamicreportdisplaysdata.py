@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,10 +12,10 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     display_id: str,
-    location_id: Union[Unset, str] = UNSET,
-    time: Union[Unset, str] = UNSET,
-    use_last_value: Union[Unset, DynamicreportdisplaysdataUseLastValue] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
+    location_id: Unset | str = UNSET,
+    time: Unset | str = UNSET,
+    use_last_value: Unset | DynamicreportdisplaysdataUseLastValue = UNSET,
+    time_zero: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -25,7 +25,7 @@ def _get_kwargs(
 
     params["time"] = time
 
-    json_use_last_value: Union[Unset, str] = UNSET
+    json_use_last_value: Unset | str = UNSET
     if not isinstance(use_last_value, Unset):
         json_use_last_value = use_last_value.value
 
@@ -44,7 +44,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if response.status_code == 200:
         return None
 
@@ -54,7 +54,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,12 +65,12 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     display_id: str,
-    location_id: Union[Unset, str] = UNSET,
-    time: Union[Unset, str] = UNSET,
-    use_last_value: Union[Unset, DynamicreportdisplaysdataUseLastValue] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
+    location_id: Unset | str = UNSET,
+    time: Unset | str = UNSET,
+    use_last_value: Unset | DynamicreportdisplaysdataUseLastValue = UNSET,
+    time_zero: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the json data that is used to render a dynamic report display
 
@@ -108,12 +108,12 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     display_id: str,
-    location_id: Union[Unset, str] = UNSET,
-    time: Union[Unset, str] = UNSET,
-    use_last_value: Union[Unset, DynamicreportdisplaysdataUseLastValue] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
+    location_id: Unset | str = UNSET,
+    time: Unset | str = UNSET,
+    use_last_value: Unset | DynamicreportdisplaysdataUseLastValue = UNSET,
+    time_zero: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the json data that is used to render a dynamic report display
 

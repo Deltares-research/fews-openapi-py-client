@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -16,20 +16,20 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    filter_id: Union[Unset, str] = UNSET,
-    parameter_group_id: Union[Unset, str] = UNSET,
-    parameter_ids: Union[Unset, str] = UNSET,
-    module_instance_ids: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
-    resampling_methods: Union[Unset, FiltersactionsResamplingMethods] = UNSET,
-    resampling_time_step_id: Union[Unset, str] = UNSET,
-    resampling_omit_missing: Union[Unset, FiltersactionsResamplingOmitMissing] = UNSET,
-    include_non_resampled: Union[Unset, FiltersactionsIncludeNonResampled] = UNSET,
-    use_display_units: Union[Unset, FiltersactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, FiltersactionsConvertDatum] = UNSET,
-    document_format: Union[Unset, FiltersactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    filter_id: Unset | str = UNSET,
+    parameter_group_id: Unset | str = UNSET,
+    parameter_ids: Unset | str = UNSET,
+    module_instance_ids: Unset | str = UNSET,
+    location_ids: Unset | str = UNSET,
+    time_zero: Unset | str = UNSET,
+    resampling_methods: Unset | FiltersactionsResamplingMethods = UNSET,
+    resampling_time_step_id: Unset | str = UNSET,
+    resampling_omit_missing: Unset | FiltersactionsResamplingOmitMissing = UNSET,
+    include_non_resampled: Unset | FiltersactionsIncludeNonResampled = UNSET,
+    use_display_units: Unset | FiltersactionsUseDisplayUnits = UNSET,
+    convert_datum: Unset | FiltersactionsConvertDatum = UNSET,
+    document_format: Unset | FiltersactionsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -45,7 +45,7 @@ def _get_kwargs(
 
     params["timeZero"] = time_zero
 
-    json_resampling_methods: Union[Unset, str] = UNSET
+    json_resampling_methods: Unset | str = UNSET
     if not isinstance(resampling_methods, Unset):
         json_resampling_methods = resampling_methods.value
 
@@ -53,31 +53,31 @@ def _get_kwargs(
 
     params["resamplingTimeStepId"] = resampling_time_step_id
 
-    json_resampling_omit_missing: Union[Unset, str] = UNSET
+    json_resampling_omit_missing: Unset | str = UNSET
     if not isinstance(resampling_omit_missing, Unset):
         json_resampling_omit_missing = resampling_omit_missing.value
 
     params["resamplingOmitMissing"] = json_resampling_omit_missing
 
-    json_include_non_resampled: Union[Unset, str] = UNSET
+    json_include_non_resampled: Unset | str = UNSET
     if not isinstance(include_non_resampled, Unset):
         json_include_non_resampled = include_non_resampled.value
 
     params["includeNonResampled"] = json_include_non_resampled
 
-    json_use_display_units: Union[Unset, str] = UNSET
+    json_use_display_units: Unset | str = UNSET
     if not isinstance(use_display_units, Unset):
         json_use_display_units = use_display_units.value
 
     params["useDisplayUnits"] = json_use_display_units
 
-    json_convert_datum: Union[Unset, str] = UNSET
+    json_convert_datum: Unset | str = UNSET
     if not isinstance(convert_datum, Unset):
         json_convert_datum = convert_datum.value
 
     params["convertDatum"] = json_convert_datum
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -96,14 +96,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -114,21 +114,21 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    filter_id: Union[Unset, str] = UNSET,
-    parameter_group_id: Union[Unset, str] = UNSET,
-    parameter_ids: Union[Unset, str] = UNSET,
-    module_instance_ids: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
-    resampling_methods: Union[Unset, FiltersactionsResamplingMethods] = UNSET,
-    resampling_time_step_id: Union[Unset, str] = UNSET,
-    resampling_omit_missing: Union[Unset, FiltersactionsResamplingOmitMissing] = UNSET,
-    include_non_resampled: Union[Unset, FiltersactionsIncludeNonResampled] = UNSET,
-    use_display_units: Union[Unset, FiltersactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, FiltersactionsConvertDatum] = UNSET,
-    document_format: Union[Unset, FiltersactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    filter_id: Unset | str = UNSET,
+    parameter_group_id: Unset | str = UNSET,
+    parameter_ids: Unset | str = UNSET,
+    module_instance_ids: Unset | str = UNSET,
+    location_ids: Unset | str = UNSET,
+    time_zero: Unset | str = UNSET,
+    resampling_methods: Unset | FiltersactionsResamplingMethods = UNSET,
+    resampling_time_step_id: Unset | str = UNSET,
+    resampling_omit_missing: Unset | FiltersactionsResamplingOmitMissing = UNSET,
+    include_non_resampled: Unset | FiltersactionsIncludeNonResampled = UNSET,
+    use_display_units: Unset | FiltersactionsUseDisplayUnits = UNSET,
+    convert_datum: Unset | FiltersactionsConvertDatum = UNSET,
+    document_format: Unset | FiltersactionsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the actions for a set of filters
 
@@ -184,21 +184,21 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    filter_id: Union[Unset, str] = UNSET,
-    parameter_group_id: Union[Unset, str] = UNSET,
-    parameter_ids: Union[Unset, str] = UNSET,
-    module_instance_ids: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
-    resampling_methods: Union[Unset, FiltersactionsResamplingMethods] = UNSET,
-    resampling_time_step_id: Union[Unset, str] = UNSET,
-    resampling_omit_missing: Union[Unset, FiltersactionsResamplingOmitMissing] = UNSET,
-    include_non_resampled: Union[Unset, FiltersactionsIncludeNonResampled] = UNSET,
-    use_display_units: Union[Unset, FiltersactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, FiltersactionsConvertDatum] = UNSET,
-    document_format: Union[Unset, FiltersactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    filter_id: Unset | str = UNSET,
+    parameter_group_id: Unset | str = UNSET,
+    parameter_ids: Unset | str = UNSET,
+    module_instance_ids: Unset | str = UNSET,
+    location_ids: Unset | str = UNSET,
+    time_zero: Unset | str = UNSET,
+    resampling_methods: Unset | FiltersactionsResamplingMethods = UNSET,
+    resampling_time_step_id: Unset | str = UNSET,
+    resampling_omit_missing: Unset | FiltersactionsResamplingOmitMissing = UNSET,
+    include_non_resampled: Unset | FiltersactionsIncludeNonResampled = UNSET,
+    use_display_units: Unset | FiltersactionsUseDisplayUnits = UNSET,
+    convert_datum: Unset | FiltersactionsConvertDatum = UNSET,
+    document_format: Unset | FiltersactionsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the actions for a set of filters
 

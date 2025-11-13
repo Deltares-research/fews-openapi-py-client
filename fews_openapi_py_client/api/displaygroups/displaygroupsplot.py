@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -15,8 +15,8 @@ def _get_kwargs(
     display_id: str,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
-    width: Union[Unset, str] = UNSET,
-    height: Union[Unset, str] = UNSET,
+    width: Unset | str = UNSET,
+    height: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -45,14 +45,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,13 +63,13 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     display_group_id: str,
     display_id: str,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
-    width: Union[Unset, str] = UNSET,
-    height: Union[Unset, str] = UNSET,
+    width: Unset | str = UNSET,
+    height: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get a plot image from a display group using the display group id and the display id of the plot
 
@@ -113,13 +113,13 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     display_group_id: str,
     display_id: str,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
-    width: Union[Unset, str] = UNSET,
-    height: Union[Unset, str] = UNSET,
+    width: Unset | str = UNSET,
+    height: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get a plot image from a display group using the display group id and the display id of the plot
 

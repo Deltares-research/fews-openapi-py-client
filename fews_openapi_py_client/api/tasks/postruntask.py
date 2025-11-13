@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -16,15 +16,15 @@ def _get_kwargs(
     *,
     body: PostruntaskBody,
     workflow_id: str,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    cold_state_id: Union[Unset, str] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    user_id: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
-    run_option: Union[Unset, PostruntaskRunOption] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, PostruntaskRunLocallyAndPromoteToServer] = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    cold_state_id: Unset | str = UNSET,
+    scenario_id: Unset | str = UNSET,
+    user_id: Unset | str = UNSET,
+    description: Unset | str = UNSET,
+    run_option: Unset | PostruntaskRunOption = UNSET,
+    run_locally_and_promote_to_server: Unset | PostruntaskRunLocallyAndPromoteToServer = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -32,17 +32,17 @@ def _get_kwargs(
 
     params["workflowId"] = workflow_id
 
-    json_start_time: Union[Unset, str] = UNSET
+    json_start_time: Unset | str = UNSET
     if not isinstance(start_time, Unset):
         json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
 
-    json_end_time: Union[Unset, str] = UNSET
+    json_end_time: Unset | str = UNSET
     if not isinstance(end_time, Unset):
         json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
 
-    json_time_zero: Union[Unset, str] = UNSET
+    json_time_zero: Unset | str = UNSET
     if not isinstance(time_zero, Unset):
         json_time_zero = time_zero.isoformat()
     params["timeZero"] = json_time_zero
@@ -55,13 +55,13 @@ def _get_kwargs(
 
     params["description"] = description
 
-    json_run_option: Union[Unset, str] = UNSET
+    json_run_option: Unset | str = UNSET
     if not isinstance(run_option, Unset):
         json_run_option = run_option.value
 
     params["runOption"] = json_run_option
 
-    json_run_locally_and_promote_to_server: Union[Unset, str] = UNSET
+    json_run_locally_and_promote_to_server: Unset | str = UNSET
     if not isinstance(run_locally_and_promote_to_server, Unset):
         json_run_locally_and_promote_to_server = run_locally_and_promote_to_server.value
 
@@ -83,7 +83,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[str]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> str | None:
     if response.status_code == 200:
         response_200 = response.text
         return response_200
@@ -94,7 +94,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -105,18 +105,18 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: PostruntaskBody,
     workflow_id: str,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    cold_state_id: Union[Unset, str] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    user_id: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
-    run_option: Union[Unset, PostruntaskRunOption] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, PostruntaskRunLocallyAndPromoteToServer] = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    cold_state_id: Unset | str = UNSET,
+    scenario_id: Unset | str = UNSET,
+    user_id: Unset | str = UNSET,
+    description: Unset | str = UNSET,
+    run_option: Unset | PostruntaskRunOption = UNSET,
+    run_locally_and_promote_to_server: Unset | PostruntaskRunLocallyAndPromoteToServer = UNSET,
 ) -> Response[str]:
     """Runs a one-off task for a given workflowId
 
@@ -178,19 +178,19 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: PostruntaskBody,
     workflow_id: str,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    cold_state_id: Union[Unset, str] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    user_id: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
-    run_option: Union[Unset, PostruntaskRunOption] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, PostruntaskRunLocallyAndPromoteToServer] = UNSET,
-) -> Optional[str]:
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    cold_state_id: Unset | str = UNSET,
+    scenario_id: Unset | str = UNSET,
+    user_id: Unset | str = UNSET,
+    description: Unset | str = UNSET,
+    run_option: Unset | PostruntaskRunOption = UNSET,
+    run_locally_and_promote_to_server: Unset | PostruntaskRunLocallyAndPromoteToServer = UNSET,
+) -> str | None:
     """Runs a one-off task for a given workflowId
 
      Runs a one-off task for a given workflowId. The application/x-www-form-urlencoded encoding has to be
@@ -246,18 +246,18 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: PostruntaskBody,
     workflow_id: str,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    cold_state_id: Union[Unset, str] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    user_id: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
-    run_option: Union[Unset, PostruntaskRunOption] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, PostruntaskRunLocallyAndPromoteToServer] = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    cold_state_id: Unset | str = UNSET,
+    scenario_id: Unset | str = UNSET,
+    user_id: Unset | str = UNSET,
+    description: Unset | str = UNSET,
+    run_option: Unset | PostruntaskRunOption = UNSET,
+    run_locally_and_promote_to_server: Unset | PostruntaskRunLocallyAndPromoteToServer = UNSET,
 ) -> Response[str]:
     """Runs a one-off task for a given workflowId
 
@@ -317,19 +317,19 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: PostruntaskBody,
     workflow_id: str,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    cold_state_id: Union[Unset, str] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    user_id: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
-    run_option: Union[Unset, PostruntaskRunOption] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, PostruntaskRunLocallyAndPromoteToServer] = UNSET,
-) -> Optional[str]:
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    cold_state_id: Unset | str = UNSET,
+    scenario_id: Unset | str = UNSET,
+    user_id: Unset | str = UNSET,
+    description: Unset | str = UNSET,
+    run_option: Unset | PostruntaskRunOption = UNSET,
+    run_locally_and_promote_to_server: Unset | PostruntaskRunLocallyAndPromoteToServer = UNSET,
+) -> str | None:
     """Runs a one-off task for a given workflowId
 
      Runs a one-off task for a given workflowId. The application/x-www-form-urlencoded encoding has to be

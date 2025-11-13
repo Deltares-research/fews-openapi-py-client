@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,10 +11,10 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    user_id: Union[Unset, str] = UNSET,
+    user_id: Unset | str = UNSET,
     topic_id: str,
-    document_format: Union[Unset, GetusersettingsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    document_format: Unset | GetusersettingsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -22,7 +22,7 @@ def _get_kwargs(
 
     params["topicId"] = topic_id
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -41,7 +41,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if response.status_code == 200:
         return None
 
@@ -51,7 +51,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,11 +62,11 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    user_id: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    user_id: Unset | str = UNSET,
     topic_id: str,
-    document_format: Union[Unset, GetusersettingsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    document_format: Unset | GetusersettingsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Returns the user setting json for the specified user and topic id
 
@@ -102,11 +102,11 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    user_id: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    user_id: Unset | str = UNSET,
     topic_id: str,
-    document_format: Union[Unset, GetusersettingsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    document_format: Unset | GetusersettingsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Returns the user setting json for the specified user and topic id
 

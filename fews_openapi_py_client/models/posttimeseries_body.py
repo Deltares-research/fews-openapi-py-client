@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,8 +19,8 @@ class PosttimeseriesBody:
             api/v1/schemas/pirest/pi_rest_timeseries.json
     """
 
-    pi_time_series_xml_content: Union[Unset, str] = UNSET
-    pi_time_series_json_content: Union[Unset, str] = UNSET
+    pi_time_series_xml_content: Unset | str = UNSET
+    pi_time_series_json_content: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

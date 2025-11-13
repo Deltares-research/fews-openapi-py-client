@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -26,127 +26,127 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     plot_id: str,
-    location_ids: Union[Unset, list[str]] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    thinning: Union[Unset, str] = UNSET,
-    convert_datum: Union[Unset, TimeseriesdisplaygroupsConvertDatum] = UNSET,
-    show_ensemble_member_ids: Union[Unset, TimeseriesdisplaygroupsShowEnsembleMemberIds] = UNSET,
-    use_display_units: Union[Unset, TimeseriesdisplaygroupsUseDisplayUnits] = UNSET,
-    show_thresholds: Union[Unset, TimeseriesdisplaygroupsShowThresholds] = UNSET,
-    omit_missing: Union[Unset, TimeseriesdisplaygroupsOmitMissing] = UNSET,
-    omit_empty_time_series: Union[Unset, TimeseriesdisplaygroupsOmitEmptyTimeSeries] = UNSET,
-    only_headers: Union[Unset, TimeseriesdisplaygroupsOnlyHeaders] = UNSET,
-    only_manual_edits: Union[Unset, TimeseriesdisplaygroupsOnlyManualEdits] = UNSET,
-    only_forecasts: Union[Unset, TimeseriesdisplaygroupsOnlyForecasts] = UNSET,
-    show_statistics: Union[Unset, TimeseriesdisplaygroupsShowStatistics] = UNSET,
-    use_milliseconds: Union[Unset, TimeseriesdisplaygroupsUseMilliseconds] = UNSET,
-    show_products: Union[Unset, TimeseriesdisplaygroupsShowProducts] = UNSET,
-    time_series_type: Union[Unset, TimeseriesdisplaygroupsTimeSeriesType] = UNSET,
-    document_format: Union[Unset, TimeseriesdisplaygroupsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    location_ids: Unset | list[str] = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    thinning: Unset | str = UNSET,
+    convert_datum: Unset | TimeseriesdisplaygroupsConvertDatum = UNSET,
+    show_ensemble_member_ids: Unset | TimeseriesdisplaygroupsShowEnsembleMemberIds = UNSET,
+    use_display_units: Unset | TimeseriesdisplaygroupsUseDisplayUnits = UNSET,
+    show_thresholds: Unset | TimeseriesdisplaygroupsShowThresholds = UNSET,
+    omit_missing: Unset | TimeseriesdisplaygroupsOmitMissing = UNSET,
+    omit_empty_time_series: Unset | TimeseriesdisplaygroupsOmitEmptyTimeSeries = UNSET,
+    only_headers: Unset | TimeseriesdisplaygroupsOnlyHeaders = UNSET,
+    only_manual_edits: Unset | TimeseriesdisplaygroupsOnlyManualEdits = UNSET,
+    only_forecasts: Unset | TimeseriesdisplaygroupsOnlyForecasts = UNSET,
+    show_statistics: Unset | TimeseriesdisplaygroupsShowStatistics = UNSET,
+    use_milliseconds: Unset | TimeseriesdisplaygroupsUseMilliseconds = UNSET,
+    show_products: Unset | TimeseriesdisplaygroupsShowProducts = UNSET,
+    time_series_type: Unset | TimeseriesdisplaygroupsTimeSeriesType = UNSET,
+    document_format: Unset | TimeseriesdisplaygroupsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["plotId"] = plot_id
 
-    json_location_ids: Union[Unset, list[str]] = UNSET
+    json_location_ids: Unset | list[str] = UNSET
     if not isinstance(location_ids, Unset):
         json_location_ids = location_ids
 
     params["locationIds"] = json_location_ids
 
-    json_start_time: Union[Unset, str] = UNSET
+    json_start_time: Unset | str = UNSET
     if not isinstance(start_time, Unset):
         json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
 
-    json_end_time: Union[Unset, str] = UNSET
+    json_end_time: Unset | str = UNSET
     if not isinstance(end_time, Unset):
         json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
 
     params["thinning"] = thinning
 
-    json_convert_datum: Union[Unset, str] = UNSET
+    json_convert_datum: Unset | str = UNSET
     if not isinstance(convert_datum, Unset):
         json_convert_datum = convert_datum.value
 
     params["convertDatum"] = json_convert_datum
 
-    json_show_ensemble_member_ids: Union[Unset, str] = UNSET
+    json_show_ensemble_member_ids: Unset | str = UNSET
     if not isinstance(show_ensemble_member_ids, Unset):
         json_show_ensemble_member_ids = show_ensemble_member_ids.value
 
     params["showEnsembleMemberIds"] = json_show_ensemble_member_ids
 
-    json_use_display_units: Union[Unset, str] = UNSET
+    json_use_display_units: Unset | str = UNSET
     if not isinstance(use_display_units, Unset):
         json_use_display_units = use_display_units.value
 
     params["useDisplayUnits"] = json_use_display_units
 
-    json_show_thresholds: Union[Unset, str] = UNSET
+    json_show_thresholds: Unset | str = UNSET
     if not isinstance(show_thresholds, Unset):
         json_show_thresholds = show_thresholds.value
 
     params["showThresholds"] = json_show_thresholds
 
-    json_omit_missing: Union[Unset, str] = UNSET
+    json_omit_missing: Unset | str = UNSET
     if not isinstance(omit_missing, Unset):
         json_omit_missing = omit_missing.value
 
     params["omitMissing"] = json_omit_missing
 
-    json_omit_empty_time_series: Union[Unset, str] = UNSET
+    json_omit_empty_time_series: Unset | str = UNSET
     if not isinstance(omit_empty_time_series, Unset):
         json_omit_empty_time_series = omit_empty_time_series.value
 
     params["omitEmptyTimeSeries"] = json_omit_empty_time_series
 
-    json_only_headers: Union[Unset, str] = UNSET
+    json_only_headers: Unset | str = UNSET
     if not isinstance(only_headers, Unset):
         json_only_headers = only_headers.value
 
     params["onlyHeaders"] = json_only_headers
 
-    json_only_manual_edits: Union[Unset, str] = UNSET
+    json_only_manual_edits: Unset | str = UNSET
     if not isinstance(only_manual_edits, Unset):
         json_only_manual_edits = only_manual_edits.value
 
     params["onlyManualEdits"] = json_only_manual_edits
 
-    json_only_forecasts: Union[Unset, str] = UNSET
+    json_only_forecasts: Unset | str = UNSET
     if not isinstance(only_forecasts, Unset):
         json_only_forecasts = only_forecasts.value
 
     params["onlyForecasts"] = json_only_forecasts
 
-    json_show_statistics: Union[Unset, str] = UNSET
+    json_show_statistics: Unset | str = UNSET
     if not isinstance(show_statistics, Unset):
         json_show_statistics = show_statistics.value
 
     params["showStatistics"] = json_show_statistics
 
-    json_use_milliseconds: Union[Unset, str] = UNSET
+    json_use_milliseconds: Unset | str = UNSET
     if not isinstance(use_milliseconds, Unset):
         json_use_milliseconds = use_milliseconds.value
 
     params["useMilliseconds"] = json_use_milliseconds
 
-    json_show_products: Union[Unset, str] = UNSET
+    json_show_products: Unset | str = UNSET
     if not isinstance(show_products, Unset):
         json_show_products = show_products.value
 
     params["showProducts"] = json_show_products
 
-    json_time_series_type: Union[Unset, str] = UNSET
+    json_time_series_type: Unset | str = UNSET
     if not isinstance(time_series_type, Unset):
         json_time_series_type = time_series_type.value
 
     params["timeSeriesType"] = json_time_series_type
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -165,14 +165,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -183,27 +183,27 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     plot_id: str,
-    location_ids: Union[Unset, list[str]] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    thinning: Union[Unset, str] = UNSET,
-    convert_datum: Union[Unset, TimeseriesdisplaygroupsConvertDatum] = UNSET,
-    show_ensemble_member_ids: Union[Unset, TimeseriesdisplaygroupsShowEnsembleMemberIds] = UNSET,
-    use_display_units: Union[Unset, TimeseriesdisplaygroupsUseDisplayUnits] = UNSET,
-    show_thresholds: Union[Unset, TimeseriesdisplaygroupsShowThresholds] = UNSET,
-    omit_missing: Union[Unset, TimeseriesdisplaygroupsOmitMissing] = UNSET,
-    omit_empty_time_series: Union[Unset, TimeseriesdisplaygroupsOmitEmptyTimeSeries] = UNSET,
-    only_headers: Union[Unset, TimeseriesdisplaygroupsOnlyHeaders] = UNSET,
-    only_manual_edits: Union[Unset, TimeseriesdisplaygroupsOnlyManualEdits] = UNSET,
-    only_forecasts: Union[Unset, TimeseriesdisplaygroupsOnlyForecasts] = UNSET,
-    show_statistics: Union[Unset, TimeseriesdisplaygroupsShowStatistics] = UNSET,
-    use_milliseconds: Union[Unset, TimeseriesdisplaygroupsUseMilliseconds] = UNSET,
-    show_products: Union[Unset, TimeseriesdisplaygroupsShowProducts] = UNSET,
-    time_series_type: Union[Unset, TimeseriesdisplaygroupsTimeSeriesType] = UNSET,
-    document_format: Union[Unset, TimeseriesdisplaygroupsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    location_ids: Unset | list[str] = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    thinning: Unset | str = UNSET,
+    convert_datum: Unset | TimeseriesdisplaygroupsConvertDatum = UNSET,
+    show_ensemble_member_ids: Unset | TimeseriesdisplaygroupsShowEnsembleMemberIds = UNSET,
+    use_display_units: Unset | TimeseriesdisplaygroupsUseDisplayUnits = UNSET,
+    show_thresholds: Unset | TimeseriesdisplaygroupsShowThresholds = UNSET,
+    omit_missing: Unset | TimeseriesdisplaygroupsOmitMissing = UNSET,
+    omit_empty_time_series: Unset | TimeseriesdisplaygroupsOmitEmptyTimeSeries = UNSET,
+    only_headers: Unset | TimeseriesdisplaygroupsOnlyHeaders = UNSET,
+    only_manual_edits: Unset | TimeseriesdisplaygroupsOnlyManualEdits = UNSET,
+    only_forecasts: Unset | TimeseriesdisplaygroupsOnlyForecasts = UNSET,
+    show_statistics: Unset | TimeseriesdisplaygroupsShowStatistics = UNSET,
+    use_milliseconds: Unset | TimeseriesdisplaygroupsUseMilliseconds = UNSET,
+    show_products: Unset | TimeseriesdisplaygroupsShowProducts = UNSET,
+    time_series_type: Unset | TimeseriesdisplaygroupsTimeSeriesType = UNSET,
+    document_format: Unset | TimeseriesdisplaygroupsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Timeseries are filtered by the plotId from the DisplayGroups
 
@@ -278,27 +278,27 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     plot_id: str,
-    location_ids: Union[Unset, list[str]] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    thinning: Union[Unset, str] = UNSET,
-    convert_datum: Union[Unset, TimeseriesdisplaygroupsConvertDatum] = UNSET,
-    show_ensemble_member_ids: Union[Unset, TimeseriesdisplaygroupsShowEnsembleMemberIds] = UNSET,
-    use_display_units: Union[Unset, TimeseriesdisplaygroupsUseDisplayUnits] = UNSET,
-    show_thresholds: Union[Unset, TimeseriesdisplaygroupsShowThresholds] = UNSET,
-    omit_missing: Union[Unset, TimeseriesdisplaygroupsOmitMissing] = UNSET,
-    omit_empty_time_series: Union[Unset, TimeseriesdisplaygroupsOmitEmptyTimeSeries] = UNSET,
-    only_headers: Union[Unset, TimeseriesdisplaygroupsOnlyHeaders] = UNSET,
-    only_manual_edits: Union[Unset, TimeseriesdisplaygroupsOnlyManualEdits] = UNSET,
-    only_forecasts: Union[Unset, TimeseriesdisplaygroupsOnlyForecasts] = UNSET,
-    show_statistics: Union[Unset, TimeseriesdisplaygroupsShowStatistics] = UNSET,
-    use_milliseconds: Union[Unset, TimeseriesdisplaygroupsUseMilliseconds] = UNSET,
-    show_products: Union[Unset, TimeseriesdisplaygroupsShowProducts] = UNSET,
-    time_series_type: Union[Unset, TimeseriesdisplaygroupsTimeSeriesType] = UNSET,
-    document_format: Union[Unset, TimeseriesdisplaygroupsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    location_ids: Unset | list[str] = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    thinning: Unset | str = UNSET,
+    convert_datum: Unset | TimeseriesdisplaygroupsConvertDatum = UNSET,
+    show_ensemble_member_ids: Unset | TimeseriesdisplaygroupsShowEnsembleMemberIds = UNSET,
+    use_display_units: Unset | TimeseriesdisplaygroupsUseDisplayUnits = UNSET,
+    show_thresholds: Unset | TimeseriesdisplaygroupsShowThresholds = UNSET,
+    omit_missing: Unset | TimeseriesdisplaygroupsOmitMissing = UNSET,
+    omit_empty_time_series: Unset | TimeseriesdisplaygroupsOmitEmptyTimeSeries = UNSET,
+    only_headers: Unset | TimeseriesdisplaygroupsOnlyHeaders = UNSET,
+    only_manual_edits: Unset | TimeseriesdisplaygroupsOnlyManualEdits = UNSET,
+    only_forecasts: Unset | TimeseriesdisplaygroupsOnlyForecasts = UNSET,
+    show_statistics: Unset | TimeseriesdisplaygroupsShowStatistics = UNSET,
+    use_milliseconds: Unset | TimeseriesdisplaygroupsUseMilliseconds = UNSET,
+    show_products: Unset | TimeseriesdisplaygroupsShowProducts = UNSET,
+    time_series_type: Unset | TimeseriesdisplaygroupsTimeSeriesType = UNSET,
+    document_format: Unset | TimeseriesdisplaygroupsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Timeseries are filtered by the plotId from the DisplayGroups
 

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -18,20 +18,20 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    filter_id: Union[Unset, str] = UNSET,
-    parameter_ids: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, list[str]] = UNSET,
-    parameter_group_id: Union[Unset, str] = UNSET,
-    show_attributes: Union[Unset, LocationsShowAttributes] = UNSET,
-    attribute_ids: Union[Unset, list[str]] = UNSET,
-    show_parent_locations: Union[Unset, LocationsShowParentLocations] = UNSET,
-    show_thresholds: Union[Unset, LocationsShowThresholds] = UNSET,
-    show_time_series_infos: Union[Unset, LocationsShowTimeSeriesInfos] = UNSET,
-    include_icon_names: Union[Unset, LocationsIncludeIconNames] = UNSET,
-    include_location_relations: Union[Unset, LocationsIncludeLocationRelations] = UNSET,
-    include_time_dependency: Union[Unset, LocationsIncludeTimeDependency] = UNSET,
-    document_format: Union[Unset, LocationsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    filter_id: Unset | str = UNSET,
+    parameter_ids: Unset | str = UNSET,
+    location_ids: Unset | list[str] = UNSET,
+    parameter_group_id: Unset | str = UNSET,
+    show_attributes: Unset | LocationsShowAttributes = UNSET,
+    attribute_ids: Unset | list[str] = UNSET,
+    show_parent_locations: Unset | LocationsShowParentLocations = UNSET,
+    show_thresholds: Unset | LocationsShowThresholds = UNSET,
+    show_time_series_infos: Unset | LocationsShowTimeSeriesInfos = UNSET,
+    include_icon_names: Unset | LocationsIncludeIconNames = UNSET,
+    include_location_relations: Unset | LocationsIncludeLocationRelations = UNSET,
+    include_time_dependency: Unset | LocationsIncludeTimeDependency = UNSET,
+    document_format: Unset | LocationsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -39,7 +39,7 @@ def _get_kwargs(
 
     params["parameterIds"] = parameter_ids
 
-    json_location_ids: Union[Unset, list[str]] = UNSET
+    json_location_ids: Unset | list[str] = UNSET
     if not isinstance(location_ids, Unset):
         json_location_ids = location_ids
 
@@ -47,55 +47,55 @@ def _get_kwargs(
 
     params["parameterGroupId"] = parameter_group_id
 
-    json_show_attributes: Union[Unset, str] = UNSET
+    json_show_attributes: Unset | str = UNSET
     if not isinstance(show_attributes, Unset):
         json_show_attributes = show_attributes.value
 
     params["showAttributes"] = json_show_attributes
 
-    json_attribute_ids: Union[Unset, list[str]] = UNSET
+    json_attribute_ids: Unset | list[str] = UNSET
     if not isinstance(attribute_ids, Unset):
         json_attribute_ids = attribute_ids
 
     params["attributeIds"] = json_attribute_ids
 
-    json_show_parent_locations: Union[Unset, str] = UNSET
+    json_show_parent_locations: Unset | str = UNSET
     if not isinstance(show_parent_locations, Unset):
         json_show_parent_locations = show_parent_locations.value
 
     params["showParentLocations"] = json_show_parent_locations
 
-    json_show_thresholds: Union[Unset, str] = UNSET
+    json_show_thresholds: Unset | str = UNSET
     if not isinstance(show_thresholds, Unset):
         json_show_thresholds = show_thresholds.value
 
     params["showThresholds"] = json_show_thresholds
 
-    json_show_time_series_infos: Union[Unset, str] = UNSET
+    json_show_time_series_infos: Unset | str = UNSET
     if not isinstance(show_time_series_infos, Unset):
         json_show_time_series_infos = show_time_series_infos.value
 
     params["showTimeSeriesInfos"] = json_show_time_series_infos
 
-    json_include_icon_names: Union[Unset, str] = UNSET
+    json_include_icon_names: Unset | str = UNSET
     if not isinstance(include_icon_names, Unset):
         json_include_icon_names = include_icon_names.value
 
     params["includeIconNames"] = json_include_icon_names
 
-    json_include_location_relations: Union[Unset, str] = UNSET
+    json_include_location_relations: Unset | str = UNSET
     if not isinstance(include_location_relations, Unset):
         json_include_location_relations = include_location_relations.value
 
     params["includeLocationRelations"] = json_include_location_relations
 
-    json_include_time_dependency: Union[Unset, str] = UNSET
+    json_include_time_dependency: Unset | str = UNSET
     if not isinstance(include_time_dependency, Unset):
         json_include_time_dependency = include_time_dependency.value
 
     params["includeTimeDependency"] = json_include_time_dependency
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -114,14 +114,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -132,21 +132,21 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    filter_id: Union[Unset, str] = UNSET,
-    parameter_ids: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, list[str]] = UNSET,
-    parameter_group_id: Union[Unset, str] = UNSET,
-    show_attributes: Union[Unset, LocationsShowAttributes] = UNSET,
-    attribute_ids: Union[Unset, list[str]] = UNSET,
-    show_parent_locations: Union[Unset, LocationsShowParentLocations] = UNSET,
-    show_thresholds: Union[Unset, LocationsShowThresholds] = UNSET,
-    show_time_series_infos: Union[Unset, LocationsShowTimeSeriesInfos] = UNSET,
-    include_icon_names: Union[Unset, LocationsIncludeIconNames] = UNSET,
-    include_location_relations: Union[Unset, LocationsIncludeLocationRelations] = UNSET,
-    include_time_dependency: Union[Unset, LocationsIncludeTimeDependency] = UNSET,
-    document_format: Union[Unset, LocationsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    filter_id: Unset | str = UNSET,
+    parameter_ids: Unset | str = UNSET,
+    location_ids: Unset | list[str] = UNSET,
+    parameter_group_id: Unset | str = UNSET,
+    show_attributes: Unset | LocationsShowAttributes = UNSET,
+    attribute_ids: Unset | list[str] = UNSET,
+    show_parent_locations: Unset | LocationsShowParentLocations = UNSET,
+    show_thresholds: Unset | LocationsShowThresholds = UNSET,
+    show_time_series_infos: Unset | LocationsShowTimeSeriesInfos = UNSET,
+    include_icon_names: Unset | LocationsIncludeIconNames = UNSET,
+    include_location_relations: Unset | LocationsIncludeLocationRelations = UNSET,
+    include_time_dependency: Unset | LocationsIncludeTimeDependency = UNSET,
+    document_format: Unset | LocationsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get locations that are available for the 'filterId' argument
 
@@ -204,21 +204,21 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    filter_id: Union[Unset, str] = UNSET,
-    parameter_ids: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, list[str]] = UNSET,
-    parameter_group_id: Union[Unset, str] = UNSET,
-    show_attributes: Union[Unset, LocationsShowAttributes] = UNSET,
-    attribute_ids: Union[Unset, list[str]] = UNSET,
-    show_parent_locations: Union[Unset, LocationsShowParentLocations] = UNSET,
-    show_thresholds: Union[Unset, LocationsShowThresholds] = UNSET,
-    show_time_series_infos: Union[Unset, LocationsShowTimeSeriesInfos] = UNSET,
-    include_icon_names: Union[Unset, LocationsIncludeIconNames] = UNSET,
-    include_location_relations: Union[Unset, LocationsIncludeLocationRelations] = UNSET,
-    include_time_dependency: Union[Unset, LocationsIncludeTimeDependency] = UNSET,
-    document_format: Union[Unset, LocationsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    filter_id: Unset | str = UNSET,
+    parameter_ids: Unset | str = UNSET,
+    location_ids: Unset | list[str] = UNSET,
+    parameter_group_id: Unset | str = UNSET,
+    show_attributes: Unset | LocationsShowAttributes = UNSET,
+    attribute_ids: Unset | list[str] = UNSET,
+    show_parent_locations: Unset | LocationsShowParentLocations = UNSET,
+    show_thresholds: Unset | LocationsShowThresholds = UNSET,
+    show_time_series_infos: Unset | LocationsShowTimeSeriesInfos = UNSET,
+    include_icon_names: Unset | LocationsIncludeIconNames = UNSET,
+    include_location_relations: Unset | LocationsIncludeLocationRelations = UNSET,
+    include_time_dependency: Unset | LocationsIncludeTimeDependency = UNSET,
+    document_format: Unset | LocationsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get locations that are available for the 'filterId' argument
 

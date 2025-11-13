@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,16 +13,16 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     body: PostarchiveproductsBody,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    area_id: Union[Unset, str] = UNSET,
-    source_id: Union[Unset, str] = UNSET,
-    sub_folder: Union[Unset, str] = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    area_id: Unset | str = UNSET,
+    source_id: Unset | str = UNSET,
+    sub_folder: Unset | str = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     params: dict[str, Any] = {}
 
-    json_time_zero: Union[Unset, str] = UNSET
+    json_time_zero: Unset | str = UNSET
     if not isinstance(time_zero, Unset):
         json_time_zero = time_zero.isoformat()
     params["timeZero"] = json_time_zero
@@ -47,7 +47,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[str]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> str | None:
     if response.status_code == 200:
         response_200 = response.text
         return response_200
@@ -58,7 +58,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,12 +69,12 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: PostarchiveproductsBody,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    area_id: Union[Unset, str] = UNSET,
-    source_id: Union[Unset, str] = UNSET,
-    sub_folder: Union[Unset, str] = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    area_id: Unset | str = UNSET,
+    source_id: Unset | str = UNSET,
+    sub_folder: Unset | str = UNSET,
 ) -> Response[str]:
     """upload new products to the archive
 
@@ -115,13 +115,13 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: PostarchiveproductsBody,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    area_id: Union[Unset, str] = UNSET,
-    source_id: Union[Unset, str] = UNSET,
-    sub_folder: Union[Unset, str] = UNSET,
-) -> Optional[str]:
+    time_zero: Unset | datetime.datetime = UNSET,
+    area_id: Unset | str = UNSET,
+    source_id: Unset | str = UNSET,
+    sub_folder: Unset | str = UNSET,
+) -> str | None:
     """upload new products to the archive
 
      upload new products to the archive. The multipart/form-data encoding has to be used. The
@@ -156,12 +156,12 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: PostarchiveproductsBody,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    area_id: Union[Unset, str] = UNSET,
-    source_id: Union[Unset, str] = UNSET,
-    sub_folder: Union[Unset, str] = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    area_id: Unset | str = UNSET,
+    source_id: Unset | str = UNSET,
+    sub_folder: Unset | str = UNSET,
 ) -> Response[str]:
     """upload new products to the archive
 
@@ -200,13 +200,13 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: PostarchiveproductsBody,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    area_id: Union[Unset, str] = UNSET,
-    source_id: Union[Unset, str] = UNSET,
-    sub_folder: Union[Unset, str] = UNSET,
-) -> Optional[str]:
+    time_zero: Unset | datetime.datetime = UNSET,
+    area_id: Unset | str = UNSET,
+    source_id: Unset | str = UNSET,
+    sub_folder: Unset | str = UNSET,
+) -> str | None:
     """upload new products to the archive
 
      upload new products to the archive. The multipart/form-data encoding has to be used. The

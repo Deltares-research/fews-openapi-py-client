@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,14 +12,14 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    relative_path: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ArchiveproductsidDocumentFormat] = UNSET,
+    relative_path: Unset | str = UNSET,
+    document_format: Unset | ArchiveproductsidDocumentFormat = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["relativePath"] = relative_path
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -37,8 +37,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ArchiveproductsidProduct]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ArchiveproductsidProduct | None:
     if response.status_code == 200:
         response_200 = ArchiveproductsidProduct.from_dict(response.json())
 
@@ -51,7 +51,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ArchiveproductsidProduct]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -63,9 +63,9 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ArchiveproductsidDocumentFormat] = UNSET,
+    client: AuthenticatedClient | Client,
+    relative_path: Unset | str = UNSET,
+    document_format: Unset | ArchiveproductsidDocumentFormat = UNSET,
 ) -> Response[ArchiveproductsidProduct]:
     """Return a specific product from the archive
 
@@ -98,10 +98,10 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ArchiveproductsidDocumentFormat] = UNSET,
-) -> Optional[ArchiveproductsidProduct]:
+    client: AuthenticatedClient | Client,
+    relative_path: Unset | str = UNSET,
+    document_format: Unset | ArchiveproductsidDocumentFormat = UNSET,
+) -> ArchiveproductsidProduct | None:
     """Return a specific product from the archive
 
      Return a specific product from the archive. The relative path in the archive will be used as the id.
@@ -128,9 +128,9 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ArchiveproductsidDocumentFormat] = UNSET,
+    client: AuthenticatedClient | Client,
+    relative_path: Unset | str = UNSET,
+    document_format: Unset | ArchiveproductsidDocumentFormat = UNSET,
 ) -> Response[ArchiveproductsidProduct]:
     """Return a specific product from the archive
 
@@ -161,10 +161,10 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ArchiveproductsidDocumentFormat] = UNSET,
-) -> Optional[ArchiveproductsidProduct]:
+    client: AuthenticatedClient | Client,
+    relative_path: Unset | str = UNSET,
+    document_format: Unset | ArchiveproductsidDocumentFormat = UNSET,
+) -> ArchiveproductsidProduct | None:
     """Return a specific product from the archive
 
      Return a specific product from the archive. The relative path in the archive will be used as the id.

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -15,9 +15,9 @@ def _get_kwargs(
     *,
     body: RatingcurvesdischargetostageBody,
     location_id: str,
-    use_display_units: Union[Unset, RatingcurvesdischargetostageUseDisplayUnits] = UNSET,
-    document_format: Union[Unset, RatingcurvesdischargetostageDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    use_display_units: Unset | RatingcurvesdischargetostageUseDisplayUnits = UNSET,
+    document_format: Unset | RatingcurvesdischargetostageDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -25,13 +25,13 @@ def _get_kwargs(
 
     params["locationId"] = location_id
 
-    json_use_display_units: Union[Unset, str] = UNSET
+    json_use_display_units: Unset | str = UNSET
     if not isinstance(use_display_units, Unset):
         json_use_display_units = use_display_units.value
 
     params["useDisplayUnits"] = json_use_display_units
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -55,14 +55,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,12 +73,12 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: RatingcurvesdischargetostageBody,
     location_id: str,
-    use_display_units: Union[Unset, RatingcurvesdischargetostageUseDisplayUnits] = UNSET,
-    document_format: Union[Unset, RatingcurvesdischargetostageDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    use_display_units: Unset | RatingcurvesdischargetostageUseDisplayUnits = UNSET,
+    document_format: Unset | RatingcurvesdischargetostageDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Converts discharge values to stage values using a rating curve at a specific location
 
@@ -121,12 +121,12 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: RatingcurvesdischargetostageBody,
     location_id: str,
-    use_display_units: Union[Unset, RatingcurvesdischargetostageUseDisplayUnits] = UNSET,
-    document_format: Union[Unset, RatingcurvesdischargetostageDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    use_display_units: Unset | RatingcurvesdischargetostageUseDisplayUnits = UNSET,
+    document_format: Unset | RatingcurvesdischargetostageDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Converts discharge values to stage values using a rating curve at a specific location
 

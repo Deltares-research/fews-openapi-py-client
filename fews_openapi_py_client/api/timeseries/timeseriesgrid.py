@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -27,35 +27,35 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     bbox: str,
-    before_start_time_count: Union[Unset, str] = UNSET,
-    after_end_time_count: Union[Unset, str] = UNSET,
+    before_start_time_count: Unset | str = UNSET,
+    after_end_time_count: Unset | str = UNSET,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
     layers: str,
     x: str,
     y: str,
-    external_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    elevation: Union[Unset, str] = UNSET,
-    thinning: Union[Unset, str] = UNSET,
-    import_from_external_data_source: Union[Unset, TimeseriesgridImportFromExternalDataSource] = UNSET,
-    convert_datum: Union[Unset, TimeseriesgridConvertDatum] = UNSET,
-    show_ensemble_member_ids: Union[Unset, TimeseriesgridShowEnsembleMemberIds] = UNSET,
-    use_display_units: Union[Unset, TimeseriesgridUseDisplayUnits] = UNSET,
-    show_vertical_profile: Union[Unset, TimeseriesgridShowVerticalProfile] = UNSET,
-    show_thresholds: Union[Unset, TimeseriesgridShowThresholds] = UNSET,
-    omit_missing: Union[Unset, TimeseriesgridOmitMissing] = UNSET,
-    omit_empty_time_series: Union[Unset, TimeseriesgridOmitEmptyTimeSeries] = UNSET,
-    only_manual_edits: Union[Unset, TimeseriesgridOnlyManualEdits] = UNSET,
-    only_headers: Union[Unset, TimeseriesgridOnlyHeaders] = UNSET,
-    only_forecasts: Union[Unset, TimeseriesgridOnlyForecasts] = UNSET,
-    show_statistics: Union[Unset, TimeseriesgridShowStatistics] = UNSET,
-    use_milliseconds: Union[Unset, TimeseriesgridUseMilliseconds] = UNSET,
-    show_products: Union[Unset, TimeseriesgridShowProducts] = UNSET,
-    download_as_file: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, TimeseriesgridDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    external_forecast_time: Unset | datetime.datetime = UNSET,
+    ensemble_id: Unset | str = UNSET,
+    ensemble_member_id: Unset | str = UNSET,
+    elevation: Unset | str = UNSET,
+    thinning: Unset | str = UNSET,
+    import_from_external_data_source: Unset | TimeseriesgridImportFromExternalDataSource = UNSET,
+    convert_datum: Unset | TimeseriesgridConvertDatum = UNSET,
+    show_ensemble_member_ids: Unset | TimeseriesgridShowEnsembleMemberIds = UNSET,
+    use_display_units: Unset | TimeseriesgridUseDisplayUnits = UNSET,
+    show_vertical_profile: Unset | TimeseriesgridShowVerticalProfile = UNSET,
+    show_thresholds: Unset | TimeseriesgridShowThresholds = UNSET,
+    omit_missing: Unset | TimeseriesgridOmitMissing = UNSET,
+    omit_empty_time_series: Unset | TimeseriesgridOmitEmptyTimeSeries = UNSET,
+    only_manual_edits: Unset | TimeseriesgridOnlyManualEdits = UNSET,
+    only_headers: Unset | TimeseriesgridOnlyHeaders = UNSET,
+    only_forecasts: Unset | TimeseriesgridOnlyForecasts = UNSET,
+    show_statistics: Unset | TimeseriesgridShowStatistics = UNSET,
+    use_milliseconds: Unset | TimeseriesgridUseMilliseconds = UNSET,
+    show_products: Unset | TimeseriesgridShowProducts = UNSET,
+    download_as_file: Unset | str = UNSET,
+    document_format: Unset | TimeseriesgridDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -77,7 +77,7 @@ def _get_kwargs(
 
     params["y"] = y
 
-    json_external_forecast_time: Union[Unset, str] = UNSET
+    json_external_forecast_time: Unset | str = UNSET
     if not isinstance(external_forecast_time, Unset):
         json_external_forecast_time = external_forecast_time.isoformat()
     params["externalForecastTime"] = json_external_forecast_time
@@ -90,85 +90,85 @@ def _get_kwargs(
 
     params["thinning"] = thinning
 
-    json_import_from_external_data_source: Union[Unset, str] = UNSET
+    json_import_from_external_data_source: Unset | str = UNSET
     if not isinstance(import_from_external_data_source, Unset):
         json_import_from_external_data_source = import_from_external_data_source.value
 
     params["importFromExternalDataSource"] = json_import_from_external_data_source
 
-    json_convert_datum: Union[Unset, str] = UNSET
+    json_convert_datum: Unset | str = UNSET
     if not isinstance(convert_datum, Unset):
         json_convert_datum = convert_datum.value
 
     params["convertDatum"] = json_convert_datum
 
-    json_show_ensemble_member_ids: Union[Unset, str] = UNSET
+    json_show_ensemble_member_ids: Unset | str = UNSET
     if not isinstance(show_ensemble_member_ids, Unset):
         json_show_ensemble_member_ids = show_ensemble_member_ids.value
 
     params["showEnsembleMemberIds"] = json_show_ensemble_member_ids
 
-    json_use_display_units: Union[Unset, str] = UNSET
+    json_use_display_units: Unset | str = UNSET
     if not isinstance(use_display_units, Unset):
         json_use_display_units = use_display_units.value
 
     params["useDisplayUnits"] = json_use_display_units
 
-    json_show_vertical_profile: Union[Unset, str] = UNSET
+    json_show_vertical_profile: Unset | str = UNSET
     if not isinstance(show_vertical_profile, Unset):
         json_show_vertical_profile = show_vertical_profile.value
 
     params["showVerticalProfile"] = json_show_vertical_profile
 
-    json_show_thresholds: Union[Unset, str] = UNSET
+    json_show_thresholds: Unset | str = UNSET
     if not isinstance(show_thresholds, Unset):
         json_show_thresholds = show_thresholds.value
 
     params["showThresholds"] = json_show_thresholds
 
-    json_omit_missing: Union[Unset, str] = UNSET
+    json_omit_missing: Unset | str = UNSET
     if not isinstance(omit_missing, Unset):
         json_omit_missing = omit_missing.value
 
     params["omitMissing"] = json_omit_missing
 
-    json_omit_empty_time_series: Union[Unset, str] = UNSET
+    json_omit_empty_time_series: Unset | str = UNSET
     if not isinstance(omit_empty_time_series, Unset):
         json_omit_empty_time_series = omit_empty_time_series.value
 
     params["omitEmptyTimeSeries"] = json_omit_empty_time_series
 
-    json_only_manual_edits: Union[Unset, str] = UNSET
+    json_only_manual_edits: Unset | str = UNSET
     if not isinstance(only_manual_edits, Unset):
         json_only_manual_edits = only_manual_edits.value
 
     params["onlyManualEdits"] = json_only_manual_edits
 
-    json_only_headers: Union[Unset, str] = UNSET
+    json_only_headers: Unset | str = UNSET
     if not isinstance(only_headers, Unset):
         json_only_headers = only_headers.value
 
     params["onlyHeaders"] = json_only_headers
 
-    json_only_forecasts: Union[Unset, str] = UNSET
+    json_only_forecasts: Unset | str = UNSET
     if not isinstance(only_forecasts, Unset):
         json_only_forecasts = only_forecasts.value
 
     params["onlyForecasts"] = json_only_forecasts
 
-    json_show_statistics: Union[Unset, str] = UNSET
+    json_show_statistics: Unset | str = UNSET
     if not isinstance(show_statistics, Unset):
         json_show_statistics = show_statistics.value
 
     params["showStatistics"] = json_show_statistics
 
-    json_use_milliseconds: Union[Unset, str] = UNSET
+    json_use_milliseconds: Unset | str = UNSET
     if not isinstance(use_milliseconds, Unset):
         json_use_milliseconds = use_milliseconds.value
 
     params["useMilliseconds"] = json_use_milliseconds
 
-    json_show_products: Union[Unset, str] = UNSET
+    json_show_products: Unset | str = UNSET
     if not isinstance(show_products, Unset):
         json_show_products = show_products.value
 
@@ -176,7 +176,7 @@ def _get_kwargs(
 
     params["downloadAsFile"] = download_as_file
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -195,14 +195,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -213,37 +213,37 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     bbox: str,
-    before_start_time_count: Union[Unset, str] = UNSET,
-    after_end_time_count: Union[Unset, str] = UNSET,
+    before_start_time_count: Unset | str = UNSET,
+    after_end_time_count: Unset | str = UNSET,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
     layers: str,
     x: str,
     y: str,
-    external_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    elevation: Union[Unset, str] = UNSET,
-    thinning: Union[Unset, str] = UNSET,
-    import_from_external_data_source: Union[Unset, TimeseriesgridImportFromExternalDataSource] = UNSET,
-    convert_datum: Union[Unset, TimeseriesgridConvertDatum] = UNSET,
-    show_ensemble_member_ids: Union[Unset, TimeseriesgridShowEnsembleMemberIds] = UNSET,
-    use_display_units: Union[Unset, TimeseriesgridUseDisplayUnits] = UNSET,
-    show_vertical_profile: Union[Unset, TimeseriesgridShowVerticalProfile] = UNSET,
-    show_thresholds: Union[Unset, TimeseriesgridShowThresholds] = UNSET,
-    omit_missing: Union[Unset, TimeseriesgridOmitMissing] = UNSET,
-    omit_empty_time_series: Union[Unset, TimeseriesgridOmitEmptyTimeSeries] = UNSET,
-    only_manual_edits: Union[Unset, TimeseriesgridOnlyManualEdits] = UNSET,
-    only_headers: Union[Unset, TimeseriesgridOnlyHeaders] = UNSET,
-    only_forecasts: Union[Unset, TimeseriesgridOnlyForecasts] = UNSET,
-    show_statistics: Union[Unset, TimeseriesgridShowStatistics] = UNSET,
-    use_milliseconds: Union[Unset, TimeseriesgridUseMilliseconds] = UNSET,
-    show_products: Union[Unset, TimeseriesgridShowProducts] = UNSET,
-    download_as_file: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, TimeseriesgridDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    external_forecast_time: Unset | datetime.datetime = UNSET,
+    ensemble_id: Unset | str = UNSET,
+    ensemble_member_id: Unset | str = UNSET,
+    elevation: Unset | str = UNSET,
+    thinning: Unset | str = UNSET,
+    import_from_external_data_source: Unset | TimeseriesgridImportFromExternalDataSource = UNSET,
+    convert_datum: Unset | TimeseriesgridConvertDatum = UNSET,
+    show_ensemble_member_ids: Unset | TimeseriesgridShowEnsembleMemberIds = UNSET,
+    use_display_units: Unset | TimeseriesgridUseDisplayUnits = UNSET,
+    show_vertical_profile: Unset | TimeseriesgridShowVerticalProfile = UNSET,
+    show_thresholds: Unset | TimeseriesgridShowThresholds = UNSET,
+    omit_missing: Unset | TimeseriesgridOmitMissing = UNSET,
+    omit_empty_time_series: Unset | TimeseriesgridOmitEmptyTimeSeries = UNSET,
+    only_manual_edits: Unset | TimeseriesgridOnlyManualEdits = UNSET,
+    only_headers: Unset | TimeseriesgridOnlyHeaders = UNSET,
+    only_forecasts: Unset | TimeseriesgridOnlyForecasts = UNSET,
+    show_statistics: Unset | TimeseriesgridShowStatistics = UNSET,
+    use_milliseconds: Unset | TimeseriesgridUseMilliseconds = UNSET,
+    show_products: Unset | TimeseriesgridShowProducts = UNSET,
+    download_as_file: Unset | str = UNSET,
+    document_format: Unset | TimeseriesgridDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the timeseries containing the data from a grid cell for a request period
 
@@ -342,37 +342,37 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     bbox: str,
-    before_start_time_count: Union[Unset, str] = UNSET,
-    after_end_time_count: Union[Unset, str] = UNSET,
+    before_start_time_count: Unset | str = UNSET,
+    after_end_time_count: Unset | str = UNSET,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
     layers: str,
     x: str,
     y: str,
-    external_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    elevation: Union[Unset, str] = UNSET,
-    thinning: Union[Unset, str] = UNSET,
-    import_from_external_data_source: Union[Unset, TimeseriesgridImportFromExternalDataSource] = UNSET,
-    convert_datum: Union[Unset, TimeseriesgridConvertDatum] = UNSET,
-    show_ensemble_member_ids: Union[Unset, TimeseriesgridShowEnsembleMemberIds] = UNSET,
-    use_display_units: Union[Unset, TimeseriesgridUseDisplayUnits] = UNSET,
-    show_vertical_profile: Union[Unset, TimeseriesgridShowVerticalProfile] = UNSET,
-    show_thresholds: Union[Unset, TimeseriesgridShowThresholds] = UNSET,
-    omit_missing: Union[Unset, TimeseriesgridOmitMissing] = UNSET,
-    omit_empty_time_series: Union[Unset, TimeseriesgridOmitEmptyTimeSeries] = UNSET,
-    only_manual_edits: Union[Unset, TimeseriesgridOnlyManualEdits] = UNSET,
-    only_headers: Union[Unset, TimeseriesgridOnlyHeaders] = UNSET,
-    only_forecasts: Union[Unset, TimeseriesgridOnlyForecasts] = UNSET,
-    show_statistics: Union[Unset, TimeseriesgridShowStatistics] = UNSET,
-    use_milliseconds: Union[Unset, TimeseriesgridUseMilliseconds] = UNSET,
-    show_products: Union[Unset, TimeseriesgridShowProducts] = UNSET,
-    download_as_file: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, TimeseriesgridDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    external_forecast_time: Unset | datetime.datetime = UNSET,
+    ensemble_id: Unset | str = UNSET,
+    ensemble_member_id: Unset | str = UNSET,
+    elevation: Unset | str = UNSET,
+    thinning: Unset | str = UNSET,
+    import_from_external_data_source: Unset | TimeseriesgridImportFromExternalDataSource = UNSET,
+    convert_datum: Unset | TimeseriesgridConvertDatum = UNSET,
+    show_ensemble_member_ids: Unset | TimeseriesgridShowEnsembleMemberIds = UNSET,
+    use_display_units: Unset | TimeseriesgridUseDisplayUnits = UNSET,
+    show_vertical_profile: Unset | TimeseriesgridShowVerticalProfile = UNSET,
+    show_thresholds: Unset | TimeseriesgridShowThresholds = UNSET,
+    omit_missing: Unset | TimeseriesgridOmitMissing = UNSET,
+    omit_empty_time_series: Unset | TimeseriesgridOmitEmptyTimeSeries = UNSET,
+    only_manual_edits: Unset | TimeseriesgridOnlyManualEdits = UNSET,
+    only_headers: Unset | TimeseriesgridOnlyHeaders = UNSET,
+    only_forecasts: Unset | TimeseriesgridOnlyForecasts = UNSET,
+    show_statistics: Unset | TimeseriesgridShowStatistics = UNSET,
+    use_milliseconds: Unset | TimeseriesgridUseMilliseconds = UNSET,
+    show_products: Unset | TimeseriesgridShowProducts = UNSET,
+    download_as_file: Unset | str = UNSET,
+    document_format: Unset | TimeseriesgridDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the timeseries containing the data from a grid cell for a request period
 

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -14,20 +14,20 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     body: PostmodifiersBody,
-    commit_modifiers: Union[Unset, PostmodifiersCommitModifiers] = UNSET,
-    delete_all_modifiers: Union[Unset, PostmodifiersDeleteAllModifiers] = UNSET,
+    commit_modifiers: Unset | PostmodifiersCommitModifiers = UNSET,
+    delete_all_modifiers: Unset | PostmodifiersDeleteAllModifiers = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     params: dict[str, Any] = {}
 
-    json_commit_modifiers: Union[Unset, str] = UNSET
+    json_commit_modifiers: Unset | str = UNSET
     if not isinstance(commit_modifiers, Unset):
         json_commit_modifiers = commit_modifiers.value
 
     params["commitModifiers"] = json_commit_modifiers
 
-    json_delete_all_modifiers: Union[Unset, str] = UNSET
+    json_delete_all_modifiers: Unset | str = UNSET
     if not isinstance(delete_all_modifiers, Unset):
         json_delete_all_modifiers = delete_all_modifiers.value
 
@@ -49,14 +49,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,10 +67,10 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: PostmodifiersBody,
-    commit_modifiers: Union[Unset, PostmodifiersCommitModifiers] = UNSET,
-    delete_all_modifiers: Union[Unset, PostmodifiersDeleteAllModifiers] = UNSET,
+    commit_modifiers: Unset | PostmodifiersCommitModifiers = UNSET,
+    delete_all_modifiers: Unset | PostmodifiersDeleteAllModifiers = UNSET,
 ) -> Response[Any]:
     """Write modifiers to the Delft-FEWS database
 
@@ -105,10 +105,10 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     body: PostmodifiersBody,
-    commit_modifiers: Union[Unset, PostmodifiersCommitModifiers] = UNSET,
-    delete_all_modifiers: Union[Unset, PostmodifiersDeleteAllModifiers] = UNSET,
+    commit_modifiers: Unset | PostmodifiersCommitModifiers = UNSET,
+    delete_all_modifiers: Unset | PostmodifiersDeleteAllModifiers = UNSET,
 ) -> Response[Any]:
     """Write modifiers to the Delft-FEWS database
 

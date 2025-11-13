@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -16,61 +16,61 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    topology_node_id: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    thresholds_visible: Union[Unset, TimeseriestopologynodeThresholdsVisible] = UNSET,
-    omit_missing: Union[Unset, TimeseriestopologynodeOmitMissing] = UNSET,
-    use_display_units: Union[Unset, TimeseriestopologynodeUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TimeseriestopologynodeConvertDatum] = UNSET,
-    document_format: Union[Unset, TimeseriestopologynodeDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    topology_node_id: Unset | str = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    thresholds_visible: Unset | TimeseriestopologynodeThresholdsVisible = UNSET,
+    omit_missing: Unset | TimeseriestopologynodeOmitMissing = UNSET,
+    use_display_units: Unset | TimeseriestopologynodeUseDisplayUnits = UNSET,
+    convert_datum: Unset | TimeseriestopologynodeConvertDatum = UNSET,
+    document_format: Unset | TimeseriestopologynodeDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["topologyNodeId"] = topology_node_id
 
-    json_time_zero: Union[Unset, str] = UNSET
+    json_time_zero: Unset | str = UNSET
     if not isinstance(time_zero, Unset):
         json_time_zero = time_zero.isoformat()
     params["timeZero"] = json_time_zero
 
-    json_start_time: Union[Unset, str] = UNSET
+    json_start_time: Unset | str = UNSET
     if not isinstance(start_time, Unset):
         json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
 
-    json_end_time: Union[Unset, str] = UNSET
+    json_end_time: Unset | str = UNSET
     if not isinstance(end_time, Unset):
         json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
 
-    json_thresholds_visible: Union[Unset, str] = UNSET
+    json_thresholds_visible: Unset | str = UNSET
     if not isinstance(thresholds_visible, Unset):
         json_thresholds_visible = thresholds_visible.value
 
     params["thresholdsVisible"] = json_thresholds_visible
 
-    json_omit_missing: Union[Unset, str] = UNSET
+    json_omit_missing: Unset | str = UNSET
     if not isinstance(omit_missing, Unset):
         json_omit_missing = omit_missing.value
 
     params["omitMissing"] = json_omit_missing
 
-    json_use_display_units: Union[Unset, str] = UNSET
+    json_use_display_units: Unset | str = UNSET
     if not isinstance(use_display_units, Unset):
         json_use_display_units = use_display_units.value
 
     params["useDisplayUnits"] = json_use_display_units
 
-    json_convert_datum: Union[Unset, str] = UNSET
+    json_convert_datum: Unset | str = UNSET
     if not isinstance(convert_datum, Unset):
         json_convert_datum = convert_datum.value
 
     params["convertDatum"] = json_convert_datum
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -89,14 +89,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -107,17 +107,17 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    topology_node_id: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    thresholds_visible: Union[Unset, TimeseriestopologynodeThresholdsVisible] = UNSET,
-    omit_missing: Union[Unset, TimeseriestopologynodeOmitMissing] = UNSET,
-    use_display_units: Union[Unset, TimeseriestopologynodeUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TimeseriestopologynodeConvertDatum] = UNSET,
-    document_format: Union[Unset, TimeseriestopologynodeDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    topology_node_id: Unset | str = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    thresholds_visible: Unset | TimeseriestopologynodeThresholdsVisible = UNSET,
+    omit_missing: Unset | TimeseriestopologynodeOmitMissing = UNSET,
+    use_display_units: Unset | TimeseriestopologynodeUseDisplayUnits = UNSET,
+    convert_datum: Unset | TimeseriestopologynodeConvertDatum = UNSET,
+    document_format: Unset | TimeseriestopologynodeDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the time series for the selected topology node
 
@@ -170,17 +170,17 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    topology_node_id: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    thresholds_visible: Union[Unset, TimeseriestopologynodeThresholdsVisible] = UNSET,
-    omit_missing: Union[Unset, TimeseriestopologynodeOmitMissing] = UNSET,
-    use_display_units: Union[Unset, TimeseriestopologynodeUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TimeseriestopologynodeConvertDatum] = UNSET,
-    document_format: Union[Unset, TimeseriestopologynodeDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    topology_node_id: Unset | str = UNSET,
+    time_zero: Unset | datetime.datetime = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    thresholds_visible: Unset | TimeseriestopologynodeThresholdsVisible = UNSET,
+    omit_missing: Unset | TimeseriestopologynodeOmitMissing = UNSET,
+    use_display_units: Unset | TimeseriestopologynodeUseDisplayUnits = UNSET,
+    convert_datum: Unset | TimeseriestopologynodeConvertDatum = UNSET,
+    document_format: Unset | TimeseriestopologynodeDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the time series for the selected topology node
 

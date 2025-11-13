@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -15,21 +15,21 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     workflow_id: str,
-    topology_node_id: Union[Unset, str] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    task_run_ids: Union[Unset, list[str]] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    mc_id: Union[Unset, str] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    start_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
-    end_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
-    task_run_status_ids: Union[Unset, list[str]] = UNSET,
-    only_forecasts: Union[Unset, TaskrunsOnlyForecasts] = UNSET,
-    task_run_count: Union[Unset, str] = UNSET,
-    only_current: Union[Unset, TaskrunsOnlyCurrent] = UNSET,
-    document_format: Union[Unset, TaskrunsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    topology_node_id: Unset | str = UNSET,
+    forecast_count: Unset | str = UNSET,
+    task_run_ids: Unset | list[str] = UNSET,
+    scenario_id: Unset | str = UNSET,
+    mc_id: Unset | str = UNSET,
+    start_forecast_time: Unset | datetime.datetime = UNSET,
+    end_forecast_time: Unset | datetime.datetime = UNSET,
+    start_dispatch_time: Unset | datetime.datetime = UNSET,
+    end_dispatch_time: Unset | datetime.datetime = UNSET,
+    task_run_status_ids: Unset | list[str] = UNSET,
+    only_forecasts: Unset | TaskrunsOnlyForecasts = UNSET,
+    task_run_count: Unset | str = UNSET,
+    only_current: Unset | TaskrunsOnlyCurrent = UNSET,
+    document_format: Unset | TaskrunsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -39,7 +39,7 @@ def _get_kwargs(
 
     params["forecastCount"] = forecast_count
 
-    json_task_run_ids: Union[Unset, list[str]] = UNSET
+    json_task_run_ids: Unset | list[str] = UNSET
     if not isinstance(task_run_ids, Unset):
         json_task_run_ids = task_run_ids
 
@@ -49,33 +49,33 @@ def _get_kwargs(
 
     params["mcId"] = mc_id
 
-    json_start_forecast_time: Union[Unset, str] = UNSET
+    json_start_forecast_time: Unset | str = UNSET
     if not isinstance(start_forecast_time, Unset):
         json_start_forecast_time = start_forecast_time.isoformat()
     params["startForecastTime"] = json_start_forecast_time
 
-    json_end_forecast_time: Union[Unset, str] = UNSET
+    json_end_forecast_time: Unset | str = UNSET
     if not isinstance(end_forecast_time, Unset):
         json_end_forecast_time = end_forecast_time.isoformat()
     params["endForecastTime"] = json_end_forecast_time
 
-    json_start_dispatch_time: Union[Unset, str] = UNSET
+    json_start_dispatch_time: Unset | str = UNSET
     if not isinstance(start_dispatch_time, Unset):
         json_start_dispatch_time = start_dispatch_time.isoformat()
     params["startDispatchTime"] = json_start_dispatch_time
 
-    json_end_dispatch_time: Union[Unset, str] = UNSET
+    json_end_dispatch_time: Unset | str = UNSET
     if not isinstance(end_dispatch_time, Unset):
         json_end_dispatch_time = end_dispatch_time.isoformat()
     params["endDispatchTime"] = json_end_dispatch_time
 
-    json_task_run_status_ids: Union[Unset, list[str]] = UNSET
+    json_task_run_status_ids: Unset | list[str] = UNSET
     if not isinstance(task_run_status_ids, Unset):
         json_task_run_status_ids = task_run_status_ids
 
     params["taskRunStatusIds"] = json_task_run_status_ids
 
-    json_only_forecasts: Union[Unset, str] = UNSET
+    json_only_forecasts: Unset | str = UNSET
     if not isinstance(only_forecasts, Unset):
         json_only_forecasts = only_forecasts.value
 
@@ -83,13 +83,12 @@ def _get_kwargs(
 
     params["taskRunCount"] = task_run_count
 
-    json_only_current: Union[Unset, str] = UNSET
+    json_only_current: Unset | str = UNSET
     if not isinstance(only_current, Unset):
         json_only_current = only_current.value
 
     params["onlyCurrent"] = json_only_current
 
-    
     if not isinstance(document_format, str):
         json_document_format = document_format.value
     else:
@@ -110,14 +109,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -128,23 +127,23 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     workflow_id: str,
-    topology_node_id: Union[Unset, str] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    task_run_ids: Union[Unset, list[str]] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    mc_id: Union[Unset, str] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    start_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
-    end_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
-    task_run_status_ids: Union[Unset, list[str]] = UNSET,
-    only_forecasts: Union[Unset, TaskrunsOnlyForecasts] = UNSET,
-    task_run_count: Union[Unset, str] = UNSET,
-    only_current: Union[Unset, TaskrunsOnlyCurrent] = UNSET,
-    document_format: Union[Unset, TaskrunsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    topology_node_id: Unset | str = UNSET,
+    forecast_count: Unset | str = UNSET,
+    task_run_ids: Unset | list[str] = UNSET,
+    scenario_id: Unset | str = UNSET,
+    mc_id: Unset | str = UNSET,
+    start_forecast_time: Unset | datetime.datetime = UNSET,
+    end_forecast_time: Unset | datetime.datetime = UNSET,
+    start_dispatch_time: Unset | datetime.datetime = UNSET,
+    end_dispatch_time: Unset | datetime.datetime = UNSET,
+    task_run_status_ids: Unset | list[str] = UNSET,
+    only_forecasts: Unset | TaskrunsOnlyForecasts = UNSET,
+    task_run_count: Unset | str = UNSET,
+    only_current: Unset | TaskrunsOnlyCurrent = UNSET,
+    document_format: Unset | TaskrunsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get all taskruns for a workflowId filtered by parameters like forecast time or taskrun status
 
@@ -209,23 +208,23 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     workflow_id: str,
-    topology_node_id: Union[Unset, str] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    task_run_ids: Union[Unset, list[str]] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    mc_id: Union[Unset, str] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    start_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
-    end_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
-    task_run_status_ids: Union[Unset, list[str]] = UNSET,
-    only_forecasts: Union[Unset, TaskrunsOnlyForecasts] = UNSET,
-    task_run_count: Union[Unset, str] = UNSET,
-    only_current: Union[Unset, TaskrunsOnlyCurrent] = UNSET,
-    document_format: Union[Unset, TaskrunsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    topology_node_id: Unset | str = UNSET,
+    forecast_count: Unset | str = UNSET,
+    task_run_ids: Unset | list[str] = UNSET,
+    scenario_id: Unset | str = UNSET,
+    mc_id: Unset | str = UNSET,
+    start_forecast_time: Unset | datetime.datetime = UNSET,
+    end_forecast_time: Unset | datetime.datetime = UNSET,
+    start_dispatch_time: Unset | datetime.datetime = UNSET,
+    end_dispatch_time: Unset | datetime.datetime = UNSET,
+    task_run_status_ids: Unset | list[str] = UNSET,
+    only_forecasts: Unset | TaskrunsOnlyForecasts = UNSET,
+    task_run_count: Unset | str = UNSET,
+    only_current: Unset | TaskrunsOnlyCurrent = UNSET,
+    document_format: Unset | TaskrunsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get all taskruns for a workflowId filtered by parameters like forecast time or taskrun status
 

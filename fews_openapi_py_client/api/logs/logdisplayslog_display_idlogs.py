@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -15,21 +15,21 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     log_display_id: str,
     *,
-    log_type: Union[Unset, LogdisplayslogDisplayIdlogsLogType] = UNSET,
-    start_time: Union[Unset, str] = UNSET,
-    end_time: Union[Unset, str] = UNSET,
-    level: Union[Unset, LogdisplayslogDisplayIdlogsLevel] = UNSET,
-    source: Union[Unset, LogdisplayslogDisplayIdlogsSource] = UNSET,
-    event_code: Union[Unset, str] = UNSET,
-    text: Union[Unset, str] = UNSET,
-    task_run_id: Union[Unset, str] = UNSET,
-    max_count: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, LogdisplayslogDisplayIdlogsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    log_type: Unset | LogdisplayslogDisplayIdlogsLogType = UNSET,
+    start_time: Unset | str = UNSET,
+    end_time: Unset | str = UNSET,
+    level: Unset | LogdisplayslogDisplayIdlogsLevel = UNSET,
+    source: Unset | LogdisplayslogDisplayIdlogsSource = UNSET,
+    event_code: Unset | str = UNSET,
+    text: Unset | str = UNSET,
+    task_run_id: Unset | str = UNSET,
+    max_count: Unset | str = UNSET,
+    document_format: Unset | LogdisplayslogDisplayIdlogsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_log_type: Union[Unset, str] = UNSET
+    json_log_type: Unset | str = UNSET
     if not isinstance(log_type, Unset):
         json_log_type = log_type.value
 
@@ -39,13 +39,13 @@ def _get_kwargs(
 
     params["endTime"] = end_time
 
-    json_level: Union[Unset, str] = UNSET
+    json_level: Unset | str = UNSET
     if not isinstance(level, Unset):
         json_level = level.value
 
     params["level"] = json_level
 
-    json_source: Union[Unset, str] = UNSET
+    json_source: Unset | str = UNSET
     if not isinstance(source, Unset):
         json_source = source.value
 
@@ -59,7 +59,7 @@ def _get_kwargs(
 
     params["maxCount"] = max_count
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -78,14 +78,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -97,18 +97,18 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     log_display_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    log_type: Union[Unset, LogdisplayslogDisplayIdlogsLogType] = UNSET,
-    start_time: Union[Unset, str] = UNSET,
-    end_time: Union[Unset, str] = UNSET,
-    level: Union[Unset, LogdisplayslogDisplayIdlogsLevel] = UNSET,
-    source: Union[Unset, LogdisplayslogDisplayIdlogsSource] = UNSET,
-    event_code: Union[Unset, str] = UNSET,
-    text: Union[Unset, str] = UNSET,
-    task_run_id: Union[Unset, str] = UNSET,
-    max_count: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, LogdisplayslogDisplayIdlogsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    log_type: Unset | LogdisplayslogDisplayIdlogsLogType = UNSET,
+    start_time: Unset | str = UNSET,
+    end_time: Unset | str = UNSET,
+    level: Unset | LogdisplayslogDisplayIdlogsLevel = UNSET,
+    source: Unset | LogdisplayslogDisplayIdlogsSource = UNSET,
+    event_code: Unset | str = UNSET,
+    text: Unset | str = UNSET,
+    task_run_id: Unset | str = UNSET,
+    max_count: Unset | str = UNSET,
+    document_format: Unset | LogdisplayslogDisplayIdlogsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the logs from the configured log display in JSON format
 
@@ -161,18 +161,18 @@ def sync_detailed(
 async def asyncio_detailed(
     log_display_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    log_type: Union[Unset, LogdisplayslogDisplayIdlogsLogType] = UNSET,
-    start_time: Union[Unset, str] = UNSET,
-    end_time: Union[Unset, str] = UNSET,
-    level: Union[Unset, LogdisplayslogDisplayIdlogsLevel] = UNSET,
-    source: Union[Unset, LogdisplayslogDisplayIdlogsSource] = UNSET,
-    event_code: Union[Unset, str] = UNSET,
-    text: Union[Unset, str] = UNSET,
-    task_run_id: Union[Unset, str] = UNSET,
-    max_count: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, LogdisplayslogDisplayIdlogsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    log_type: Unset | LogdisplayslogDisplayIdlogsLogType = UNSET,
+    start_time: Unset | str = UNSET,
+    end_time: Unset | str = UNSET,
+    level: Unset | LogdisplayslogDisplayIdlogsLevel = UNSET,
+    source: Unset | LogdisplayslogDisplayIdlogsSource = UNSET,
+    event_code: Unset | str = UNSET,
+    text: Unset | str = UNSET,
+    task_run_id: Unset | str = UNSET,
+    max_count: Unset | str = UNSET,
+    document_format: Unset | LogdisplayslogDisplayIdlogsDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the logs from the configured log display in JSON format
 

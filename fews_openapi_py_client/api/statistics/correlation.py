@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,15 +13,15 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    time_series_id_yaxis: Union[Unset, str] = UNSET,
-    time_series_id_xaxis: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    regression_equation: Union[Unset, CorrelationRegressionEquation] = UNSET,
-    upper_threshold: Union[Unset, str] = UNSET,
-    lower_threshold: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, CorrelationDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    time_series_id_yaxis: Unset | str = UNSET,
+    time_series_id_xaxis: Unset | str = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    regression_equation: Unset | CorrelationRegressionEquation = UNSET,
+    upper_threshold: Unset | str = UNSET,
+    lower_threshold: Unset | str = UNSET,
+    document_format: Unset | CorrelationDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -29,17 +29,17 @@ def _get_kwargs(
 
     params["timeSeriesIdXaxis"] = time_series_id_xaxis
 
-    json_start_time: Union[Unset, str] = UNSET
+    json_start_time: Unset | str = UNSET
     if not isinstance(start_time, Unset):
         json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
 
-    json_end_time: Union[Unset, str] = UNSET
+    json_end_time: Unset | str = UNSET
     if not isinstance(end_time, Unset):
         json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
 
-    json_regression_equation: Union[Unset, str] = UNSET
+    json_regression_equation: Unset | str = UNSET
     if not isinstance(regression_equation, Unset):
         json_regression_equation = regression_equation.value
 
@@ -49,7 +49,7 @@ def _get_kwargs(
 
     params["lowerThreshold"] = lower_threshold
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -68,14 +68,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,16 +86,16 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    time_series_id_yaxis: Union[Unset, str] = UNSET,
-    time_series_id_xaxis: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    regression_equation: Union[Unset, CorrelationRegressionEquation] = UNSET,
-    upper_threshold: Union[Unset, str] = UNSET,
-    lower_threshold: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, CorrelationDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    time_series_id_yaxis: Unset | str = UNSET,
+    time_series_id_xaxis: Unset | str = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    regression_equation: Unset | CorrelationRegressionEquation = UNSET,
+    upper_threshold: Unset | str = UNSET,
+    lower_threshold: Unset | str = UNSET,
+    document_format: Unset | CorrelationDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the correlation between two time series
 
@@ -144,16 +144,16 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    time_series_id_yaxis: Union[Unset, str] = UNSET,
-    time_series_id_xaxis: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    regression_equation: Union[Unset, CorrelationRegressionEquation] = UNSET,
-    upper_threshold: Union[Unset, str] = UNSET,
-    lower_threshold: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, CorrelationDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    time_series_id_yaxis: Unset | str = UNSET,
+    time_series_id_xaxis: Unset | str = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    regression_equation: Unset | CorrelationRegressionEquation = UNSET,
+    upper_threshold: Unset | str = UNSET,
+    lower_threshold: Unset | str = UNSET,
+    document_format: Unset | CorrelationDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get the correlation between two time series
 

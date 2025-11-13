@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -12,27 +12,27 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    workflow_id: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    x_min: Union[Unset, str] = UNSET,
-    x_max: Union[Unset, str] = UNSET,
-    y_min: Union[Unset, str] = UNSET,
-    y_max: Union[Unset, str] = UNSET,
-    x_cell_size: Union[Unset, str] = UNSET,
-    y_cell_size: Union[Unset, str] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, ProcessdataRunLocallyAndPromoteToServer] = UNSET,
+    workflow_id: Unset | str = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    x_min: Unset | str = UNSET,
+    x_max: Unset | str = UNSET,
+    y_min: Unset | str = UNSET,
+    y_max: Unset | str = UNSET,
+    x_cell_size: Unset | str = UNSET,
+    y_cell_size: Unset | str = UNSET,
+    run_locally_and_promote_to_server: Unset | ProcessdataRunLocallyAndPromoteToServer = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["workflowId"] = workflow_id
 
-    json_start_time: Union[Unset, str] = UNSET
+    json_start_time: Unset | str = UNSET
     if not isinstance(start_time, Unset):
         json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
 
-    json_end_time: Union[Unset, str] = UNSET
+    json_end_time: Unset | str = UNSET
     if not isinstance(end_time, Unset):
         json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
@@ -49,7 +49,7 @@ def _get_kwargs(
 
     params["yCellSize"] = y_cell_size
 
-    json_run_locally_and_promote_to_server: Union[Unset, str] = UNSET
+    json_run_locally_and_promote_to_server: Unset | str = UNSET
     if not isinstance(run_locally_and_promote_to_server, Unset):
         json_run_locally_and_promote_to_server = run_locally_and_promote_to_server.value
 
@@ -66,7 +66,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[str]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> str | None:
     if response.status_code == 200:
         response_200 = cast(str, response.content)
         return response_200
@@ -77,7 +77,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -88,17 +88,17 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    workflow_id: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    x_min: Union[Unset, str] = UNSET,
-    x_max: Union[Unset, str] = UNSET,
-    y_min: Union[Unset, str] = UNSET,
-    y_max: Union[Unset, str] = UNSET,
-    x_cell_size: Union[Unset, str] = UNSET,
-    y_cell_size: Union[Unset, str] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, ProcessdataRunLocallyAndPromoteToServer] = UNSET,
+    client: AuthenticatedClient | Client,
+    workflow_id: Unset | str = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    x_min: Unset | str = UNSET,
+    x_max: Unset | str = UNSET,
+    y_min: Unset | str = UNSET,
+    y_max: Unset | str = UNSET,
+    x_cell_size: Unset | str = UNSET,
+    y_cell_size: Unset | str = UNSET,
+    run_locally_and_promote_to_server: Unset | ProcessdataRunLocallyAndPromoteToServer = UNSET,
 ) -> Response[str]:
     """Run workflow and make processed netcdf data available as an attachment of type application/octet-
     stream
@@ -153,18 +153,18 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    workflow_id: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    x_min: Union[Unset, str] = UNSET,
-    x_max: Union[Unset, str] = UNSET,
-    y_min: Union[Unset, str] = UNSET,
-    y_max: Union[Unset, str] = UNSET,
-    x_cell_size: Union[Unset, str] = UNSET,
-    y_cell_size: Union[Unset, str] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, ProcessdataRunLocallyAndPromoteToServer] = UNSET,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    workflow_id: Unset | str = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    x_min: Unset | str = UNSET,
+    x_max: Unset | str = UNSET,
+    y_min: Unset | str = UNSET,
+    y_max: Unset | str = UNSET,
+    x_cell_size: Unset | str = UNSET,
+    y_cell_size: Unset | str = UNSET,
+    run_locally_and_promote_to_server: Unset | ProcessdataRunLocallyAndPromoteToServer = UNSET,
+) -> str | None:
     """Run workflow and make processed netcdf data available as an attachment of type application/octet-
     stream
 
@@ -213,17 +213,17 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    workflow_id: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    x_min: Union[Unset, str] = UNSET,
-    x_max: Union[Unset, str] = UNSET,
-    y_min: Union[Unset, str] = UNSET,
-    y_max: Union[Unset, str] = UNSET,
-    x_cell_size: Union[Unset, str] = UNSET,
-    y_cell_size: Union[Unset, str] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, ProcessdataRunLocallyAndPromoteToServer] = UNSET,
+    client: AuthenticatedClient | Client,
+    workflow_id: Unset | str = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    x_min: Unset | str = UNSET,
+    x_max: Unset | str = UNSET,
+    y_min: Unset | str = UNSET,
+    y_max: Unset | str = UNSET,
+    x_cell_size: Unset | str = UNSET,
+    y_cell_size: Unset | str = UNSET,
+    run_locally_and_promote_to_server: Unset | ProcessdataRunLocallyAndPromoteToServer = UNSET,
 ) -> Response[str]:
     """Run workflow and make processed netcdf data available as an attachment of type application/octet-
     stream
@@ -276,18 +276,18 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    workflow_id: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    x_min: Union[Unset, str] = UNSET,
-    x_max: Union[Unset, str] = UNSET,
-    y_min: Union[Unset, str] = UNSET,
-    y_max: Union[Unset, str] = UNSET,
-    x_cell_size: Union[Unset, str] = UNSET,
-    y_cell_size: Union[Unset, str] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, ProcessdataRunLocallyAndPromoteToServer] = UNSET,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    workflow_id: Unset | str = UNSET,
+    start_time: Unset | datetime.datetime = UNSET,
+    end_time: Unset | datetime.datetime = UNSET,
+    x_min: Unset | str = UNSET,
+    x_max: Unset | str = UNSET,
+    y_min: Unset | str = UNSET,
+    y_max: Unset | str = UNSET,
+    x_cell_size: Unset | str = UNSET,
+    y_cell_size: Unset | str = UNSET,
+    run_locally_and_promote_to_server: Unset | ProcessdataRunLocallyAndPromoteToServer = UNSET,
+) -> str | None:
     """Run workflow and make processed netcdf data available as an attachment of type application/octet-
     stream
 

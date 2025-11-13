@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,27 +12,27 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    start_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    end_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    modifier_type: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ModifiersDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    start_time_modifiers: Unset | datetime.datetime = UNSET,
+    end_time_modifiers: Unset | datetime.datetime = UNSET,
+    modifier_type: Unset | str = UNSET,
+    document_format: Unset | ModifiersDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_start_time_modifiers: Union[Unset, str] = UNSET
+    json_start_time_modifiers: Unset | str = UNSET
     if not isinstance(start_time_modifiers, Unset):
         json_start_time_modifiers = start_time_modifiers.isoformat()
     params["startTimeModifiers"] = json_start_time_modifiers
 
-    json_end_time_modifiers: Union[Unset, str] = UNSET
+    json_end_time_modifiers: Unset | str = UNSET
     if not isinstance(end_time_modifiers, Unset):
         json_end_time_modifiers = end_time_modifiers.isoformat()
     params["endTimeModifiers"] = json_end_time_modifiers
 
     params["modifierType"] = modifier_type
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -51,14 +51,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,12 +69,12 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    start_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    end_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    modifier_type: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ModifiersDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    start_time_modifiers: Unset | datetime.datetime = UNSET,
+    end_time_modifiers: Unset | datetime.datetime = UNSET,
+    modifier_type: Unset | str = UNSET,
+    document_format: Unset | ModifiersDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get modifiers filtered by parameters like start time, end time and modifier type
 
@@ -114,12 +114,12 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    start_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    end_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    modifier_type: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ModifiersDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    start_time_modifiers: Unset | datetime.datetime = UNSET,
+    end_time_modifiers: Unset | datetime.datetime = UNSET,
+    modifier_type: Unset | str = UNSET,
+    document_format: Unset | ModifiersDocumentFormat = UNSET,
+    document_version: Unset | str = UNSET,
 ) -> Response[Any]:
     """Get modifiers filtered by parameters like start time, end time and modifier type
 
