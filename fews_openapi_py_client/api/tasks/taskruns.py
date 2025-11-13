@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -9,27 +9,27 @@ from ...client import AuthenticatedClient, Client
 from ...models.taskruns_document_format import TaskrunsDocumentFormat
 from ...models.taskruns_only_current import TaskrunsOnlyCurrent
 from ...models.taskruns_only_forecasts import TaskrunsOnlyForecasts
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     workflow_id: str,
-    topology_node_id: None | str = None,
-    forecast_count: None | str = None,
-    task_run_ids: None | list[str] = None,
-    scenario_id: None | str = None,
-    mc_id: None | str = None,
-    start_forecast_time: None | datetime.datetime = None,
-    end_forecast_time: None | datetime.datetime = None,
-    start_dispatch_time: None | datetime.datetime = None,
-    end_dispatch_time: None | datetime.datetime = None,
-    task_run_status_ids: None | list[str] = None,
-    only_forecasts: None | TaskrunsOnlyForecasts = None,
-    task_run_count: None | str = None,
-    only_current: None | TaskrunsOnlyCurrent = None,
-    document_format: None | TaskrunsDocumentFormat = None,
-    document_version: None | str = None,
+    topology_node_id: Union[Unset, str] = UNSET,
+    forecast_count: Union[Unset, str] = UNSET,
+    task_run_ids: Union[Unset, list[str]] = UNSET,
+    scenario_id: Union[Unset, str] = UNSET,
+    mc_id: Union[Unset, str] = UNSET,
+    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
+    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
+    start_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
+    end_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
+    task_run_status_ids: Union[Unset, list[str]] = UNSET,
+    only_forecasts: Union[Unset, TaskrunsOnlyForecasts] = UNSET,
+    task_run_count: Union[Unset, str] = UNSET,
+    only_current: Union[Unset, TaskrunsOnlyCurrent] = UNSET,
+    document_format: Union[Unset, TaskrunsDocumentFormat] = UNSET,
+    document_version: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -39,8 +39,8 @@ def _get_kwargs(
 
     params["forecastCount"] = forecast_count
 
-    json_task_run_ids: None | list[str] = None
-    if not isinstance(task_run_ids, None):
+    json_task_run_ids: Union[Unset, list[str]] = UNSET
+    if not isinstance(task_run_ids, Unset):
         json_task_run_ids = task_run_ids
 
     params["taskRunIds"] = json_task_run_ids
@@ -49,42 +49,42 @@ def _get_kwargs(
 
     params["mcId"] = mc_id
 
-    json_start_forecast_time: None | str = None
-    if not isinstance(start_forecast_time, None):
+    json_start_forecast_time: Union[Unset, str] = UNSET
+    if not isinstance(start_forecast_time, Unset):
         json_start_forecast_time = start_forecast_time.isoformat()
     params["startForecastTime"] = json_start_forecast_time
 
-    json_end_forecast_time: None | str = None
-    if not isinstance(end_forecast_time, None):
+    json_end_forecast_time: Union[Unset, str] = UNSET
+    if not isinstance(end_forecast_time, Unset):
         json_end_forecast_time = end_forecast_time.isoformat()
     params["endForecastTime"] = json_end_forecast_time
 
-    json_start_dispatch_time: None | str = None
-    if not isinstance(start_dispatch_time, None):
+    json_start_dispatch_time: Union[Unset, str] = UNSET
+    if not isinstance(start_dispatch_time, Unset):
         json_start_dispatch_time = start_dispatch_time.isoformat()
     params["startDispatchTime"] = json_start_dispatch_time
 
-    json_end_dispatch_time: None | str = None
-    if not isinstance(end_dispatch_time, None):
+    json_end_dispatch_time: Union[Unset, str] = UNSET
+    if not isinstance(end_dispatch_time, Unset):
         json_end_dispatch_time = end_dispatch_time.isoformat()
     params["endDispatchTime"] = json_end_dispatch_time
 
-    json_task_run_status_ids: None | list[str] = None
-    if not isinstance(task_run_status_ids, None):
+    json_task_run_status_ids: Union[Unset, list[str]] = UNSET
+    if not isinstance(task_run_status_ids, Unset):
         json_task_run_status_ids = task_run_status_ids
 
     params["taskRunStatusIds"] = json_task_run_status_ids
 
-    json_only_forecasts: None | str = None
-    if not isinstance(only_forecasts, None):
+    json_only_forecasts: Union[Unset, str] = UNSET
+    if not isinstance(only_forecasts, Unset):
         json_only_forecasts = only_forecasts.value
 
     params["onlyForecasts"] = json_only_forecasts
 
     params["taskRunCount"] = task_run_count
 
-    json_only_current: None | str = None
-    if not isinstance(only_current, None):
+    json_only_current: Union[Unset, str] = UNSET
+    if not isinstance(only_current, Unset):
         json_only_current = only_current.value
 
     params["onlyCurrent"] = json_only_current
@@ -99,7 +99,7 @@ def _get_kwargs(
 
     params["documentVersion"] = document_version
 
-    params = {k: v for k, v in params.items() if v is not None and v is not None}
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -110,14 +110,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -128,23 +128,23 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     *,
-    client: AuthenticatedClient | Client,
+    client: Union[AuthenticatedClient, Client],
     workflow_id: str,
-    topology_node_id: None | str = None,
-    forecast_count: None | str = None,
-    task_run_ids: None | list[str] = None,
-    scenario_id: None | str = None,
-    mc_id: None | str = None,
-    start_forecast_time: str | datetime.datetime = None,
-    end_forecast_time: None | datetime.datetime = None,
-    start_dispatch_time: None | datetime.datetime = None,
-    end_dispatch_time: None | datetime.datetime = None,
-    task_run_status_ids: None | list[str] = None,
-    only_forecasts: None | TaskrunsOnlyForecasts = None,
-    task_run_count: None | str = None,
-    only_current: None | TaskrunsOnlyCurrent = None,
-    document_format: None | TaskrunsDocumentFormat = None,
-    document_version: None | str = None,
+    topology_node_id: Union[Unset, str] = UNSET,
+    forecast_count: Union[Unset, str] = UNSET,
+    task_run_ids: Union[Unset, list[str]] = UNSET,
+    scenario_id: Union[Unset, str] = UNSET,
+    mc_id: Union[Unset, str] = UNSET,
+    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
+    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
+    start_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
+    end_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
+    task_run_status_ids: Union[Unset, list[str]] = UNSET,
+    only_forecasts: Union[Unset, TaskrunsOnlyForecasts] = UNSET,
+    task_run_count: Union[Unset, str] = UNSET,
+    only_current: Union[Unset, TaskrunsOnlyCurrent] = UNSET,
+    document_format: Union[Unset, TaskrunsDocumentFormat] = UNSET,
+    document_version: Union[Unset, str] = UNSET,
 ) -> Response[Any]:
     """Get all taskruns for a workflowId filtered by parameters like forecast time or taskrun status
 
@@ -153,25 +153,25 @@ def sync_detailed(
 
     Args:
         workflow_id (str):
-        topology_node_id (Union[None, str]):
-        forecast_count (Union[None, str]):
-        task_run_ids (Union[None, list[str]]): The parameter can be repeated
-        scenario_id (Union[None, str]):
-        mc_id (Union[None, str]):
-        start_forecast_time (Union[None, datetime.datetime]): Date-time string that adheres to
+        topology_node_id (Union[Unset, str]):
+        forecast_count (Union[Unset, str]):
+        task_run_ids (Union[Unset, list[str]]): The parameter can be repeated
+        scenario_id (Union[Unset, str]):
+        mc_id (Union[Unset, str]):
+        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC
+        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        start_dispatch_time (Union[None, datetime.datetime]): Date-time string that adheres to
+        start_dispatch_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_dispatch_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC
+        end_dispatch_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        task_run_status_ids (Union[None, list[str]]): The parameter can be repeated
-        only_forecasts (Union[None, TaskrunsOnlyForecasts]):
-        task_run_count (Union[None, str]):
-        only_current (Union[None, TaskrunsOnlyCurrent]):
-        document_format (Union[None, TaskrunsDocumentFormat]):
-        document_version (Union[None, str]):
+        task_run_status_ids (Union[Unset, list[str]]): The parameter can be repeated
+        only_forecasts (Union[Unset, TaskrunsOnlyForecasts]):
+        task_run_count (Union[Unset, str]):
+        only_current (Union[Unset, TaskrunsOnlyCurrent]):
+        document_format (Union[Unset, TaskrunsDocumentFormat]):
+        document_version (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -209,23 +209,23 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: AuthenticatedClient | Client,
+    client: Union[AuthenticatedClient, Client],
     workflow_id: str,
-    topology_node_id: None | str = None,
-    forecast_count: None | str = None,
-    task_run_ids: None | list[str] = None,
-    scenario_id: None | str = None,
-    mc_id: None | str = None,
-    start_forecast_time: None | datetime.datetime = None,
-    end_forecast_time: None | datetime.datetime = None,
-    start_dispatch_time: None | datetime.datetime = None,
-    end_dispatch_time: None | datetime.datetime = None,
-    task_run_status_ids: None | list[str] = None,
-    only_forecasts: None | TaskrunsOnlyForecasts = None,
-    task_run_count: None | str = None,
-    only_current: None | TaskrunsOnlyCurrent = None,
-    document_format: None | TaskrunsDocumentFormat = None,
-    document_version: None | str = None,
+    topology_node_id: Union[Unset, str] = UNSET,
+    forecast_count: Union[Unset, str] = UNSET,
+    task_run_ids: Union[Unset, list[str]] = UNSET,
+    scenario_id: Union[Unset, str] = UNSET,
+    mc_id: Union[Unset, str] = UNSET,
+    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
+    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
+    start_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
+    end_dispatch_time: Union[Unset, datetime.datetime] = UNSET,
+    task_run_status_ids: Union[Unset, list[str]] = UNSET,
+    only_forecasts: Union[Unset, TaskrunsOnlyForecasts] = UNSET,
+    task_run_count: Union[Unset, str] = UNSET,
+    only_current: Union[Unset, TaskrunsOnlyCurrent] = UNSET,
+    document_format: Union[Unset, TaskrunsDocumentFormat] = UNSET,
+    document_version: Union[Unset, str] = UNSET,
 ) -> Response[Any]:
     """Get all taskruns for a workflowId filtered by parameters like forecast time or taskrun status
 
@@ -234,25 +234,25 @@ async def asyncio_detailed(
 
     Args:
         workflow_id (str):
-        topology_node_id (Union[None, str]):
-        forecast_count (Union[None, str]):
-        task_run_ids (Union[None, list[str]]): The parameter can be repeated
-        scenario_id (Union[None, str]):
-        mc_id (Union[None, str]):
-        start_forecast_time (Union[None, datetime.datetime]): Date-time string that adheres to
+        topology_node_id (Union[Unset, str]):
+        forecast_count (Union[Unset, str]):
+        task_run_ids (Union[Unset, list[str]]): The parameter can be repeated
+        scenario_id (Union[Unset, str]):
+        mc_id (Union[Unset, str]):
+        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC
+        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        start_dispatch_time (Union[None, datetime.datetime]): Date-time string that adheres to
+        start_dispatch_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_dispatch_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC
+        end_dispatch_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        task_run_status_ids (Union[None, list[str]]): The parameter can be repeated
-        only_forecasts (Union[None, TaskrunsOnlyForecasts]):
-        task_run_count (Union[None, str]):
-        only_current (Union[None, TaskrunsOnlyCurrent]):
-        document_format (Union[None, TaskrunsDocumentFormat]):
-        document_version (Union[None, str]):
+        task_run_status_ids (Union[Unset, list[str]]): The parameter can be repeated
+        only_forecasts (Union[Unset, TaskrunsOnlyForecasts]):
+        task_run_count (Union[Unset, str]):
+        only_current (Union[Unset, TaskrunsOnlyCurrent]):
+        document_format (Union[Unset, TaskrunsDocumentFormat]):
+        document_version (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
