@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -34,102 +34,102 @@ from ...models.timeseries_show_thresholds import TimeseriesShowThresholds
 from ...models.timeseries_time_series_type import TimeseriesTimeSeriesType
 from ...models.timeseries_use_display_units import TimeseriesUseDisplayUnits
 from ...models.timeseries_use_milliseconds import TimeseriesUseMilliseconds
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     *,
-    filter_id: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, list[str]] = UNSET,
-    parameter_ids: Union[Unset, list[str]] = UNSET,
-    module_instance_ids: Union[Unset, list[str]] = UNSET,
-    qualifier_ids: Union[Unset, list[str]] = UNSET,
-    task_run_ids: Union[Unset, list[str]] = UNSET,
-    statistical_function: Union[Unset, str] = UNSET,
-    percentile_exceedance: Union[Unset, str] = UNSET,
-    percentil_non_exceedance: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    before_start_time_count: Union[Unset, str] = UNSET,
-    after_end_time_count: Union[Unset, str] = UNSET,
-    start_creation_time: Union[Unset, datetime.datetime] = UNSET,
-    end_creation_time: Union[Unset, datetime.datetime] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    lead_time: Union[Unset, str] = UNSET,
-    external_forecast_times: Union[Unset, list[str]] = UNSET,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    time_step_id: Union[Unset, str] = UNSET,
-    thinning: Union[Unset, str] = UNSET,
-    export_id_map: Union[Unset, str] = UNSET,
-    export_unit_conversion_id: Union[Unset, str] = UNSET,
-    time_zone_name: Union[Unset, str] = UNSET,
-    time_series_ids: Union[Unset, list[str]] = UNSET,
-    default_request_parameters_id: Union[Unset, str] = UNSET,
-    resampling_method: Union[Unset, TimeseriesResamplingMethod] = UNSET,
-    resampling_time_step_id: Union[Unset, str] = UNSET,
-    resampling_omit_missing: Union[Unset, TimeseriesResamplingOmitMissing] = UNSET,
-    download_as_file: Union[Unset, str] = UNSET,
-    match_as_qualifier_set: Union[Unset, TimeseriesMatchAsQualifierSet] = UNSET,
-    import_from_external_data_source: Union[Unset, TimeseriesImportFromExternalDataSource] = UNSET,
-    convert_datum: Union[Unset, TimeseriesConvertDatum] = UNSET,
-    convert_values_to_enumeration_labels: Union[Unset, TimeseriesConvertValuesToEnumerationLabels] = UNSET,
-    show_ensemble_member_ids: Union[Unset, TimeseriesShowEnsembleMemberIds] = UNSET,
-    use_display_units: Union[Unset, TimeseriesUseDisplayUnits] = UNSET,
-    show_thresholds: Union[Unset, TimeseriesShowThresholds] = UNSET,
-    omit_missing: Union[Unset, TimeseriesOmitMissing] = UNSET,
-    omit_empty_time_series: Union[Unset, TimeseriesOmitEmptyTimeSeries] = UNSET,
-    omit_original_reliable: Union[Unset, TimeseriesOmitOriginalReliable] = UNSET,
-    omit_original_doubtful: Union[Unset, TimeseriesOmitOriginalDoubtful] = UNSET,
-    omit_original_unreliable: Union[Unset, TimeseriesOmitOriginalUnreliable] = UNSET,
-    omit_completed_reliable: Union[Unset, TimeseriesOmitCompletedReliable] = UNSET,
-    omit_completed_doubtful: Union[Unset, TimeseriesOmitCompletedDoubtful] = UNSET,
-    omit_completed_unreliable: Union[Unset, TimeseriesOmitCompletedUnreliable] = UNSET,
-    omit_corrected_reliable: Union[Unset, TimeseriesOmitCorrectedReliable] = UNSET,
-    omit_corrected_doubtful: Union[Unset, TimeseriesOmitCorrectedDoubtful] = UNSET,
-    omit_corrected_unreliable: Union[Unset, TimeseriesOmitCorrectedUnreliable] = UNSET,
-    only_manual_edits: Union[Unset, TimeseriesOnlyManualEdits] = UNSET,
-    only_headers: Union[Unset, TimeseriesOnlyHeaders] = UNSET,
-    only_forecasts: Union[Unset, TimeseriesOnlyForecasts] = UNSET,
-    show_statistics: Union[Unset, TimeseriesShowStatistics] = UNSET,
-    use_milliseconds: Union[Unset, TimeseriesUseMilliseconds] = UNSET,
-    show_products: Union[Unset, TimeseriesShowProducts] = UNSET,
-    time_series_type: Union[Unset, TimeseriesTimeSeriesType] = UNSET,
-    document_format: Union[Unset, TimeseriesDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    filter_id: None | str = None,
+    location_ids: None | list[str] = None,
+    parameter_ids: None | list[str] = None,
+    module_instance_ids: None | list[str] = None,
+    qualifier_ids: None | list[str] = None,
+    task_run_ids: None | list[str] = None,
+    statistical_function: None | str = None,
+    percentile_exceedance: None | str = None,
+    percentil_non_exceedance: None | str = None,
+    start_time: None | datetime.datetime = None,
+    end_time: None | datetime.datetime = None,
+    before_start_time_count: None | str = None,
+    after_end_time_count: None | str = None,
+    start_creation_time: None | datetime.datetime = None,
+    end_creation_time: None | datetime.datetime = None,
+    forecast_count: None | str = None,
+    start_forecast_time: None | datetime.datetime = None,
+    end_forecast_time: None | datetime.datetime = None,
+    lead_time: None | str = None,
+    external_forecast_times: None | list[str] = None,
+    ensemble_id: None | str = None,
+    ensemble_member_id: None | str = None,
+    time_step_id: None | str = None,
+    thinning: None | str = None,
+    export_id_map: None | str = None,
+    export_unit_conversion_id: None | str = None,
+    time_zone_name: None | str = None,
+    time_series_ids: None | list[str] = None,
+    default_request_parameters_id: None | str = None,
+    resampling_method: None | TimeseriesResamplingMethod = None,
+    resampling_time_step_id: None | str = None,
+    resampling_omit_missing: None | TimeseriesResamplingOmitMissing = None,
+    download_as_file: None | str = None,
+    match_as_qualifier_set: None | TimeseriesMatchAsQualifierSet = None,
+    import_from_external_data_source: None | TimeseriesImportFromExternalDataSource = None,
+    convert_datum: None | TimeseriesConvertDatum = None,
+    convert_values_to_enumeration_labels: None | TimeseriesConvertValuesToEnumerationLabels = None,
+    show_ensemble_member_ids: None | TimeseriesShowEnsembleMemberIds = None,
+    use_display_units: None | TimeseriesUseDisplayUnits = None,
+    show_thresholds: None | TimeseriesShowThresholds = None,
+    omit_missing: None | TimeseriesOmitMissing = None,
+    omit_empty_time_series: None | TimeseriesOmitEmptyTimeSeries = None,
+    omit_original_reliable: None | TimeseriesOmitOriginalReliable = None,
+    omit_original_doubtful: None | TimeseriesOmitOriginalDoubtful = None,
+    omit_original_unreliable: None | TimeseriesOmitOriginalUnreliable = None,
+    omit_completed_reliable: None | TimeseriesOmitCompletedReliable = None,
+    omit_completed_doubtful: None | TimeseriesOmitCompletedDoubtful = None,
+    omit_completed_unreliable: None | TimeseriesOmitCompletedUnreliable = None,
+    omit_corrected_reliable: None | TimeseriesOmitCorrectedReliable = None,
+    omit_corrected_doubtful: None | TimeseriesOmitCorrectedDoubtful = None,
+    omit_corrected_unreliable: None | TimeseriesOmitCorrectedUnreliable = None,
+    only_manual_edits: None | TimeseriesOnlyManualEdits = None,
+    only_headers: None | TimeseriesOnlyHeaders = None,
+    only_forecasts: None | TimeseriesOnlyForecasts = None,
+    show_statistics: None | TimeseriesShowStatistics = None,
+    use_milliseconds: None | TimeseriesUseMilliseconds = None,
+    show_products: None | TimeseriesShowProducts = None,
+    time_series_type: None | TimeseriesTimeSeriesType = None,
+    document_format: None | TimeseriesDocumentFormat = None,
+    document_version: None | str = None,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["filterId"] = filter_id
 
-    json_location_ids: Union[Unset, list[str]] = UNSET
-    if not isinstance(location_ids, Unset):
+    json_location_ids: None | list[str] = None
+    if not isinstance(location_ids, None):
         json_location_ids = location_ids
 
     params["locationIds"] = json_location_ids
 
-    json_parameter_ids: Union[Unset, list[str]] = UNSET
-    if not isinstance(parameter_ids, Unset):
+    json_parameter_ids: None | list[str] = None
+    if not isinstance(parameter_ids, None):
         json_parameter_ids = parameter_ids
 
     params["parameterIds"] = json_parameter_ids
 
-    json_module_instance_ids: Union[Unset, list[str]] = UNSET
-    if not isinstance(module_instance_ids, Unset):
+    json_module_instance_ids: None | list[str] = None
+    if not isinstance(module_instance_ids, None):
         json_module_instance_ids = module_instance_ids
 
     params["moduleInstanceIds"] = json_module_instance_ids
 
-    json_qualifier_ids: Union[Unset, list[str]] = UNSET
-    if not isinstance(qualifier_ids, Unset):
+    json_qualifier_ids: None | list[str] = None
+    if not isinstance(qualifier_ids, None):
         json_qualifier_ids = qualifier_ids
 
     params["qualifierIds"] = json_qualifier_ids
 
-    json_task_run_ids: Union[Unset, list[str]] = UNSET
-    if not isinstance(task_run_ids, Unset):
+    json_task_run_ids: None | list[str] = None
+    if not isinstance(task_run_ids, None):
         json_task_run_ids = task_run_ids
 
     params["taskRunIds"] = json_task_run_ids
@@ -140,13 +140,14 @@ def _get_kwargs(
 
     params["percentilNonExceedance"] = percentil_non_exceedance
 
-    json_start_time: Union[Unset, str] = UNSET
-    if not isinstance(start_time, Unset):
+    json_start_time: datetime.datetime | None = None
+    if not isinstance(start_time, None):
         json_start_time = start_time.isoformat()
+    
     params["startTime"] = json_start_time
 
-    json_end_time: Union[Unset, str] = UNSET
-    if not isinstance(end_time, Unset):
+    json_end_time: None | datetime.datetime = None
+    if not isinstance(end_time, None):
         json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
 
@@ -154,32 +155,32 @@ def _get_kwargs(
 
     params["afterEndTimeCount"] = after_end_time_count
 
-    json_start_creation_time: Union[Unset, str] = UNSET
-    if not isinstance(start_creation_time, Unset):
+    json_start_creation_time: None | datetime.datetime = None
+    if not isinstance(start_creation_time, None):
         json_start_creation_time = start_creation_time.isoformat()
     params["startCreationTime"] = json_start_creation_time
 
-    json_end_creation_time: Union[Unset, str] = UNSET
-    if not isinstance(end_creation_time, Unset):
+    json_end_creation_time: None | datetime.datetime = None
+    if not isinstance(end_creation_time, None):
         json_end_creation_time = end_creation_time.isoformat()
     params["endCreationTime"] = json_end_creation_time
 
     params["forecastCount"] = forecast_count
 
-    json_start_forecast_time: Union[Unset, str] = UNSET
-    if not isinstance(start_forecast_time, Unset):
+    json_start_forecast_time: None | datetime.datetime = None
+    if not isinstance(start_forecast_time, None):
         json_start_forecast_time = start_forecast_time.isoformat()
     params["startForecastTime"] = json_start_forecast_time
 
-    json_end_forecast_time: Union[Unset, str] = UNSET
-    if not isinstance(end_forecast_time, Unset):
+    json_end_forecast_time: None | datetime.datetime = None
+    if not isinstance(end_forecast_time, None):
         json_end_forecast_time = end_forecast_time.isoformat()
     params["endForecastTime"] = json_end_forecast_time
 
     params["leadTime"] = lead_time
 
-    json_external_forecast_times: Union[Unset, list[str]] = UNSET
-    if not isinstance(external_forecast_times, Unset):
+    json_external_forecast_times: None | list[str] = None
+    if not isinstance(external_forecast_times, None):
         json_external_forecast_times = external_forecast_times
 
     params["externalForecastTimes"] = json_external_forecast_times
@@ -198,189 +199,189 @@ def _get_kwargs(
 
     params["timeZoneName"] = time_zone_name
 
-    json_time_series_ids: Union[Unset, list[str]] = UNSET
-    if not isinstance(time_series_ids, Unset):
+    json_time_series_ids: None | list[str] = None
+    if not isinstance(time_series_ids, None):
         json_time_series_ids = time_series_ids
 
     params["timeSeriesIds"] = json_time_series_ids
 
     params["defaultRequestParametersId"] = default_request_parameters_id
 
-    json_resampling_method: Union[Unset, str] = UNSET
-    if not isinstance(resampling_method, Unset):
+    json_resampling_method: None | str = None
+    if not isinstance(resampling_method, None):
         json_resampling_method = resampling_method.value
 
     params["resamplingMethod"] = json_resampling_method
 
     params["resamplingTimeStepId"] = resampling_time_step_id
 
-    json_resampling_omit_missing: Union[Unset, str] = UNSET
-    if not isinstance(resampling_omit_missing, Unset):
+    json_resampling_omit_missing: None | str = None
+    if not isinstance(resampling_omit_missing, None):
         json_resampling_omit_missing = resampling_omit_missing.value
 
     params["resamplingOmitMissing"] = json_resampling_omit_missing
 
     params["downloadAsFile"] = download_as_file
 
-    json_match_as_qualifier_set: Union[Unset, str] = UNSET
-    if not isinstance(match_as_qualifier_set, Unset):
+    json_match_as_qualifier_set: None | str = None
+    if not isinstance(match_as_qualifier_set, None):
         json_match_as_qualifier_set = match_as_qualifier_set.value
 
     params["matchAsQualifierSet"] = json_match_as_qualifier_set
 
-    json_import_from_external_data_source: Union[Unset, str] = UNSET
-    if not isinstance(import_from_external_data_source, Unset):
+    json_import_from_external_data_source: None | str = None
+    if not isinstance(import_from_external_data_source, None):
         json_import_from_external_data_source = import_from_external_data_source.value
 
     params["importFromExternalDataSource"] = json_import_from_external_data_source
 
-    json_convert_datum: Union[Unset, str] = UNSET
-    if not isinstance(convert_datum, Unset):
+    json_convert_datum: None | str = None
+    if not isinstance(convert_datum, None):
         json_convert_datum = convert_datum.value
 
     params["convertDatum"] = json_convert_datum
 
-    json_convert_values_to_enumeration_labels: Union[Unset, str] = UNSET
-    if not isinstance(convert_values_to_enumeration_labels, Unset):
+    json_convert_values_to_enumeration_labels: None | str = None
+    if not isinstance(convert_values_to_enumeration_labels, None):
         json_convert_values_to_enumeration_labels = convert_values_to_enumeration_labels.value
 
     params["convertValuesToEnumerationLabels"] = json_convert_values_to_enumeration_labels
 
-    json_show_ensemble_member_ids: Union[Unset, str] = UNSET
-    if not isinstance(show_ensemble_member_ids, Unset):
+    json_show_ensemble_member_ids: None | str = None
+    if not isinstance(show_ensemble_member_ids, None):
         json_show_ensemble_member_ids = show_ensemble_member_ids.value
 
     params["showEnsembleMemberIds"] = json_show_ensemble_member_ids
 
-    json_use_display_units: Union[Unset, str] = UNSET
-    if not isinstance(use_display_units, Unset):
+    json_use_display_units: None | str = None
+    if not isinstance(use_display_units, None):
         json_use_display_units = use_display_units.value
 
     params["useDisplayUnits"] = json_use_display_units
 
-    json_show_thresholds: Union[Unset, str] = UNSET
-    if not isinstance(show_thresholds, Unset):
+    json_show_thresholds: None | str = None
+    if not isinstance(show_thresholds, None):
         json_show_thresholds = show_thresholds.value
 
     params["showThresholds"] = json_show_thresholds
 
-    json_omit_missing: Union[Unset, str] = UNSET
-    if not isinstance(omit_missing, Unset):
+    json_omit_missing: None | str = None
+    if not isinstance(omit_missing, None):
         json_omit_missing = omit_missing.value
 
     params["omitMissing"] = json_omit_missing
 
-    json_omit_empty_time_series: Union[Unset, str] = UNSET
-    if not isinstance(omit_empty_time_series, Unset):
+    json_omit_empty_time_series: None | str = None
+    if not isinstance(omit_empty_time_series, None):
         json_omit_empty_time_series = omit_empty_time_series.value
 
     params["omitEmptyTimeSeries"] = json_omit_empty_time_series
 
-    json_omit_original_reliable: Union[Unset, str] = UNSET
-    if not isinstance(omit_original_reliable, Unset):
+    json_omit_original_reliable: None | str = None
+    if not isinstance(omit_original_reliable, None):
         json_omit_original_reliable = omit_original_reliable.value
 
     params["omitOriginalReliable"] = json_omit_original_reliable
 
-    json_omit_original_doubtful: Union[Unset, str] = UNSET
-    if not isinstance(omit_original_doubtful, Unset):
+    json_omit_original_doubtful: None | str = None
+    if not isinstance(omit_original_doubtful, None):
         json_omit_original_doubtful = omit_original_doubtful.value
 
     params["omitOriginalDoubtful"] = json_omit_original_doubtful
 
-    json_omit_original_unreliable: Union[Unset, str] = UNSET
-    if not isinstance(omit_original_unreliable, Unset):
+    json_omit_original_unreliable: None | str = None
+    if not isinstance(omit_original_unreliable, None):
         json_omit_original_unreliable = omit_original_unreliable.value
 
     params["omitOriginalUnreliable"] = json_omit_original_unreliable
 
-    json_omit_completed_reliable: Union[Unset, str] = UNSET
-    if not isinstance(omit_completed_reliable, Unset):
+    json_omit_completed_reliable: None | str = None
+    if not isinstance(omit_completed_reliable, None):
         json_omit_completed_reliable = omit_completed_reliable.value
 
     params["omitCompletedReliable"] = json_omit_completed_reliable
 
-    json_omit_completed_doubtful: Union[Unset, str] = UNSET
-    if not isinstance(omit_completed_doubtful, Unset):
+    json_omit_completed_doubtful: None | str = None
+    if not isinstance(omit_completed_doubtful, None):
         json_omit_completed_doubtful = omit_completed_doubtful.value
 
     params["omitCompletedDoubtful"] = json_omit_completed_doubtful
 
-    json_omit_completed_unreliable: Union[Unset, str] = UNSET
-    if not isinstance(omit_completed_unreliable, Unset):
+    json_omit_completed_unreliable: None | str = None
+    if not isinstance(omit_completed_unreliable, None):
         json_omit_completed_unreliable = omit_completed_unreliable.value
 
     params["omitCompletedUnreliable"] = json_omit_completed_unreliable
 
-    json_omit_corrected_reliable: Union[Unset, str] = UNSET
-    if not isinstance(omit_corrected_reliable, Unset):
+    json_omit_corrected_reliable: None | str = None
+    if not isinstance(omit_corrected_reliable, None):
         json_omit_corrected_reliable = omit_corrected_reliable.value
 
     params["omitCorrectedReliable"] = json_omit_corrected_reliable
 
-    json_omit_corrected_doubtful: Union[Unset, str] = UNSET
-    if not isinstance(omit_corrected_doubtful, Unset):
+    json_omit_corrected_doubtful: None | str = None
+    if not isinstance(omit_corrected_doubtful, None):
         json_omit_corrected_doubtful = omit_corrected_doubtful.value
 
     params["omitCorrectedDoubtful"] = json_omit_corrected_doubtful
 
-    json_omit_corrected_unreliable: Union[Unset, str] = UNSET
-    if not isinstance(omit_corrected_unreliable, Unset):
+    json_omit_corrected_unreliable: None | str = None
+    if not isinstance(omit_corrected_unreliable, None):
         json_omit_corrected_unreliable = omit_corrected_unreliable.value
 
     params["omitCorrectedUnreliable"] = json_omit_corrected_unreliable
 
-    json_only_manual_edits: Union[Unset, str] = UNSET
-    if not isinstance(only_manual_edits, Unset):
+    json_only_manual_edits: None | str = None
+    if not isinstance(only_manual_edits, None):
         json_only_manual_edits = only_manual_edits.value
 
     params["onlyManualEdits"] = json_only_manual_edits
 
-    json_only_headers: Union[Unset, str] = UNSET
-    if not isinstance(only_headers, Unset):
+    json_only_headers: None | str = None
+    if not isinstance(only_headers, None):
         json_only_headers = only_headers.value
 
     params["onlyHeaders"] = json_only_headers
 
-    json_only_forecasts: Union[Unset, str] = UNSET
-    if not isinstance(only_forecasts, Unset):
+    json_only_forecasts: None | str = None
+    if not isinstance(only_forecasts, None):
         json_only_forecasts = only_forecasts.value
 
     params["onlyForecasts"] = json_only_forecasts
 
-    json_show_statistics: Union[Unset, str] = UNSET
-    if not isinstance(show_statistics, Unset):
+    json_show_statistics: None | str = None
+    if not isinstance(show_statistics, None):
         json_show_statistics = show_statistics.value
 
     params["showStatistics"] = json_show_statistics
 
-    json_use_milliseconds: Union[Unset, str] = UNSET
-    if not isinstance(use_milliseconds, Unset):
+    json_use_milliseconds: None | str = None
+    if not isinstance(use_milliseconds, None):
         json_use_milliseconds = use_milliseconds.value
 
     params["useMilliseconds"] = json_use_milliseconds
 
-    json_show_products: Union[Unset, str] = UNSET
-    if not isinstance(show_products, Unset):
+    json_show_products: None | str = None
+    if not isinstance(show_products, None):
         json_show_products = show_products.value
 
     params["showProducts"] = json_show_products
 
-    json_time_series_type: Union[Unset, str] = UNSET
-    if not isinstance(time_series_type, Unset):
+    json_time_series_type: None | str = None
+    if not isinstance(time_series_type, None):
         json_time_series_type = time_series_type.value
 
     params["timeSeriesType"] = json_time_series_type
 
-    json_document_format: Union[Unset, str] = UNSET
-    if not isinstance(document_format, Unset):
+    json_document_format: None | str = None
+    if not isinstance(document_format, None):
         json_document_format = document_format.value
 
     params["documentFormat"] = json_document_format
 
     params["documentVersion"] = document_version
 
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+    params = {k: v for k, v in params.items() if v is not None and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -391,14 +392,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -409,67 +410,67 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    filter_id: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, list[str]] = UNSET,
-    parameter_ids: Union[Unset, list[str]] = UNSET,
-    module_instance_ids: Union[Unset, list[str]] = UNSET,
-    qualifier_ids: Union[Unset, list[str]] = UNSET,
-    task_run_ids: Union[Unset, list[str]] = UNSET,
-    statistical_function: Union[Unset, str] = UNSET,
-    percentile_exceedance: Union[Unset, str] = UNSET,
-    percentil_non_exceedance: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    before_start_time_count: Union[Unset, str] = UNSET,
-    after_end_time_count: Union[Unset, str] = UNSET,
-    start_creation_time: Union[Unset, datetime.datetime] = UNSET,
-    end_creation_time: Union[Unset, datetime.datetime] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    lead_time: Union[Unset, str] = UNSET,
-    external_forecast_times: Union[Unset, list[str]] = UNSET,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    time_step_id: Union[Unset, str] = UNSET,
-    thinning: Union[Unset, str] = UNSET,
-    export_id_map: Union[Unset, str] = UNSET,
-    export_unit_conversion_id: Union[Unset, str] = UNSET,
-    time_zone_name: Union[Unset, str] = UNSET,
-    time_series_ids: Union[Unset, list[str]] = UNSET,
-    default_request_parameters_id: Union[Unset, str] = UNSET,
-    resampling_method: Union[Unset, TimeseriesResamplingMethod] = UNSET,
-    resampling_time_step_id: Union[Unset, str] = UNSET,
-    resampling_omit_missing: Union[Unset, TimeseriesResamplingOmitMissing] = UNSET,
-    download_as_file: Union[Unset, str] = UNSET,
-    match_as_qualifier_set: Union[Unset, TimeseriesMatchAsQualifierSet] = UNSET,
-    import_from_external_data_source: Union[Unset, TimeseriesImportFromExternalDataSource] = UNSET,
-    convert_datum: Union[Unset, TimeseriesConvertDatum] = UNSET,
-    convert_values_to_enumeration_labels: Union[Unset, TimeseriesConvertValuesToEnumerationLabels] = UNSET,
-    show_ensemble_member_ids: Union[Unset, TimeseriesShowEnsembleMemberIds] = UNSET,
-    use_display_units: Union[Unset, TimeseriesUseDisplayUnits] = UNSET,
-    show_thresholds: Union[Unset, TimeseriesShowThresholds] = UNSET,
-    omit_missing: Union[Unset, TimeseriesOmitMissing] = UNSET,
-    omit_empty_time_series: Union[Unset, TimeseriesOmitEmptyTimeSeries] = UNSET,
-    omit_original_reliable: Union[Unset, TimeseriesOmitOriginalReliable] = UNSET,
-    omit_original_doubtful: Union[Unset, TimeseriesOmitOriginalDoubtful] = UNSET,
-    omit_original_unreliable: Union[Unset, TimeseriesOmitOriginalUnreliable] = UNSET,
-    omit_completed_reliable: Union[Unset, TimeseriesOmitCompletedReliable] = UNSET,
-    omit_completed_doubtful: Union[Unset, TimeseriesOmitCompletedDoubtful] = UNSET,
-    omit_completed_unreliable: Union[Unset, TimeseriesOmitCompletedUnreliable] = UNSET,
-    omit_corrected_reliable: Union[Unset, TimeseriesOmitCorrectedReliable] = UNSET,
-    omit_corrected_doubtful: Union[Unset, TimeseriesOmitCorrectedDoubtful] = UNSET,
-    omit_corrected_unreliable: Union[Unset, TimeseriesOmitCorrectedUnreliable] = UNSET,
-    only_manual_edits: Union[Unset, TimeseriesOnlyManualEdits] = UNSET,
-    only_headers: Union[Unset, TimeseriesOnlyHeaders] = UNSET,
-    only_forecasts: Union[Unset, TimeseriesOnlyForecasts] = UNSET,
-    show_statistics: Union[Unset, TimeseriesShowStatistics] = UNSET,
-    use_milliseconds: Union[Unset, TimeseriesUseMilliseconds] = UNSET,
-    show_products: Union[Unset, TimeseriesShowProducts] = UNSET,
-    time_series_type: Union[Unset, TimeseriesTimeSeriesType] = UNSET,
-    document_format: Union[Unset, TimeseriesDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    filter_id: None | str = None,
+    location_ids: None | list[str] = None,
+    parameter_ids: None | list[str] = None,
+    module_instance_ids: None | list[str] = None,
+    qualifier_ids: None | list[str] = None,
+    task_run_ids: None | list[str] = None,
+    statistical_function: None | str = None,
+    percentile_exceedance: None | str = None,
+    percentil_non_exceedance: None | str = None,
+    start_time: None | datetime.datetime = None,
+    end_time: None | datetime.datetime = None,
+    before_start_time_count: None | str = None,
+    after_end_time_count: None | str = None,
+    start_creation_time: None | datetime.datetime = None,
+    end_creation_time: None | datetime.datetime = None,
+    forecast_count: None | str = None,
+    start_forecast_time: None | datetime.datetime = None,
+    end_forecast_time: None | datetime.datetime = None,
+    lead_time: None | str = None,
+    external_forecast_times: None | list[str] = None,
+    ensemble_id: None | str = None,
+    ensemble_member_id: None | str = None,
+    time_step_id: None | str = None,
+    thinning: None | str = None,
+    export_id_map: None | str = None,
+    export_unit_conversion_id: None | str = None,
+    time_zone_name: None | str = None,
+    time_series_ids: None | list[str] = None,
+    default_request_parameters_id: None | str = None,
+    resampling_method: None | TimeseriesResamplingMethod = None,
+    resampling_time_step_id: None | str = None,
+    resampling_omit_missing: None | TimeseriesResamplingOmitMissing = None,
+    download_as_file: None | str = None,
+    match_as_qualifier_set: None | TimeseriesMatchAsQualifierSet = None,
+    import_from_external_data_source: None | TimeseriesImportFromExternalDataSource = None,
+    convert_datum: None | TimeseriesConvertDatum = None,
+    convert_values_to_enumeration_labels: None | TimeseriesConvertValuesToEnumerationLabels = None,
+    show_ensemble_member_ids: None | TimeseriesShowEnsembleMemberIds = None,
+    use_display_units: None | TimeseriesUseDisplayUnits = None,
+    show_thresholds: None | TimeseriesShowThresholds = None,
+    omit_missing: None | TimeseriesOmitMissing = None,
+    omit_empty_time_series: None | TimeseriesOmitEmptyTimeSeries = None,
+    omit_original_reliable: None | TimeseriesOmitOriginalReliable = None,
+    omit_original_doubtful: None | TimeseriesOmitOriginalDoubtful = None,
+    omit_original_unreliable: None | TimeseriesOmitOriginalUnreliable = None,
+    omit_completed_reliable: None | TimeseriesOmitCompletedReliable = None,
+    omit_completed_doubtful: None | TimeseriesOmitCompletedDoubtful = None,
+    omit_completed_unreliable: None | TimeseriesOmitCompletedUnreliable = None,
+    omit_corrected_reliable: None | TimeseriesOmitCorrectedReliable = None,
+    omit_corrected_doubtful: None | TimeseriesOmitCorrectedDoubtful = None,
+    omit_corrected_unreliable: None | TimeseriesOmitCorrectedUnreliable = None,
+    only_manual_edits: None | TimeseriesOnlyManualEdits = None,
+    only_headers: None | TimeseriesOnlyHeaders = None,
+    only_forecasts: None | TimeseriesOnlyForecasts = None,
+    show_statistics: None | TimeseriesShowStatistics = None,
+    use_milliseconds: None | TimeseriesUseMilliseconds = None,
+    show_products: None | TimeseriesShowProducts = None,
+    time_series_type: None | TimeseriesTimeSeriesType = None,
+    document_format: None | TimeseriesDocumentFormat = None,
+    document_version: None | str = None,
 ) -> Response[Any]:
     r"""Get timeseries that are part of the default filter
 
@@ -634,74 +635,74 @@ def sync_detailed(
     fashion
 
     Args:
-        filter_id (Union[Unset, str]):
-        location_ids (Union[Unset, list[str]]): The parameter can be repeated
-        parameter_ids (Union[Unset, list[str]]): The parameter can be repeated
-        module_instance_ids (Union[Unset, list[str]]): The parameter can be repeated
-        qualifier_ids (Union[Unset, list[str]]): The parameter can be repeated
-        task_run_ids (Union[Unset, list[str]]): The parameter can be repeated
-        statistical_function (Union[Unset, str]):
-        percentile_exceedance (Union[Unset, str]):
-        percentil_non_exceedance (Union[Unset, str]):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        filter_id (Union[None, str]):
+        location_ids (Union[None, list[str]]): The parameter can be repeated
+        parameter_ids (Union[None, list[str]]): The parameter can be repeated
+        module_instance_ids (Union[None, list[str]]): The parameter can be repeated
+        qualifier_ids (Union[None, list[str]]): The parameter can be repeated
+        task_run_ids (Union[None, list[str]]): The parameter can be repeated
+        statistical_function (Union[None, str]):
+        percentile_exceedance (Union[None, str]):
+        percentil_non_exceedance (Union[None, str]):
+        start_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        end_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        before_start_time_count (Union[Unset, str]):  Example: 5.
-        after_end_time_count (Union[Unset, str]):  Example: 5.
-        start_creation_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
+        before_start_time_count (Union[None, str]):  Example: 5.
+        after_end_time_count (Union[None, str]):  Example: 5.
+        start_creation_time (Union[None, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_creation_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        end_creation_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        forecast_count (Union[Unset, str]):  Example: 1.
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
+        forecast_count (Union[None, str]):  Example: 1.
+        start_forecast_time (Union[None, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        end_forecast_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        lead_time (Union[Unset, str]):  Example: 3600000.
-        external_forecast_times (Union[Unset, list[str]]): The parameter can be repeated Example:
+        lead_time (Union[None, str]):  Example: 3600000.
+        external_forecast_times (Union[None, list[str]]): The parameter can be repeated Example:
             2020-03-18T15:00:00Z.
-        ensemble_id (Union[Unset, str]):
-        ensemble_member_id (Union[Unset, str]):
-        time_step_id (Union[Unset, str]):
-        thinning (Union[Unset, str]):  Example: 15408668.
-        export_id_map (Union[Unset, str]):
-        export_unit_conversion_id (Union[Unset, str]):
-        time_zone_name (Union[Unset, str]):
-        time_series_ids (Union[Unset, list[str]]): The parameter can be repeated
-        default_request_parameters_id (Union[Unset, str]):
-        resampling_method (Union[Unset, TimeseriesResamplingMethod]):
-        resampling_time_step_id (Union[Unset, str]):
-        resampling_omit_missing (Union[Unset, TimeseriesResamplingOmitMissing]):
-        download_as_file (Union[Unset, str]):
-        match_as_qualifier_set (Union[Unset, TimeseriesMatchAsQualifierSet]):
-        import_from_external_data_source (Union[Unset, TimeseriesImportFromExternalDataSource]):
-        convert_datum (Union[Unset, TimeseriesConvertDatum]):
-        convert_values_to_enumeration_labels (Union[Unset,
+        ensemble_id (Union[None, str]):
+        ensemble_member_id (Union[None, str]):
+        time_step_id (Union[None, str]):
+        thinning (Union[None, str]):  Example: 15408668.
+        export_id_map (Union[None, str]):
+        export_unit_conversion_id (Union[None, str]):
+        time_zone_name (Union[None, str]):
+        time_series_ids (Union[None, list[str]]): The parameter can be repeated
+        default_request_parameters_id (Union[None, str]):
+        resampling_method (Union[None, TimeseriesResamplingMethod]):
+        resampling_time_step_id (Union[None, str]):
+        resampling_omit_missing (Union[None, TimeseriesResamplingOmitMissing]):
+        download_as_file (Union[None, str]):
+        match_as_qualifier_set (Union[None, TimeseriesMatchAsQualifierSet]):
+        import_from_external_data_source (Union[None, TimeseriesImportFromExternalDataSource]):
+        convert_datum (Union[None, TimeseriesConvertDatum]):
+        convert_values_to_enumeration_labels (Union[None,
             TimeseriesConvertValuesToEnumerationLabels]):
-        show_ensemble_member_ids (Union[Unset, TimeseriesShowEnsembleMemberIds]):
-        use_display_units (Union[Unset, TimeseriesUseDisplayUnits]):
-        show_thresholds (Union[Unset, TimeseriesShowThresholds]):
-        omit_missing (Union[Unset, TimeseriesOmitMissing]):
-        omit_empty_time_series (Union[Unset, TimeseriesOmitEmptyTimeSeries]):
-        omit_original_reliable (Union[Unset, TimeseriesOmitOriginalReliable]):
-        omit_original_doubtful (Union[Unset, TimeseriesOmitOriginalDoubtful]):
-        omit_original_unreliable (Union[Unset, TimeseriesOmitOriginalUnreliable]):
-        omit_completed_reliable (Union[Unset, TimeseriesOmitCompletedReliable]):
-        omit_completed_doubtful (Union[Unset, TimeseriesOmitCompletedDoubtful]):
-        omit_completed_unreliable (Union[Unset, TimeseriesOmitCompletedUnreliable]):
-        omit_corrected_reliable (Union[Unset, TimeseriesOmitCorrectedReliable]):
-        omit_corrected_doubtful (Union[Unset, TimeseriesOmitCorrectedDoubtful]):
-        omit_corrected_unreliable (Union[Unset, TimeseriesOmitCorrectedUnreliable]):
-        only_manual_edits (Union[Unset, TimeseriesOnlyManualEdits]):
-        only_headers (Union[Unset, TimeseriesOnlyHeaders]):
-        only_forecasts (Union[Unset, TimeseriesOnlyForecasts]):
-        show_statistics (Union[Unset, TimeseriesShowStatistics]):
-        use_milliseconds (Union[Unset, TimeseriesUseMilliseconds]):
-        show_products (Union[Unset, TimeseriesShowProducts]):
-        time_series_type (Union[Unset, TimeseriesTimeSeriesType]):
-        document_format (Union[Unset, TimeseriesDocumentFormat]):
-        document_version (Union[Unset, str]):
+        show_ensemble_member_ids (Union[None, TimeseriesShowEnsembleMemberIds]):
+        use_display_units (Union[None, TimeseriesUseDisplayUnits]):
+        show_thresholds (Union[None, TimeseriesShowThresholds]):
+        omit_missing (Union[None, TimeseriesOmitMissing]):
+        omit_empty_time_series (Union[None, TimeseriesOmitEmptyTimeSeries]):
+        omit_original_reliable (Union[None, TimeseriesOmitOriginalReliable]):
+        omit_original_doubtful (Union[None, TimeseriesOmitOriginalDoubtful]):
+        omit_original_unreliable (Union[None, TimeseriesOmitOriginalUnreliable]):
+        omit_completed_reliable (Union[None, TimeseriesOmitCompletedReliable]):
+        omit_completed_doubtful (Union[None, TimeseriesOmitCompletedDoubtful]):
+        omit_completed_unreliable (Union[None, TimeseriesOmitCompletedUnreliable]):
+        omit_corrected_reliable (Union[None, TimeseriesOmitCorrectedReliable]):
+        omit_corrected_doubtful (Union[None, TimeseriesOmitCorrectedDoubtful]):
+        omit_corrected_unreliable (Union[None, TimeseriesOmitCorrectedUnreliable]):
+        only_manual_edits (Union[None, TimeseriesOnlyManualEdits]):
+        only_headers (Union[None, TimeseriesOnlyHeaders]):
+        only_forecasts (Union[None, TimeseriesOnlyForecasts]):
+        show_statistics (Union[None, TimeseriesShowStatistics]):
+        use_milliseconds (Union[None, TimeseriesUseMilliseconds]):
+        show_products (Union[None, TimeseriesShowProducts]):
+        time_series_type (Union[None, TimeseriesTimeSeriesType]):
+        document_format (Union[None, TimeseriesDocumentFormat]):
+        document_version (Union[None, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -783,67 +784,67 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    filter_id: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, list[str]] = UNSET,
-    parameter_ids: Union[Unset, list[str]] = UNSET,
-    module_instance_ids: Union[Unset, list[str]] = UNSET,
-    qualifier_ids: Union[Unset, list[str]] = UNSET,
-    task_run_ids: Union[Unset, list[str]] = UNSET,
-    statistical_function: Union[Unset, str] = UNSET,
-    percentile_exceedance: Union[Unset, str] = UNSET,
-    percentil_non_exceedance: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    before_start_time_count: Union[Unset, str] = UNSET,
-    after_end_time_count: Union[Unset, str] = UNSET,
-    start_creation_time: Union[Unset, datetime.datetime] = UNSET,
-    end_creation_time: Union[Unset, datetime.datetime] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    lead_time: Union[Unset, str] = UNSET,
-    external_forecast_times: Union[Unset, list[str]] = UNSET,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    time_step_id: Union[Unset, str] = UNSET,
-    thinning: Union[Unset, str] = UNSET,
-    export_id_map: Union[Unset, str] = UNSET,
-    export_unit_conversion_id: Union[Unset, str] = UNSET,
-    time_zone_name: Union[Unset, str] = UNSET,
-    time_series_ids: Union[Unset, list[str]] = UNSET,
-    default_request_parameters_id: Union[Unset, str] = UNSET,
-    resampling_method: Union[Unset, TimeseriesResamplingMethod] = UNSET,
-    resampling_time_step_id: Union[Unset, str] = UNSET,
-    resampling_omit_missing: Union[Unset, TimeseriesResamplingOmitMissing] = UNSET,
-    download_as_file: Union[Unset, str] = UNSET,
-    match_as_qualifier_set: Union[Unset, TimeseriesMatchAsQualifierSet] = UNSET,
-    import_from_external_data_source: Union[Unset, TimeseriesImportFromExternalDataSource] = UNSET,
-    convert_datum: Union[Unset, TimeseriesConvertDatum] = UNSET,
-    convert_values_to_enumeration_labels: Union[Unset, TimeseriesConvertValuesToEnumerationLabels] = UNSET,
-    show_ensemble_member_ids: Union[Unset, TimeseriesShowEnsembleMemberIds] = UNSET,
-    use_display_units: Union[Unset, TimeseriesUseDisplayUnits] = UNSET,
-    show_thresholds: Union[Unset, TimeseriesShowThresholds] = UNSET,
-    omit_missing: Union[Unset, TimeseriesOmitMissing] = UNSET,
-    omit_empty_time_series: Union[Unset, TimeseriesOmitEmptyTimeSeries] = UNSET,
-    omit_original_reliable: Union[Unset, TimeseriesOmitOriginalReliable] = UNSET,
-    omit_original_doubtful: Union[Unset, TimeseriesOmitOriginalDoubtful] = UNSET,
-    omit_original_unreliable: Union[Unset, TimeseriesOmitOriginalUnreliable] = UNSET,
-    omit_completed_reliable: Union[Unset, TimeseriesOmitCompletedReliable] = UNSET,
-    omit_completed_doubtful: Union[Unset, TimeseriesOmitCompletedDoubtful] = UNSET,
-    omit_completed_unreliable: Union[Unset, TimeseriesOmitCompletedUnreliable] = UNSET,
-    omit_corrected_reliable: Union[Unset, TimeseriesOmitCorrectedReliable] = UNSET,
-    omit_corrected_doubtful: Union[Unset, TimeseriesOmitCorrectedDoubtful] = UNSET,
-    omit_corrected_unreliable: Union[Unset, TimeseriesOmitCorrectedUnreliable] = UNSET,
-    only_manual_edits: Union[Unset, TimeseriesOnlyManualEdits] = UNSET,
-    only_headers: Union[Unset, TimeseriesOnlyHeaders] = UNSET,
-    only_forecasts: Union[Unset, TimeseriesOnlyForecasts] = UNSET,
-    show_statistics: Union[Unset, TimeseriesShowStatistics] = UNSET,
-    use_milliseconds: Union[Unset, TimeseriesUseMilliseconds] = UNSET,
-    show_products: Union[Unset, TimeseriesShowProducts] = UNSET,
-    time_series_type: Union[Unset, TimeseriesTimeSeriesType] = UNSET,
-    document_format: Union[Unset, TimeseriesDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    filter_id: None | str = None,
+    location_ids: None | list[str] = None,
+    parameter_ids: None | list[str] = None,
+    module_instance_ids: None | list[str] = None,
+    qualifier_ids: None | list[str] = None,
+    task_run_ids: None | list[str] = None,
+    statistical_function: None | str = None,
+    percentile_exceedance: None | str = None,
+    percentil_non_exceedance: None | str = None,
+    start_time: None | datetime.datetime = None,
+    end_time: None | datetime.datetime = None,
+    before_start_time_count: None | str = None,
+    after_end_time_count: None | str = None,
+    start_creation_time: None | datetime.datetime = None,
+    end_creation_time: None | datetime.datetime = None,
+    forecast_count: None | str = None,
+    start_forecast_time: None | datetime.datetime = None,
+    end_forecast_time: None | datetime.datetime = None,
+    lead_time: None | str = None,
+    external_forecast_times: None | list[str] = None,
+    ensemble_id: None | str = None,
+    ensemble_member_id: None | str = None,
+    time_step_id: None | str = None,
+    thinning: None | str = None,
+    export_id_map: None | str = None,
+    export_unit_conversion_id: None | str = None,
+    time_zone_name: None | str = None,
+    time_series_ids: None | list[str] = None,
+    default_request_parameters_id: None | str = None,
+    resampling_method: None | TimeseriesResamplingMethod = None,
+    resampling_time_step_id: None | str = None,
+    resampling_omit_missing: None | TimeseriesResamplingOmitMissing = None,
+    download_as_file: None | str = None,
+    match_as_qualifier_set: None | TimeseriesMatchAsQualifierSet = None,
+    import_from_external_data_source: None | TimeseriesImportFromExternalDataSource = None,
+    convert_datum: None | TimeseriesConvertDatum = None,
+    convert_values_to_enumeration_labels: None | TimeseriesConvertValuesToEnumerationLabels = None,
+    show_ensemble_member_ids: None | TimeseriesShowEnsembleMemberIds = None,
+    use_display_units: None | TimeseriesUseDisplayUnits = None,
+    show_thresholds: None | TimeseriesShowThresholds = None,
+    omit_missing: None | TimeseriesOmitMissing = None,
+    omit_empty_time_series: None | TimeseriesOmitEmptyTimeSeries = None,
+    omit_original_reliable: None | TimeseriesOmitOriginalReliable = None,
+    omit_original_doubtful: None | TimeseriesOmitOriginalDoubtful = None,
+    omit_original_unreliable: None | TimeseriesOmitOriginalUnreliable = None,
+    omit_completed_reliable: None | TimeseriesOmitCompletedReliable = None,
+    omit_completed_doubtful: None | TimeseriesOmitCompletedDoubtful = None,
+    omit_completed_unreliable: None | TimeseriesOmitCompletedUnreliable = None,
+    omit_corrected_reliable: None | TimeseriesOmitCorrectedReliable = None,
+    omit_corrected_doubtful: None | TimeseriesOmitCorrectedDoubtful = None,
+    omit_corrected_unreliable: None | TimeseriesOmitCorrectedUnreliable = None,
+    only_manual_edits: None | TimeseriesOnlyManualEdits = None,
+    only_headers: None | TimeseriesOnlyHeaders = None,
+    only_forecasts: None | TimeseriesOnlyForecasts = None,
+    show_statistics: None | TimeseriesShowStatistics = None,
+    use_milliseconds: None | TimeseriesUseMilliseconds = None,
+    show_products: None | TimeseriesShowProducts = None,
+    time_series_type: None | TimeseriesTimeSeriesType = None,
+    document_format: None | TimeseriesDocumentFormat = None,
+    document_version: None | str = None,
 ) -> Response[Any]:
     r"""Get timeseries that are part of the default filter
 
@@ -1008,74 +1009,74 @@ async def asyncio_detailed(
     fashion
 
     Args:
-        filter_id (Union[Unset, str]):
-        location_ids (Union[Unset, list[str]]): The parameter can be repeated
-        parameter_ids (Union[Unset, list[str]]): The parameter can be repeated
-        module_instance_ids (Union[Unset, list[str]]): The parameter can be repeated
-        qualifier_ids (Union[Unset, list[str]]): The parameter can be repeated
-        task_run_ids (Union[Unset, list[str]]): The parameter can be repeated
-        statistical_function (Union[Unset, str]):
-        percentile_exceedance (Union[Unset, str]):
-        percentil_non_exceedance (Union[Unset, str]):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        filter_id (Union[None, str]):
+        location_ids (Union[None, list[str]]): The parameter can be repeated
+        parameter_ids (Union[None, list[str]]): The parameter can be repeated
+        module_instance_ids (Union[None, list[str]]): The parameter can be repeated
+        qualifier_ids (Union[None, list[str]]): The parameter can be repeated
+        task_run_ids (Union[None, list[str]]): The parameter can be repeated
+        statistical_function (Union[None, str]):
+        percentile_exceedance (Union[None, str]):
+        percentil_non_exceedance (Union[None, str]):
+        start_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        end_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        before_start_time_count (Union[Unset, str]):  Example: 5.
-        after_end_time_count (Union[Unset, str]):  Example: 5.
-        start_creation_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
+        before_start_time_count (Union[None, str]):  Example: 5.
+        after_end_time_count (Union[None, str]):  Example: 5.
+        start_creation_time (Union[None, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_creation_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        end_creation_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        forecast_count (Union[Unset, str]):  Example: 1.
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
+        forecast_count (Union[None, str]):  Example: 1.
+        start_forecast_time (Union[None, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        end_forecast_time (Union[None, datetime.datetime]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        lead_time (Union[Unset, str]):  Example: 3600000.
-        external_forecast_times (Union[Unset, list[str]]): The parameter can be repeated Example:
+        lead_time (Union[None, str]):  Example: 3600000.
+        external_forecast_times (Union[None, list[str]]): The parameter can be repeated Example:
             2020-03-18T15:00:00Z.
-        ensemble_id (Union[Unset, str]):
-        ensemble_member_id (Union[Unset, str]):
-        time_step_id (Union[Unset, str]):
-        thinning (Union[Unset, str]):  Example: 15408668.
-        export_id_map (Union[Unset, str]):
-        export_unit_conversion_id (Union[Unset, str]):
-        time_zone_name (Union[Unset, str]):
-        time_series_ids (Union[Unset, list[str]]): The parameter can be repeated
-        default_request_parameters_id (Union[Unset, str]):
-        resampling_method (Union[Unset, TimeseriesResamplingMethod]):
-        resampling_time_step_id (Union[Unset, str]):
-        resampling_omit_missing (Union[Unset, TimeseriesResamplingOmitMissing]):
-        download_as_file (Union[Unset, str]):
-        match_as_qualifier_set (Union[Unset, TimeseriesMatchAsQualifierSet]):
-        import_from_external_data_source (Union[Unset, TimeseriesImportFromExternalDataSource]):
-        convert_datum (Union[Unset, TimeseriesConvertDatum]):
-        convert_values_to_enumeration_labels (Union[Unset,
+        ensemble_id (Union[None, str]):
+        ensemble_member_id (Union[None, str]):
+        time_step_id (Union[None, str]):
+        thinning (Union[None, str]):  Example: 15408668.
+        export_id_map (Union[None, str]):
+        export_unit_conversion_id (Union[None, str]):
+        time_zone_name (Union[None, str]):
+        time_series_ids (Union[None, list[str]]): The parameter can be repeated
+        default_request_parameters_id (Union[None, str]):
+        resampling_method (Union[None, TimeseriesResamplingMethod]):
+        resampling_time_step_id (Union[None, str]):
+        resampling_omit_missing (Union[None, TimeseriesResamplingOmitMissing]):
+        download_as_file (Union[None, str]):
+        match_as_qualifier_set (Union[None, TimeseriesMatchAsQualifierSet]):
+        import_from_external_data_source (Union[None, TimeseriesImportFromExternalDataSource]):
+        convert_datum (Union[None, TimeseriesConvertDatum]):
+        convert_values_to_enumeration_labels (Union[None,
             TimeseriesConvertValuesToEnumerationLabels]):
-        show_ensemble_member_ids (Union[Unset, TimeseriesShowEnsembleMemberIds]):
-        use_display_units (Union[Unset, TimeseriesUseDisplayUnits]):
-        show_thresholds (Union[Unset, TimeseriesShowThresholds]):
-        omit_missing (Union[Unset, TimeseriesOmitMissing]):
-        omit_empty_time_series (Union[Unset, TimeseriesOmitEmptyTimeSeries]):
-        omit_original_reliable (Union[Unset, TimeseriesOmitOriginalReliable]):
-        omit_original_doubtful (Union[Unset, TimeseriesOmitOriginalDoubtful]):
-        omit_original_unreliable (Union[Unset, TimeseriesOmitOriginalUnreliable]):
-        omit_completed_reliable (Union[Unset, TimeseriesOmitCompletedReliable]):
-        omit_completed_doubtful (Union[Unset, TimeseriesOmitCompletedDoubtful]):
-        omit_completed_unreliable (Union[Unset, TimeseriesOmitCompletedUnreliable]):
-        omit_corrected_reliable (Union[Unset, TimeseriesOmitCorrectedReliable]):
-        omit_corrected_doubtful (Union[Unset, TimeseriesOmitCorrectedDoubtful]):
-        omit_corrected_unreliable (Union[Unset, TimeseriesOmitCorrectedUnreliable]):
-        only_manual_edits (Union[Unset, TimeseriesOnlyManualEdits]):
-        only_headers (Union[Unset, TimeseriesOnlyHeaders]):
-        only_forecasts (Union[Unset, TimeseriesOnlyForecasts]):
-        show_statistics (Union[Unset, TimeseriesShowStatistics]):
-        use_milliseconds (Union[Unset, TimeseriesUseMilliseconds]):
-        show_products (Union[Unset, TimeseriesShowProducts]):
-        time_series_type (Union[Unset, TimeseriesTimeSeriesType]):
-        document_format (Union[Unset, TimeseriesDocumentFormat]):
-        document_version (Union[Unset, str]):
+        show_ensemble_member_ids (Union[None, TimeseriesShowEnsembleMemberIds]):
+        use_display_units (Union[None, TimeseriesUseDisplayUnits]):
+        show_thresholds (Union[None, TimeseriesShowThresholds]):
+        omit_missing (Union[None, TimeseriesOmitMissing]):
+        omit_empty_time_series (Union[None, TimeseriesOmitEmptyTimeSeries]):
+        omit_original_reliable (Union[None, TimeseriesOmitOriginalReliable]):
+        omit_original_doubtful (Union[None, TimeseriesOmitOriginalDoubtful]):
+        omit_original_unreliable (Union[None, TimeseriesOmitOriginalUnreliable]):
+        omit_completed_reliable (Union[None, TimeseriesOmitCompletedReliable]):
+        omit_completed_doubtful (Union[None, TimeseriesOmitCompletedDoubtful]):
+        omit_completed_unreliable (Union[None, TimeseriesOmitCompletedUnreliable]):
+        omit_corrected_reliable (Union[None, TimeseriesOmitCorrectedReliable]):
+        omit_corrected_doubtful (Union[None, TimeseriesOmitCorrectedDoubtful]):
+        omit_corrected_unreliable (Union[None, TimeseriesOmitCorrectedUnreliable]):
+        only_manual_edits (Union[None, TimeseriesOnlyManualEdits]):
+        only_headers (Union[None, TimeseriesOnlyHeaders]):
+        only_forecasts (Union[None, TimeseriesOnlyForecasts]):
+        show_statistics (Union[None, TimeseriesShowStatistics]):
+        use_milliseconds (Union[None, TimeseriesUseMilliseconds]):
+        show_products (Union[None, TimeseriesShowProducts]):
+        time_series_type (Union[None, TimeseriesTimeSeriesType]):
+        document_format (Union[None, TimeseriesDocumentFormat]):
+        document_version (Union[None, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
