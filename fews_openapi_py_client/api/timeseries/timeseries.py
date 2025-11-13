@@ -1,4 +1,3 @@
-import datetime
 from http import HTTPStatus
 from typing import Any
 
@@ -48,15 +47,15 @@ def _get_kwargs(
     statistical_function: Unset | str = UNSET,
     percentile_exceedance: Unset | str = UNSET,
     percentil_non_exceedance: Unset | str = UNSET,
-    start_time: Unset | datetime.datetime = UNSET,
-    end_time: Unset | datetime.datetime = UNSET,
+    start_time: Unset | str = UNSET,
+    end_time: Unset | str = UNSET,
     before_start_time_count: Unset | str = UNSET,
     after_end_time_count: Unset | str = UNSET,
-    start_creation_time: Unset | datetime.datetime = UNSET,
-    end_creation_time: Unset | datetime.datetime = UNSET,
+    start_creation_time: Unset | str = UNSET,
+    end_creation_time: Unset | str = UNSET,
     forecast_count: Unset | str = UNSET,
-    start_forecast_time: Unset | datetime.datetime = UNSET,
-    end_forecast_time: Unset | datetime.datetime = UNSET,
+    start_forecast_time: Unset | str = UNSET,
+    end_forecast_time: Unset | str = UNSET,
     lead_time: Unset | str = UNSET,
     external_forecast_times: Unset | list[str] = UNSET,
     ensemble_id: Unset | str = UNSET,
@@ -142,12 +141,12 @@ def _get_kwargs(
 
     json_start_time: Unset | str = UNSET
     if not isinstance(start_time, Unset):
-        json_start_time = start_time.isoformat()
+        json_start_time = start_time
     params["startTime"] = json_start_time
 
     json_end_time: Unset | str = UNSET
     if not isinstance(end_time, Unset):
-        json_end_time = end_time.isoformat()
+        json_end_time = end_time
     params["endTime"] = json_end_time
 
     params["beforeStartTimeCount"] = before_start_time_count
@@ -156,24 +155,24 @@ def _get_kwargs(
 
     json_start_creation_time: Unset | str = UNSET
     if not isinstance(start_creation_time, Unset):
-        json_start_creation_time = start_creation_time.isoformat()
+        json_start_creation_time = start_creation_time
     params["startCreationTime"] = json_start_creation_time
 
     json_end_creation_time: Unset | str = UNSET
     if not isinstance(end_creation_time, Unset):
-        json_end_creation_time = end_creation_time.isoformat()
+        json_end_creation_time = end_creation_time
     params["endCreationTime"] = json_end_creation_time
 
     params["forecastCount"] = forecast_count
 
     json_start_forecast_time: Unset | str = UNSET
     if not isinstance(start_forecast_time, Unset):
-        json_start_forecast_time = start_forecast_time.isoformat()
+        json_start_forecast_time = start_forecast_time
     params["startForecastTime"] = json_start_forecast_time
 
     json_end_forecast_time: Unset | str = UNSET
     if not isinstance(end_forecast_time, Unset):
-        json_end_forecast_time = end_forecast_time.isoformat()
+        json_end_forecast_time = end_forecast_time
     params["endForecastTime"] = json_end_forecast_time
 
     params["leadTime"] = lead_time
@@ -374,7 +373,7 @@ def _get_kwargs(
 
     json_document_format: Unset | str = UNSET
     if not isinstance(document_format, Unset):
-        json_document_format = document_format.value
+        json_document_format = document_format
 
     params["documentFormat"] = json_document_format
 
@@ -419,15 +418,15 @@ def sync_detailed(
     statistical_function: Unset | str = UNSET,
     percentile_exceedance: Unset | str = UNSET,
     percentil_non_exceedance: Unset | str = UNSET,
-    start_time: Unset | datetime.datetime = UNSET,
-    end_time: Unset | datetime.datetime = UNSET,
+    start_time: Unset | str = UNSET,
+    end_time: Unset | str = UNSET,
     before_start_time_count: Unset | str = UNSET,
     after_end_time_count: Unset | str = UNSET,
-    start_creation_time: Unset | datetime.datetime = UNSET,
-    end_creation_time: Unset | datetime.datetime = UNSET,
+    start_creation_time: Unset | str = UNSET,
+    end_creation_time: Unset | str = UNSET,
     forecast_count: Unset | str = UNSET,
-    start_forecast_time: Unset | datetime.datetime = UNSET,
-    end_forecast_time: Unset | datetime.datetime = UNSET,
+    start_forecast_time: Unset | str = UNSET,
+    end_forecast_time: Unset | str = UNSET,
     lead_time: Unset | str = UNSET,
     external_forecast_times: Unset | list[str] = UNSET,
     ensemble_id: Unset | str = UNSET,
@@ -643,20 +642,20 @@ def sync_detailed(
         statistical_function (Union[Unset, str]):
         percentile_exceedance (Union[Unset, str]):
         percentil_non_exceedance (Union[Unset, str]):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        start_time (Union[Unset, str]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        end_time (Union[Unset, str]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
         before_start_time_count (Union[Unset, str]):  Example: 5.
         after_end_time_count (Union[Unset, str]):  Example: 5.
-        start_creation_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
+        start_creation_time (Union[Unset, str]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_creation_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        end_creation_time (Union[Unset, str]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
         forecast_count (Union[Unset, str]):  Example: 1.
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
+        start_forecast_time (Union[Unset, str]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        end_forecast_time (Union[Unset, str]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
         lead_time (Union[Unset, str]):  Example: 3600000.
         external_forecast_times (Union[Unset, list[str]]): The parameter can be repeated Example:
@@ -793,15 +792,15 @@ async def asyncio_detailed(
     statistical_function: Unset | str = UNSET,
     percentile_exceedance: Unset | str = UNSET,
     percentil_non_exceedance: Unset | str = UNSET,
-    start_time: Unset | datetime.datetime = UNSET,
-    end_time: Unset | datetime.datetime = UNSET,
+    start_time: Unset | str = UNSET,
+    end_time: Unset | str = UNSET,
     before_start_time_count: Unset | str = UNSET,
     after_end_time_count: Unset | str = UNSET,
-    start_creation_time: Unset | datetime.datetime = UNSET,
-    end_creation_time: Unset | datetime.datetime = UNSET,
+    start_creation_time: Unset | str = UNSET,
+    end_creation_time: Unset | str = UNSET,
     forecast_count: Unset | str = UNSET,
-    start_forecast_time: Unset | datetime.datetime = UNSET,
-    end_forecast_time: Unset | datetime.datetime = UNSET,
+    start_forecast_time: Unset | str = UNSET,
+    end_forecast_time: Unset | str = UNSET,
     lead_time: Unset | str = UNSET,
     external_forecast_times: Unset | list[str] = UNSET,
     ensemble_id: Unset | str = UNSET,
@@ -1017,20 +1016,20 @@ async def asyncio_detailed(
         statistical_function (Union[Unset, str]):
         percentile_exceedance (Union[Unset, str]):
         percentil_non_exceedance (Union[Unset, str]):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        start_time (Union[Unset, str]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        end_time (Union[Unset, str]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
         before_start_time_count (Union[Unset, str]):  Example: 5.
         after_end_time_count (Union[Unset, str]):  Example: 5.
-        start_creation_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
+        start_creation_time (Union[Unset, str]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_creation_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        end_creation_time (Union[Unset, str]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
         forecast_count (Union[Unset, str]):  Example: 1.
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
+        start_forecast_time (Union[Unset, str]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        end_forecast_time (Union[Unset, str]): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
         lead_time (Union[Unset, str]):  Example: 3600000.
         external_forecast_times (Union[Unset, list[str]]): The parameter can be repeated Example:
