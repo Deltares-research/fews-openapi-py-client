@@ -1,0 +1,6 @@
+docstrings_on_attributes: true
+project_name_override: fews-openapi-py-client
+package_name_override: fews_openapi_py_client
+post_hooks:
+   - "ruff check . --fix-only"
+   - "ruff format ."
