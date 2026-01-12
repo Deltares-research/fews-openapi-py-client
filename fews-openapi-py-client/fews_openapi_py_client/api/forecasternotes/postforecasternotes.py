@@ -60,7 +60,9 @@ def sync_detailed(
     https://fewsdocs.deltares.nl/webservices/rest-
     api/v1/schemas/pirest/pi_rest_forecaster_notes_post.json. To update an existing forecaster note, the
     id and taskRunId has to be passed. If permissions are enabled, it is only allowed to update your own
-    forecaster note.
+    forecaster note. Forecaster notes are kept in the database for 10 years. This can be changed by
+    setting the DEFAULT_EXPIRY_DAYS_LOGEVENT_MANUAL global property. It can never be larget dan 100
+    years.
 
     Args:
         body (PostforecasternotesBody):
@@ -96,7 +98,9 @@ def sync(
     https://fewsdocs.deltares.nl/webservices/rest-
     api/v1/schemas/pirest/pi_rest_forecaster_notes_post.json. To update an existing forecaster note, the
     id and taskRunId has to be passed. If permissions are enabled, it is only allowed to update your own
-    forecaster note.
+    forecaster note. Forecaster notes are kept in the database for 10 years. This can be changed by
+    setting the DEFAULT_EXPIRY_DAYS_LOGEVENT_MANUAL global property. It can never be larget dan 100
+    years.
 
     Args:
         body (PostforecasternotesBody):
@@ -127,7 +131,9 @@ async def asyncio_detailed(
     https://fewsdocs.deltares.nl/webservices/rest-
     api/v1/schemas/pirest/pi_rest_forecaster_notes_post.json. To update an existing forecaster note, the
     id and taskRunId has to be passed. If permissions are enabled, it is only allowed to update your own
-    forecaster note.
+    forecaster note. Forecaster notes are kept in the database for 10 years. This can be changed by
+    setting the DEFAULT_EXPIRY_DAYS_LOGEVENT_MANUAL global property. It can never be larget dan 100
+    years.
 
     Args:
         body (PostforecasternotesBody):
@@ -161,7 +167,9 @@ async def asyncio(
     https://fewsdocs.deltares.nl/webservices/rest-
     api/v1/schemas/pirest/pi_rest_forecaster_notes_post.json. To update an existing forecaster note, the
     id and taskRunId has to be passed. If permissions are enabled, it is only allowed to update your own
-    forecaster note.
+    forecaster note. Forecaster notes are kept in the database for 10 years. This can be changed by
+    setting the DEFAULT_EXPIRY_DAYS_LOGEVENT_MANUAL global property. It can never be larget dan 100
+    years.
 
     Args:
         body (PostforecasternotesBody):

@@ -105,7 +105,7 @@ def sync_detailed(
             Example: 2020-03-18T15:00:00Z.
         end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        forecast_count (Union[Unset, str]):
+        forecast_count (Union[Unset, str]):  Example: 1.
         document_format (Union[Unset, ArchiveproductsmetadataDocumentFormat]):
         document_version (Union[Unset, str]):
 
@@ -160,7 +160,7 @@ async def asyncio_detailed(
             Example: 2020-03-18T15:00:00Z.
         end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        forecast_count (Union[Unset, str]):
+        forecast_count (Union[Unset, str]):  Example: 1.
         document_format (Union[Unset, ArchiveproductsmetadataDocumentFormat]):
         document_version (Union[Unset, str]):
 

@@ -14,8 +14,8 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    start_time: datetime.datetime,
-    end_time: datetime.datetime,
+    start_time: Union[Unset, datetime.datetime] = UNSET,
+    end_time: Union[Unset, datetime.datetime] = UNSET,
     layers: str,
     aggregation: Union[Unset, str] = UNSET,
     external_forecast_time: Union[Unset, datetime.datetime] = UNSET,
@@ -27,10 +27,14 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_start_time = start_time.isoformat()
+    json_start_time: Union[Unset, str] = UNSET
+    if not isinstance(start_time, Unset):
+        json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
 
-    json_end_time = end_time.isoformat()
+    json_end_time: Union[Unset, str] = UNSET
+    if not isinstance(end_time, Unset):
+        json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
 
     params["layers"] = layers
@@ -94,8 +98,8 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    start_time: datetime.datetime,
-    end_time: datetime.datetime,
+    start_time: Union[Unset, datetime.datetime] = UNSET,
+    end_time: Union[Unset, datetime.datetime] = UNSET,
     layers: str,
     aggregation: Union[Unset, str] = UNSET,
     external_forecast_time: Union[Unset, datetime.datetime] = UNSET,
@@ -110,19 +114,15 @@ def sync_detailed(
      Get the maximum values for each time for a grid for a request period. The grid is specified by
     passing a layerId. At least a layer, startTime and endTime are required. The
     timeseries/grid/maxvalues endpoint is intended to be used together with the Delf-FEWS WMS service.
-    Every layer that is provided by the WMS service, can be used with this endpoint.<p>The grid cell is
-    determined by specifying a x and y coordinate and a bounding box. Currently only EPSG:3857 is
-    supported for the x,y, and bounding box coordinates. At least a layer, startTime, endTime, x,y and
-    bounding box are required. The timeseries/grid endpoint is intended to be used together with the
-    Delf-FEWS WMS service. Every layer that is provided by the WMS service, can be used with this
-    endpoint. The visibleInTimeSeriesDisplay configuration is respected. If set to false (default is
-    true), the timeseries will not be returned.
+    Every layer that is provided by the WMS service, can be used with this endpoint.<p>Every layer that
+    is provided by the WMS service, can be used with this endpoint. startTime and endTime are required
+    if no externalForecastTime is passed.
 
     Args:
-        start_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
-            2020-03-18T15:00:00Z.
-        end_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
-            2020-03-18T15:00:00Z.
+        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
         layers (str):  Example: Temp_forecast.
         aggregation (Union[Unset, str]):  Example: day.
         external_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
@@ -164,8 +164,8 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    start_time: datetime.datetime,
-    end_time: datetime.datetime,
+    start_time: Union[Unset, datetime.datetime] = UNSET,
+    end_time: Union[Unset, datetime.datetime] = UNSET,
     layers: str,
     aggregation: Union[Unset, str] = UNSET,
     external_forecast_time: Union[Unset, datetime.datetime] = UNSET,
@@ -180,19 +180,15 @@ async def asyncio_detailed(
      Get the maximum values for each time for a grid for a request period. The grid is specified by
     passing a layerId. At least a layer, startTime and endTime are required. The
     timeseries/grid/maxvalues endpoint is intended to be used together with the Delf-FEWS WMS service.
-    Every layer that is provided by the WMS service, can be used with this endpoint.<p>The grid cell is
-    determined by specifying a x and y coordinate and a bounding box. Currently only EPSG:3857 is
-    supported for the x,y, and bounding box coordinates. At least a layer, startTime, endTime, x,y and
-    bounding box are required. The timeseries/grid endpoint is intended to be used together with the
-    Delf-FEWS WMS service. Every layer that is provided by the WMS service, can be used with this
-    endpoint. The visibleInTimeSeriesDisplay configuration is respected. If set to false (default is
-    true), the timeseries will not be returned.
+    Every layer that is provided by the WMS service, can be used with this endpoint.<p>Every layer that
+    is provided by the WMS service, can be used with this endpoint. startTime and endTime are required
+    if no externalForecastTime is passed.
 
     Args:
-        start_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
-            2020-03-18T15:00:00Z.
-        end_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
-            2020-03-18T15:00:00Z.
+        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
         layers (str):  Example: Temp_forecast.
         aggregation (Union[Unset, str]):  Example: day.
         external_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to

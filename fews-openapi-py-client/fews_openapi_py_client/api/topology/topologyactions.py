@@ -9,6 +9,7 @@ from ...client import AuthenticatedClient, Client
 from ...models.topologyactions_convert_datum import TopologyactionsConvertDatum
 from ...models.topologyactions_current_forecasts_always_visible import TopologyactionsCurrentForecastsAlwaysVisible
 from ...models.topologyactions_document_format import TopologyactionsDocumentFormat
+from ...models.topologyactions_full_data_period import TopologyactionsFullDataPeriod
 from ...models.topologyactions_use_display_units import TopologyactionsUseDisplayUnits
 from ...types import UNSET, Response, Unset
 
@@ -18,6 +19,7 @@ def _get_kwargs(
     node_id: str,
     task_run_ids: Union[Unset, str] = UNSET,
     time_zero: Union[Unset, str] = UNSET,
+    full_data_period: Union[Unset, TopologyactionsFullDataPeriod] = UNSET,
     start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     forecast_count: Union[Unset, str] = UNSET,
@@ -34,6 +36,12 @@ def _get_kwargs(
     params["taskRunIds"] = task_run_ids
 
     params["timeZero"] = time_zero
+
+    json_full_data_period: Union[Unset, str] = UNSET
+    if not isinstance(full_data_period, Unset):
+        json_full_data_period = full_data_period.value
+
+    params["fullDataPeriod"] = json_full_data_period
 
     json_start_forecast_time: Union[Unset, str] = UNSET
     if not isinstance(start_forecast_time, Unset):
@@ -106,6 +114,7 @@ def sync_detailed(
     node_id: str,
     task_run_ids: Union[Unset, str] = UNSET,
     time_zero: Union[Unset, str] = UNSET,
+    full_data_period: Union[Unset, TopologyactionsFullDataPeriod] = UNSET,
     start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     forecast_count: Union[Unset, str] = UNSET,
@@ -123,6 +132,7 @@ def sync_detailed(
         node_id (str):
         task_run_ids (Union[Unset, str]):
         time_zero (Union[Unset, str]):
+        full_data_period (Union[Unset, TopologyactionsFullDataPeriod]):
         start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
         end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
@@ -147,6 +157,7 @@ def sync_detailed(
         node_id=node_id,
         task_run_ids=task_run_ids,
         time_zero=time_zero,
+        full_data_period=full_data_period,
         start_forecast_time=start_forecast_time,
         end_forecast_time=end_forecast_time,
         forecast_count=forecast_count,
@@ -170,6 +181,7 @@ async def asyncio_detailed(
     node_id: str,
     task_run_ids: Union[Unset, str] = UNSET,
     time_zero: Union[Unset, str] = UNSET,
+    full_data_period: Union[Unset, TopologyactionsFullDataPeriod] = UNSET,
     start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     forecast_count: Union[Unset, str] = UNSET,
@@ -187,6 +199,7 @@ async def asyncio_detailed(
         node_id (str):
         task_run_ids (Union[Unset, str]):
         time_zero (Union[Unset, str]):
+        full_data_period (Union[Unset, TopologyactionsFullDataPeriod]):
         start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
         end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
@@ -211,6 +224,7 @@ async def asyncio_detailed(
         node_id=node_id,
         task_run_ids=task_run_ids,
         time_zero=time_zero,
+        full_data_period=full_data_period,
         start_forecast_time=start_forecast_time,
         end_forecast_time=end_forecast_time,
         forecast_count=forecast_count,

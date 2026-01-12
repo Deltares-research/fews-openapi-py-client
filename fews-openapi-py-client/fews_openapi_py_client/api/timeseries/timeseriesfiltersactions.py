@@ -11,6 +11,7 @@ from ...models.timeseriesfiltersactions_current_forecasts_always_visible import 
     TimeseriesfiltersactionsCurrentForecastsAlwaysVisible,
 )
 from ...models.timeseriesfiltersactions_document_format import TimeseriesfiltersactionsDocumentFormat
+from ...models.timeseriesfiltersactions_full_data_period import TimeseriesfiltersactionsFullDataPeriod
 from ...models.timeseriesfiltersactions_use_display_units import TimeseriesfiltersactionsUseDisplayUnits
 from ...types import UNSET, Response, Unset
 
@@ -25,6 +26,7 @@ def _get_kwargs(
     time_zero: Union[Unset, str] = UNSET,
     start_time: Union[Unset, datetime.datetime] = UNSET,
     end_time: Union[Unset, datetime.datetime] = UNSET,
+    full_data_period: Union[Unset, TimeseriesfiltersactionsFullDataPeriod] = UNSET,
     start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     forecast_count: Union[Unset, str] = UNSET,
@@ -58,6 +60,12 @@ def _get_kwargs(
     if not isinstance(end_time, Unset):
         json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
+
+    json_full_data_period: Union[Unset, str] = UNSET
+    if not isinstance(full_data_period, Unset):
+        json_full_data_period = full_data_period.value
+
+    params["fullDataPeriod"] = json_full_data_period
 
     json_start_forecast_time: Union[Unset, str] = UNSET
     if not isinstance(start_forecast_time, Unset):
@@ -137,6 +145,7 @@ def sync_detailed(
     time_zero: Union[Unset, str] = UNSET,
     start_time: Union[Unset, datetime.datetime] = UNSET,
     end_time: Union[Unset, datetime.datetime] = UNSET,
+    full_data_period: Union[Unset, TimeseriesfiltersactionsFullDataPeriod] = UNSET,
     start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     forecast_count: Union[Unset, str] = UNSET,
@@ -162,6 +171,7 @@ def sync_detailed(
             Example: 2020-03-18T15:00:00Z.
         end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
+        full_data_period (Union[Unset, TimeseriesfiltersactionsFullDataPeriod]):
         start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
         end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
@@ -192,6 +202,7 @@ def sync_detailed(
         time_zero=time_zero,
         start_time=start_time,
         end_time=end_time,
+        full_data_period=full_data_period,
         start_forecast_time=start_forecast_time,
         end_forecast_time=end_forecast_time,
         forecast_count=forecast_count,
@@ -221,6 +232,7 @@ async def asyncio_detailed(
     time_zero: Union[Unset, str] = UNSET,
     start_time: Union[Unset, datetime.datetime] = UNSET,
     end_time: Union[Unset, datetime.datetime] = UNSET,
+    full_data_period: Union[Unset, TimeseriesfiltersactionsFullDataPeriod] = UNSET,
     start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
     forecast_count: Union[Unset, str] = UNSET,
@@ -246,6 +258,7 @@ async def asyncio_detailed(
             Example: 2020-03-18T15:00:00Z.
         end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
+        full_data_period (Union[Unset, TimeseriesfiltersactionsFullDataPeriod]):
         start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
             RFC 3339. Example: 2020-03-18T15:00:00Z.
         end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
@@ -276,6 +289,7 @@ async def asyncio_detailed(
         time_zero=time_zero,
         start_time=start_time,
         end_time=end_time,
+        full_data_period=full_data_period,
         start_forecast_time=start_forecast_time,
         end_forecast_time=end_forecast_time,
         forecast_count=forecast_count,

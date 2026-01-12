@@ -14,6 +14,7 @@ from ...models.timeseriesgrid_omit_missing import TimeseriesgridOmitMissing
 from ...models.timeseriesgrid_only_forecasts import TimeseriesgridOnlyForecasts
 from ...models.timeseriesgrid_only_headers import TimeseriesgridOnlyHeaders
 from ...models.timeseriesgrid_only_manual_edits import TimeseriesgridOnlyManualEdits
+from ...models.timeseriesgrid_point_cloud import TimeseriesgridPointCloud
 from ...models.timeseriesgrid_show_ensemble_member_ids import TimeseriesgridShowEnsembleMemberIds
 from ...models.timeseriesgrid_show_products import TimeseriesgridShowProducts
 from ...models.timeseriesgrid_show_statistics import TimeseriesgridShowStatistics
@@ -29,8 +30,8 @@ def _get_kwargs(
     bbox: Union[Unset, str] = UNSET,
     before_start_time_count: Union[Unset, str] = UNSET,
     after_end_time_count: Union[Unset, str] = UNSET,
-    start_time: datetime.datetime,
-    end_time: datetime.datetime,
+    start_time: Union[Unset, datetime.datetime] = UNSET,
+    end_time: Union[Unset, datetime.datetime] = UNSET,
     layers: str,
     x: Union[Unset, str] = UNSET,
     y: Union[Unset, str] = UNSET,
@@ -38,6 +39,7 @@ def _get_kwargs(
     ensemble_id: Union[Unset, str] = UNSET,
     ensemble_member_id: Union[Unset, str] = UNSET,
     elevation: Union[Unset, str] = UNSET,
+    point_cloud: Union[Unset, TimeseriesgridPointCloud] = UNSET,
     import_from_external_data_source: Union[Unset, TimeseriesgridImportFromExternalDataSource] = UNSET,
     convert_datum: Union[Unset, TimeseriesgridConvertDatum] = UNSET,
     show_ensemble_member_ids: Union[Unset, TimeseriesgridShowEnsembleMemberIds] = UNSET,
@@ -64,10 +66,14 @@ def _get_kwargs(
 
     params["afterEndTimeCount"] = after_end_time_count
 
-    json_start_time = start_time.isoformat()
+    json_start_time: Union[Unset, str] = UNSET
+    if not isinstance(start_time, Unset):
+        json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
 
-    json_end_time = end_time.isoformat()
+    json_end_time: Union[Unset, str] = UNSET
+    if not isinstance(end_time, Unset):
+        json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
 
     params["layers"] = layers
@@ -86,6 +92,12 @@ def _get_kwargs(
     params["ensembleMemberId"] = ensemble_member_id
 
     params["elevation"] = elevation
+
+    json_point_cloud: Union[Unset, str] = UNSET
+    if not isinstance(point_cloud, Unset):
+        json_point_cloud = point_cloud.value
+
+    params["pointCloud"] = json_point_cloud
 
     json_import_from_external_data_source: Union[Unset, str] = UNSET
     if not isinstance(import_from_external_data_source, Unset):
@@ -214,8 +226,8 @@ def sync_detailed(
     bbox: Union[Unset, str] = UNSET,
     before_start_time_count: Union[Unset, str] = UNSET,
     after_end_time_count: Union[Unset, str] = UNSET,
-    start_time: datetime.datetime,
-    end_time: datetime.datetime,
+    start_time: Union[Unset, datetime.datetime] = UNSET,
+    end_time: Union[Unset, datetime.datetime] = UNSET,
     layers: str,
     x: Union[Unset, str] = UNSET,
     y: Union[Unset, str] = UNSET,
@@ -223,6 +235,7 @@ def sync_detailed(
     ensemble_id: Union[Unset, str] = UNSET,
     ensemble_member_id: Union[Unset, str] = UNSET,
     elevation: Union[Unset, str] = UNSET,
+    point_cloud: Union[Unset, TimeseriesgridPointCloud] = UNSET,
     import_from_external_data_source: Union[Unset, TimeseriesgridImportFromExternalDataSource] = UNSET,
     convert_datum: Union[Unset, TimeseriesgridConvertDatum] = UNSET,
     show_ensemble_member_ids: Union[Unset, TimeseriesgridShowEnsembleMemberIds] = UNSET,
@@ -244,26 +257,28 @@ def sync_detailed(
     """Get the timeseries containing the data from a grid cell for a request period
 
      Get the timeseries containing the data from a grid cell for a request period. The grid is specified
-    by passing a layerId.<p>When requesting the timeseries in PI_JSON The grid cell is determined by
-    specifying a x and y coordinate and a bounding box. Currently only EPSG:3857 is supported for the
-    x,y, and bounding box coordinates. At least a layer, startTime, endTime, x,y and bounding box are
-    required. The timeseries/grid endpoint is intended to be used together with the Delf-FEWS WMS
-    service. Every layer that is provided by the WMS service, can be used with this endpoint. The
-    visibleInTimeSeriesDisplay configuration is respected. If set to false (default is true), the
-    timeseries will not be returned.
+    by passing a layerId. For the PI_NETCDF format the complete grid can be downloaded for external
+    forecasts.<p>When requesting the timeseries in PI_JSON The grid cell is determined by specifying a x
+    and y coordinate and a bounding box. Currently only EPSG:3857 is supported for the x,y, and bounding
+    box coordinates. At least a layer, startTime, endTime, x,y and bounding box are required. The
+    timeseries/grid endpoint is intended to be used together with the Delf-FEWS WMS service. Every layer
+    that is provided by the WMS service, can be used with this endpoint. The visibleInTimeSeriesDisplay
+    configuration is respected. If set to false (default is true), the timeseries will not be returned.
     It is also possible to get the grid data in Netcdf format using the PI_NETCDF documentFormat. In
     this case no bbox or x,y coordinates should be specified. Timeseries configured in a datalayer will
-    be stored in the the same Netcdf file. There is no support for 3D data or track layers.
+    be stored in the the same Netcdf file. If the externalForecastTime is specified or a layer only
+    contains external forecasts and the startDate and endDate are not specified, the complete forecast
+    will be downloaded. There is no support for 3D data or track layers.
 
     Args:
         bbox (Union[Unset, str]):  Example:
             -1558755.612890017,4979850.04379049,1623657.8112034467,6709422.556884765.
         before_start_time_count (Union[Unset, str]):  Example: 5.
         after_end_time_count (Union[Unset, str]):  Example: 5.
-        start_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
-            2020-03-18T15:00:00Z.
-        end_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
-            2020-03-18T15:00:00Z.
+        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
         layers (str):  Example: Temp_forecast.
         x (Union[Unset, str]):  Example: 458757.12883912364.
         y (Union[Unset, str]):  Example: 5811252.569955047.
@@ -272,6 +287,7 @@ def sync_detailed(
         ensemble_id (Union[Unset, str]):
         ensemble_member_id (Union[Unset, str]):
         elevation (Union[Unset, str]):
+        point_cloud (Union[Unset, TimeseriesgridPointCloud]):
         import_from_external_data_source (Union[Unset,
             TimeseriesgridImportFromExternalDataSource]):
         convert_datum (Union[Unset, TimeseriesgridConvertDatum]):
@@ -312,6 +328,7 @@ def sync_detailed(
         ensemble_id=ensemble_id,
         ensemble_member_id=ensemble_member_id,
         elevation=elevation,
+        point_cloud=point_cloud,
         import_from_external_data_source=import_from_external_data_source,
         convert_datum=convert_datum,
         show_ensemble_member_ids=show_ensemble_member_ids,
@@ -344,8 +361,8 @@ async def asyncio_detailed(
     bbox: Union[Unset, str] = UNSET,
     before_start_time_count: Union[Unset, str] = UNSET,
     after_end_time_count: Union[Unset, str] = UNSET,
-    start_time: datetime.datetime,
-    end_time: datetime.datetime,
+    start_time: Union[Unset, datetime.datetime] = UNSET,
+    end_time: Union[Unset, datetime.datetime] = UNSET,
     layers: str,
     x: Union[Unset, str] = UNSET,
     y: Union[Unset, str] = UNSET,
@@ -353,6 +370,7 @@ async def asyncio_detailed(
     ensemble_id: Union[Unset, str] = UNSET,
     ensemble_member_id: Union[Unset, str] = UNSET,
     elevation: Union[Unset, str] = UNSET,
+    point_cloud: Union[Unset, TimeseriesgridPointCloud] = UNSET,
     import_from_external_data_source: Union[Unset, TimeseriesgridImportFromExternalDataSource] = UNSET,
     convert_datum: Union[Unset, TimeseriesgridConvertDatum] = UNSET,
     show_ensemble_member_ids: Union[Unset, TimeseriesgridShowEnsembleMemberIds] = UNSET,
@@ -374,26 +392,28 @@ async def asyncio_detailed(
     """Get the timeseries containing the data from a grid cell for a request period
 
      Get the timeseries containing the data from a grid cell for a request period. The grid is specified
-    by passing a layerId.<p>When requesting the timeseries in PI_JSON The grid cell is determined by
-    specifying a x and y coordinate and a bounding box. Currently only EPSG:3857 is supported for the
-    x,y, and bounding box coordinates. At least a layer, startTime, endTime, x,y and bounding box are
-    required. The timeseries/grid endpoint is intended to be used together with the Delf-FEWS WMS
-    service. Every layer that is provided by the WMS service, can be used with this endpoint. The
-    visibleInTimeSeriesDisplay configuration is respected. If set to false (default is true), the
-    timeseries will not be returned.
+    by passing a layerId. For the PI_NETCDF format the complete grid can be downloaded for external
+    forecasts.<p>When requesting the timeseries in PI_JSON The grid cell is determined by specifying a x
+    and y coordinate and a bounding box. Currently only EPSG:3857 is supported for the x,y, and bounding
+    box coordinates. At least a layer, startTime, endTime, x,y and bounding box are required. The
+    timeseries/grid endpoint is intended to be used together with the Delf-FEWS WMS service. Every layer
+    that is provided by the WMS service, can be used with this endpoint. The visibleInTimeSeriesDisplay
+    configuration is respected. If set to false (default is true), the timeseries will not be returned.
     It is also possible to get the grid data in Netcdf format using the PI_NETCDF documentFormat. In
     this case no bbox or x,y coordinates should be specified. Timeseries configured in a datalayer will
-    be stored in the the same Netcdf file. There is no support for 3D data or track layers.
+    be stored in the the same Netcdf file. If the externalForecastTime is specified or a layer only
+    contains external forecasts and the startDate and endDate are not specified, the complete forecast
+    will be downloaded. There is no support for 3D data or track layers.
 
     Args:
         bbox (Union[Unset, str]):  Example:
             -1558755.612890017,4979850.04379049,1623657.8112034467,6709422.556884765.
         before_start_time_count (Union[Unset, str]):  Example: 5.
         after_end_time_count (Union[Unset, str]):  Example: 5.
-        start_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
-            2020-03-18T15:00:00Z.
-        end_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
-            2020-03-18T15:00:00Z.
+        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
         layers (str):  Example: Temp_forecast.
         x (Union[Unset, str]):  Example: 458757.12883912364.
         y (Union[Unset, str]):  Example: 5811252.569955047.
@@ -402,6 +422,7 @@ async def asyncio_detailed(
         ensemble_id (Union[Unset, str]):
         ensemble_member_id (Union[Unset, str]):
         elevation (Union[Unset, str]):
+        point_cloud (Union[Unset, TimeseriesgridPointCloud]):
         import_from_external_data_source (Union[Unset,
             TimeseriesgridImportFromExternalDataSource]):
         convert_datum (Union[Unset, TimeseriesgridConvertDatum]):
@@ -442,6 +463,7 @@ async def asyncio_detailed(
         ensemble_id=ensemble_id,
         ensemble_member_id=ensemble_member_id,
         elevation=elevation,
+        point_cloud=point_cloud,
         import_from_external_data_source=import_from_external_data_source,
         convert_datum=convert_datum,
         show_ensemble_member_ids=show_ensemble_member_ids,
