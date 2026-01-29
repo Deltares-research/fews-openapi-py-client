@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,12 +11,12 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    document_format: Union[Unset, LastrefreshtimeDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    document_format: LastrefreshtimeDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -35,7 +35,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[str]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> str | None:
     if response.status_code == 200:
         response_200 = response.text
         return response_200
@@ -46,7 +46,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,9 +57,9 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    document_format: Union[Unset, LastrefreshtimeDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    document_format: LastrefreshtimeDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[str]:
     """Get the last refresh time of the Web Service
 
@@ -72,8 +72,8 @@ def sync_detailed(
     that the client that connects to this endpoint is always directed to the same Web Service instance.
 
     Args:
-        document_format (Union[Unset, LastrefreshtimeDocumentFormat]):
-        document_version (Union[Unset, str]):
+        document_format (LastrefreshtimeDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,10 +97,10 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    document_format: Union[Unset, LastrefreshtimeDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    document_format: LastrefreshtimeDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
+) -> str | None:
     """Get the last refresh time of the Web Service
 
      Get the last refresh time of the Web Service. Can be used to make sure indexes have been updated
@@ -112,8 +112,8 @@ def sync(
     that the client that connects to this endpoint is always directed to the same Web Service instance.
 
     Args:
-        document_format (Union[Unset, LastrefreshtimeDocumentFormat]):
-        document_version (Union[Unset, str]):
+        document_format (LastrefreshtimeDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,9 +132,9 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    document_format: Union[Unset, LastrefreshtimeDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    document_format: LastrefreshtimeDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[str]:
     """Get the last refresh time of the Web Service
 
@@ -147,8 +147,8 @@ async def asyncio_detailed(
     that the client that connects to this endpoint is always directed to the same Web Service instance.
 
     Args:
-        document_format (Union[Unset, LastrefreshtimeDocumentFormat]):
-        document_version (Union[Unset, str]):
+        document_format (LastrefreshtimeDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -170,10 +170,10 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    document_format: Union[Unset, LastrefreshtimeDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    document_format: LastrefreshtimeDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
+) -> str | None:
     """Get the last refresh time of the Web Service
 
      Get the last refresh time of the Web Service. Can be used to make sure indexes have been updated
@@ -185,8 +185,8 @@ async def asyncio(
     that the client that connects to this endpoint is always directed to the same Web Service instance.
 
     Args:
-        document_format (Union[Unset, LastrefreshtimeDocumentFormat]):
-        document_version (Union[Unset, str]):
+        document_format (LastrefreshtimeDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -10,7 +10,7 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    relative_path: Union[Unset, str] = UNSET,
+    relative_path: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -27,7 +27,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[str]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> str | None:
     if response.status_code == 200:
         response_200 = response.text
         return response_200
@@ -38,7 +38,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -49,8 +49,8 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    relative_path: str | Unset = UNSET,
 ) -> Response[str]:
     """Add or update attributes to a product metadata
 
@@ -58,8 +58,8 @@ def sync_detailed(
     at a time.
 
     Args:
-        relative_path (Union[Unset, str]):  Example: products-rws/2022/05/rivieren/10/product/weer
-            beeld_maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
+        relative_path (str | Unset):  Example: products-rws/2022/05/rivieren/10/product/weerbeeld_
+            maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -82,17 +82,17 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    relative_path: str | Unset = UNSET,
+) -> str | None:
     """Add or update attributes to a product metadata
 
      Add or update attributes to a product metadata.xml. It's only possible to add attributes to one xml
     at a time.
 
     Args:
-        relative_path (Union[Unset, str]):  Example: products-rws/2022/05/rivieren/10/product/weer
-            beeld_maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
+        relative_path (str | Unset):  Example: products-rws/2022/05/rivieren/10/product/weerbeeld_
+            maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -110,8 +110,8 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    relative_path: str | Unset = UNSET,
 ) -> Response[str]:
     """Add or update attributes to a product metadata
 
@@ -119,8 +119,8 @@ async def asyncio_detailed(
     at a time.
 
     Args:
-        relative_path (Union[Unset, str]):  Example: products-rws/2022/05/rivieren/10/product/weer
-            beeld_maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
+        relative_path (str | Unset):  Example: products-rws/2022/05/rivieren/10/product/weerbeeld_
+            maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -141,17 +141,17 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    relative_path: str | Unset = UNSET,
+) -> str | None:
     """Add or update attributes to a product metadata
 
      Add or update attributes to a product metadata.xml. It's only possible to add attributes to one xml
     at a time.
 
     Args:
-        relative_path (Union[Unset, str]):  Example: products-rws/2022/05/rivieren/10/product/weer
-            beeld_maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
+        relative_path (str | Unset):  Example: products-rws/2022/05/rivieren/10/product/weerbeeld_
+            maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

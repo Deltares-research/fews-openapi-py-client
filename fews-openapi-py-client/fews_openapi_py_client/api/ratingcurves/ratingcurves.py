@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,33 +13,33 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    location_ids: Union[Unset, list[str]] = UNSET,
-    only_headers: Union[Unset, RatingcurvesOnlyHeaders] = UNSET,
-    use_display_units: Union[Unset, RatingcurvesUseDisplayUnits] = UNSET,
-    document_format: Union[Unset, RatingcurvesDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    location_ids: list[str] | Unset = UNSET,
+    only_headers: RatingcurvesOnlyHeaders | Unset = UNSET,
+    use_display_units: RatingcurvesUseDisplayUnits | Unset = UNSET,
+    document_format: RatingcurvesDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_location_ids: Union[Unset, list[str]] = UNSET
+    json_location_ids: list[str] | Unset = UNSET
     if not isinstance(location_ids, Unset):
         json_location_ids = location_ids
 
     params["locationIds"] = json_location_ids
 
-    json_only_headers: Union[Unset, str] = UNSET
+    json_only_headers: str | Unset = UNSET
     if not isinstance(only_headers, Unset):
         json_only_headers = only_headers.value
 
     params["onlyHeaders"] = json_only_headers
 
-    json_use_display_units: Union[Unset, str] = UNSET
+    json_use_display_units: str | Unset = UNSET
     if not isinstance(use_display_units, Unset):
         json_use_display_units = use_display_units.value
 
     params["useDisplayUnits"] = json_use_display_units
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -58,14 +58,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,12 +76,12 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    location_ids: Union[Unset, list[str]] = UNSET,
-    only_headers: Union[Unset, RatingcurvesOnlyHeaders] = UNSET,
-    use_display_units: Union[Unset, RatingcurvesUseDisplayUnits] = UNSET,
-    document_format: Union[Unset, RatingcurvesDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    location_ids: list[str] | Unset = UNSET,
+    only_headers: RatingcurvesOnlyHeaders | Unset = UNSET,
+    use_display_units: RatingcurvesUseDisplayUnits | Unset = UNSET,
+    document_format: RatingcurvesDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get all configured rating curves from the region config and optionally filter by locationIds
 
@@ -89,11 +89,11 @@ def sync_detailed(
     2022.02
 
     Args:
-        location_ids (Union[Unset, list[str]]): The parameter can be repeated
-        only_headers (Union[Unset, RatingcurvesOnlyHeaders]):
-        use_display_units (Union[Unset, RatingcurvesUseDisplayUnits]):
-        document_format (Union[Unset, RatingcurvesDocumentFormat]):
-        document_version (Union[Unset, str]):
+        location_ids (list[str] | Unset): The parameter can be repeated
+        only_headers (RatingcurvesOnlyHeaders | Unset):
+        use_display_units (RatingcurvesUseDisplayUnits | Unset):
+        document_format (RatingcurvesDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,12 +120,12 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    location_ids: Union[Unset, list[str]] = UNSET,
-    only_headers: Union[Unset, RatingcurvesOnlyHeaders] = UNSET,
-    use_display_units: Union[Unset, RatingcurvesUseDisplayUnits] = UNSET,
-    document_format: Union[Unset, RatingcurvesDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    location_ids: list[str] | Unset = UNSET,
+    only_headers: RatingcurvesOnlyHeaders | Unset = UNSET,
+    use_display_units: RatingcurvesUseDisplayUnits | Unset = UNSET,
+    document_format: RatingcurvesDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get all configured rating curves from the region config and optionally filter by locationIds
 
@@ -133,11 +133,11 @@ async def asyncio_detailed(
     2022.02
 
     Args:
-        location_ids (Union[Unset, list[str]]): The parameter can be repeated
-        only_headers (Union[Unset, RatingcurvesOnlyHeaders]):
-        use_display_units (Union[Unset, RatingcurvesUseDisplayUnits]):
-        document_format (Union[Unset, RatingcurvesDocumentFormat]):
-        document_version (Union[Unset, str]):
+        location_ids (list[str] | Unset): The parameter can be repeated
+        only_headers (RatingcurvesOnlyHeaders | Unset):
+        use_display_units (RatingcurvesUseDisplayUnits | Unset):
+        document_format (RatingcurvesDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,9 +13,9 @@ def _get_kwargs(
     *,
     workflow_id: str,
     time_zero: str,
-    forecast_time_count: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, WorkflowsForecasttimesDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    forecast_time_count: str | Unset = UNSET,
+    document_format: WorkflowsForecasttimesDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -25,7 +25,7 @@ def _get_kwargs(
 
     params["forecastTimeCount"] = forecast_time_count
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -44,14 +44,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,12 +62,12 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     workflow_id: str,
     time_zero: str,
-    forecast_time_count: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, WorkflowsForecasttimesDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    forecast_time_count: str | Unset = UNSET,
+    document_format: WorkflowsForecasttimesDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get information about how the workflow can be started
 
@@ -76,9 +76,9 @@ def sync_detailed(
     Args:
         workflow_id (str):
         time_zero (str):
-        forecast_time_count (Union[Unset, str]):
-        document_format (Union[Unset, WorkflowsForecasttimesDocumentFormat]):
-        document_version (Union[Unset, str]):
+        forecast_time_count (str | Unset):
+        document_format (WorkflowsForecasttimesDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -105,12 +105,12 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     workflow_id: str,
     time_zero: str,
-    forecast_time_count: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, WorkflowsForecasttimesDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    forecast_time_count: str | Unset = UNSET,
+    document_format: WorkflowsForecasttimesDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get information about how the workflow can be started
 
@@ -119,9 +119,9 @@ async def asyncio_detailed(
     Args:
         workflow_id (str):
         time_zero (str):
-        forecast_time_count (Union[Unset, str]):
-        document_format (Union[Unset, WorkflowsForecasttimesDocumentFormat]):
-        document_version (Union[Unset, str]):
+        forecast_time_count (str | Unset):
+        document_format (WorkflowsForecasttimesDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

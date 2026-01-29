@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -12,15 +12,15 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    source_id: Union[Unset, str] = UNSET,
-    area_id: Union[Unset, str] = UNSET,
-    product_count: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    product_file_name: Union[Unset, datetime.datetime] = UNSET,
-    document_format: Union[Unset, ArchiveproductsDocumentFormat] = UNSET,
+    source_id: str | Unset = UNSET,
+    area_id: str | Unset = UNSET,
+    product_count: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    product_file_name: datetime.datetime | Unset = UNSET,
+    document_format: ArchiveproductsDocumentFormat | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -30,32 +30,32 @@ def _get_kwargs(
 
     params["productCount"] = product_count
 
-    json_start_time: Union[Unset, str] = UNSET
+    json_start_time: str | Unset = UNSET
     if not isinstance(start_time, Unset):
         json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
 
-    json_end_time: Union[Unset, str] = UNSET
+    json_end_time: str | Unset = UNSET
     if not isinstance(end_time, Unset):
         json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
 
-    json_start_forecast_time: Union[Unset, str] = UNSET
+    json_start_forecast_time: str | Unset = UNSET
     if not isinstance(start_forecast_time, Unset):
         json_start_forecast_time = start_forecast_time.isoformat()
     params["startForecastTime"] = json_start_forecast_time
 
-    json_end_forecast_time: Union[Unset, str] = UNSET
+    json_end_forecast_time: str | Unset = UNSET
     if not isinstance(end_forecast_time, Unset):
         json_end_forecast_time = end_forecast_time.isoformat()
     params["endForecastTime"] = json_end_forecast_time
 
-    json_product_file_name: Union[Unset, str] = UNSET
+    json_product_file_name: str | Unset = UNSET
     if not isinstance(product_file_name, Unset):
         json_product_file_name = product_file_name.isoformat()
     params["productFileName"] = json_product_file_name
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -72,7 +72,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[str]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> str | None:
     if response.status_code == 200:
         response_200 = cast(str, response.content)
         return response_200
@@ -83,7 +83,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -94,16 +94,16 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    source_id: Union[Unset, str] = UNSET,
-    area_id: Union[Unset, str] = UNSET,
-    product_count: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    product_file_name: Union[Unset, datetime.datetime] = UNSET,
-    document_format: Union[Unset, ArchiveproductsDocumentFormat] = UNSET,
+    client: AuthenticatedClient | Client,
+    source_id: str | Unset = UNSET,
+    area_id: str | Unset = UNSET,
+    product_count: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    product_file_name: datetime.datetime | Unset = UNSET,
+    document_format: ArchiveproductsDocumentFormat | Unset = UNSET,
 ) -> Response[str]:
     """Returns a zip-file with the requested products or a binary file if only one file is requested, that
     are available in the archive filtered by the specified parameters
@@ -112,20 +112,20 @@ def sync_detailed(
     are available in the archive filtered by the specified parameters.
 
     Args:
-        source_id (Union[Unset, str]):
-        area_id (Union[Unset, str]):
-        product_count (Union[Unset, str]):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        source_id (str | Unset):
+        area_id (str | Unset):
+        product_count (str | Unset):
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        start_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
+            3339. Example: 2020-03-18T15:00:00Z.
+        end_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        product_file_name (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        document_format (Union[Unset, ArchiveproductsDocumentFormat]):
+        product_file_name (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        document_format (ArchiveproductsDocumentFormat | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -156,17 +156,17 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    source_id: Union[Unset, str] = UNSET,
-    area_id: Union[Unset, str] = UNSET,
-    product_count: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    product_file_name: Union[Unset, datetime.datetime] = UNSET,
-    document_format: Union[Unset, ArchiveproductsDocumentFormat] = UNSET,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    source_id: str | Unset = UNSET,
+    area_id: str | Unset = UNSET,
+    product_count: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    product_file_name: datetime.datetime | Unset = UNSET,
+    document_format: ArchiveproductsDocumentFormat | Unset = UNSET,
+) -> str | None:
     """Returns a zip-file with the requested products or a binary file if only one file is requested, that
     are available in the archive filtered by the specified parameters
 
@@ -174,20 +174,20 @@ def sync(
     are available in the archive filtered by the specified parameters.
 
     Args:
-        source_id (Union[Unset, str]):
-        area_id (Union[Unset, str]):
-        product_count (Union[Unset, str]):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        source_id (str | Unset):
+        area_id (str | Unset):
+        product_count (str | Unset):
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        start_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
+            3339. Example: 2020-03-18T15:00:00Z.
+        end_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        product_file_name (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        document_format (Union[Unset, ArchiveproductsDocumentFormat]):
+        product_file_name (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        document_format (ArchiveproductsDocumentFormat | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -213,16 +213,16 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    source_id: Union[Unset, str] = UNSET,
-    area_id: Union[Unset, str] = UNSET,
-    product_count: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    product_file_name: Union[Unset, datetime.datetime] = UNSET,
-    document_format: Union[Unset, ArchiveproductsDocumentFormat] = UNSET,
+    client: AuthenticatedClient | Client,
+    source_id: str | Unset = UNSET,
+    area_id: str | Unset = UNSET,
+    product_count: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    product_file_name: datetime.datetime | Unset = UNSET,
+    document_format: ArchiveproductsDocumentFormat | Unset = UNSET,
 ) -> Response[str]:
     """Returns a zip-file with the requested products or a binary file if only one file is requested, that
     are available in the archive filtered by the specified parameters
@@ -231,20 +231,20 @@ async def asyncio_detailed(
     are available in the archive filtered by the specified parameters.
 
     Args:
-        source_id (Union[Unset, str]):
-        area_id (Union[Unset, str]):
-        product_count (Union[Unset, str]):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        source_id (str | Unset):
+        area_id (str | Unset):
+        product_count (str | Unset):
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        start_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
+            3339. Example: 2020-03-18T15:00:00Z.
+        end_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        product_file_name (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        document_format (Union[Unset, ArchiveproductsDocumentFormat]):
+        product_file_name (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        document_format (ArchiveproductsDocumentFormat | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -273,17 +273,17 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    source_id: Union[Unset, str] = UNSET,
-    area_id: Union[Unset, str] = UNSET,
-    product_count: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    product_file_name: Union[Unset, datetime.datetime] = UNSET,
-    document_format: Union[Unset, ArchiveproductsDocumentFormat] = UNSET,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    source_id: str | Unset = UNSET,
+    area_id: str | Unset = UNSET,
+    product_count: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    product_file_name: datetime.datetime | Unset = UNSET,
+    document_format: ArchiveproductsDocumentFormat | Unset = UNSET,
+) -> str | None:
     """Returns a zip-file with the requested products or a binary file if only one file is requested, that
     are available in the archive filtered by the specified parameters
 
@@ -291,20 +291,20 @@ async def asyncio(
     are available in the archive filtered by the specified parameters.
 
     Args:
-        source_id (Union[Unset, str]):
-        area_id (Union[Unset, str]):
-        product_count (Union[Unset, str]):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        source_id (str | Unset):
+        area_id (str | Unset):
+        product_count (str | Unset):
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        start_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
+            3339. Example: 2020-03-18T15:00:00Z.
+        end_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        product_file_name (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        document_format (Union[Unset, ArchiveproductsDocumentFormat]):
+        product_file_name (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        document_format (ArchiveproductsDocumentFormat | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

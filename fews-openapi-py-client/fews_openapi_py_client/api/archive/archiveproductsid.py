@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,14 +12,14 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    relative_path: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ArchiveproductsidDocumentFormat] = UNSET,
+    relative_path: str | Unset = UNSET,
+    document_format: ArchiveproductsidDocumentFormat | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["relativePath"] = relative_path
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -37,8 +37,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ArchiveproductsidProduct]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ArchiveproductsidProduct | None:
     if response.status_code == 200:
         response_200 = ArchiveproductsidProduct.from_dict(response.json())
 
@@ -51,7 +51,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ArchiveproductsidProduct]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -63,18 +63,18 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ArchiveproductsidDocumentFormat] = UNSET,
+    client: AuthenticatedClient | Client,
+    relative_path: str | Unset = UNSET,
+    document_format: ArchiveproductsidDocumentFormat | Unset = UNSET,
 ) -> Response[ArchiveproductsidProduct]:
     """Return a specific product from the archive
 
      Return a specific product from the archive. The relative path in the archive will be used as the id.
 
     Args:
-        relative_path (Union[Unset, str]):  Example: products-rws/2022/05/rivieren/10/product/weer
-            beeld_maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
-        document_format (Union[Unset, ArchiveproductsidDocumentFormat]):
+        relative_path (str | Unset):  Example: products-rws/2022/05/rivieren/10/product/weerbeeld_
+            maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
+        document_format (ArchiveproductsidDocumentFormat | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -98,18 +98,18 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ArchiveproductsidDocumentFormat] = UNSET,
-) -> Optional[ArchiveproductsidProduct]:
+    client: AuthenticatedClient | Client,
+    relative_path: str | Unset = UNSET,
+    document_format: ArchiveproductsidDocumentFormat | Unset = UNSET,
+) -> ArchiveproductsidProduct | None:
     """Return a specific product from the archive
 
      Return a specific product from the archive. The relative path in the archive will be used as the id.
 
     Args:
-        relative_path (Union[Unset, str]):  Example: products-rws/2022/05/rivieren/10/product/weer
-            beeld_maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
-        document_format (Union[Unset, ArchiveproductsidDocumentFormat]):
+        relative_path (str | Unset):  Example: products-rws/2022/05/rivieren/10/product/weerbeeld_
+            maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
+        document_format (ArchiveproductsidDocumentFormat | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -128,18 +128,18 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ArchiveproductsidDocumentFormat] = UNSET,
+    client: AuthenticatedClient | Client,
+    relative_path: str | Unset = UNSET,
+    document_format: ArchiveproductsidDocumentFormat | Unset = UNSET,
 ) -> Response[ArchiveproductsidProduct]:
     """Return a specific product from the archive
 
      Return a specific product from the archive. The relative path in the archive will be used as the id.
 
     Args:
-        relative_path (Union[Unset, str]):  Example: products-rws/2022/05/rivieren/10/product/weer
-            beeld_maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
-        document_format (Union[Unset, ArchiveproductsidDocumentFormat]):
+        relative_path (str | Unset):  Example: products-rws/2022/05/rivieren/10/product/weerbeeld_
+            maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
+        document_format (ArchiveproductsidDocumentFormat | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -161,18 +161,18 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    relative_path: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ArchiveproductsidDocumentFormat] = UNSET,
-) -> Optional[ArchiveproductsidProduct]:
+    client: AuthenticatedClient | Client,
+    relative_path: str | Unset = UNSET,
+    document_format: ArchiveproductsidDocumentFormat | Unset = UNSET,
+) -> ArchiveproductsidProduct | None:
     """Return a specific product from the archive
 
      Return a specific product from the archive. The relative path in the archive will be used as the id.
 
     Args:
-        relative_path (Union[Unset, str]):  Example: products-rws/2022/05/rivieren/10/product/weer
-            beeld_maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
-        document_format (Union[Unset, ArchiveproductsidDocumentFormat]):
+        relative_path (str | Unset):  Example: products-rws/2022/05/rivieren/10/product/weerbeeld_
+            maas/2022_05_10_T_09_00_00/KNMI_20220510085242/weerbeeld_maas.txt.
+        document_format (ArchiveproductsidDocumentFormat | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

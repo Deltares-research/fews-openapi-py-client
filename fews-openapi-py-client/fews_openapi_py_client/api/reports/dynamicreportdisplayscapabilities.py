@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,7 +11,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     display_id: str,
-    time_zero: Union[Unset, str] = UNSET,
+    time_zero: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -30,14 +30,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,9 +48,9 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     display_id: str,
-    time_zero: Union[Unset, str] = UNSET,
+    time_zero: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get the selectable locations and times for the dynamic report display
 
@@ -58,7 +58,7 @@ def sync_detailed(
 
     Args:
         display_id (str):
-        time_zero (Union[Unset, str]):
+        time_zero (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -82,9 +82,9 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     display_id: str,
-    time_zero: Union[Unset, str] = UNSET,
+    time_zero: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get the selectable locations and times for the dynamic report display
 
@@ -92,7 +92,7 @@ async def asyncio_detailed(
 
     Args:
         display_id (str):
-        time_zero (Union[Unset, str]):
+        time_zero (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

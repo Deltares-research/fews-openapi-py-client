@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -18,24 +18,24 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    filter_id: Union[Unset, str] = UNSET,
-    parameter_group_id: Union[Unset, str] = UNSET,
-    parameter_ids: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, str] = UNSET,
-    task_run_ids: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    full_data_period: Union[Unset, TimeseriesfiltersactionsFullDataPeriod] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    current_forecasts_always_visible: Union[Unset, TimeseriesfiltersactionsCurrentForecastsAlwaysVisible] = UNSET,
-    use_display_units: Union[Unset, TimeseriesfiltersactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TimeseriesfiltersactionsConvertDatum] = UNSET,
-    download_as_file: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, TimeseriesfiltersactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    filter_id: str | Unset = UNSET,
+    parameter_group_id: str | Unset = UNSET,
+    parameter_ids: str | Unset = UNSET,
+    location_ids: str | Unset = UNSET,
+    task_run_ids: str | Unset = UNSET,
+    time_zero: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    full_data_period: TimeseriesfiltersactionsFullDataPeriod | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    forecast_count: str | Unset = UNSET,
+    current_forecasts_always_visible: TimeseriesfiltersactionsCurrentForecastsAlwaysVisible | Unset = UNSET,
+    use_display_units: TimeseriesfiltersactionsUseDisplayUnits | Unset = UNSET,
+    convert_datum: TimeseriesfiltersactionsConvertDatum | Unset = UNSET,
+    download_as_file: str | Unset = UNSET,
+    document_format: TimeseriesfiltersactionsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -51,47 +51,47 @@ def _get_kwargs(
 
     params["timeZero"] = time_zero
 
-    json_start_time: Union[Unset, str] = UNSET
+    json_start_time: str | Unset = UNSET
     if not isinstance(start_time, Unset):
         json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
 
-    json_end_time: Union[Unset, str] = UNSET
+    json_end_time: str | Unset = UNSET
     if not isinstance(end_time, Unset):
         json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
 
-    json_full_data_period: Union[Unset, str] = UNSET
+    json_full_data_period: str | Unset = UNSET
     if not isinstance(full_data_period, Unset):
         json_full_data_period = full_data_period.value
 
     params["fullDataPeriod"] = json_full_data_period
 
-    json_start_forecast_time: Union[Unset, str] = UNSET
+    json_start_forecast_time: str | Unset = UNSET
     if not isinstance(start_forecast_time, Unset):
         json_start_forecast_time = start_forecast_time.isoformat()
     params["startForecastTime"] = json_start_forecast_time
 
-    json_end_forecast_time: Union[Unset, str] = UNSET
+    json_end_forecast_time: str | Unset = UNSET
     if not isinstance(end_forecast_time, Unset):
         json_end_forecast_time = end_forecast_time.isoformat()
     params["endForecastTime"] = json_end_forecast_time
 
     params["forecastCount"] = forecast_count
 
-    json_current_forecasts_always_visible: Union[Unset, str] = UNSET
+    json_current_forecasts_always_visible: str | Unset = UNSET
     if not isinstance(current_forecasts_always_visible, Unset):
         json_current_forecasts_always_visible = current_forecasts_always_visible.value
 
     params["currentForecastsAlwaysVisible"] = json_current_forecasts_always_visible
 
-    json_use_display_units: Union[Unset, str] = UNSET
+    json_use_display_units: str | Unset = UNSET
     if not isinstance(use_display_units, Unset):
         json_use_display_units = use_display_units.value
 
     params["useDisplayUnits"] = json_use_display_units
 
-    json_convert_datum: Union[Unset, str] = UNSET
+    json_convert_datum: str | Unset = UNSET
     if not isinstance(convert_datum, Unset):
         json_convert_datum = convert_datum.value
 
@@ -99,7 +99,7 @@ def _get_kwargs(
 
     params["downloadAsFile"] = download_as_file
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -118,14 +118,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -136,54 +136,54 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    filter_id: Union[Unset, str] = UNSET,
-    parameter_group_id: Union[Unset, str] = UNSET,
-    parameter_ids: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, str] = UNSET,
-    task_run_ids: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    full_data_period: Union[Unset, TimeseriesfiltersactionsFullDataPeriod] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    current_forecasts_always_visible: Union[Unset, TimeseriesfiltersactionsCurrentForecastsAlwaysVisible] = UNSET,
-    use_display_units: Union[Unset, TimeseriesfiltersactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TimeseriesfiltersactionsConvertDatum] = UNSET,
-    download_as_file: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, TimeseriesfiltersactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    filter_id: str | Unset = UNSET,
+    parameter_group_id: str | Unset = UNSET,
+    parameter_ids: str | Unset = UNSET,
+    location_ids: str | Unset = UNSET,
+    task_run_ids: str | Unset = UNSET,
+    time_zero: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    full_data_period: TimeseriesfiltersactionsFullDataPeriod | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    forecast_count: str | Unset = UNSET,
+    current_forecasts_always_visible: TimeseriesfiltersactionsCurrentForecastsAlwaysVisible | Unset = UNSET,
+    use_display_units: TimeseriesfiltersactionsUseDisplayUnits | Unset = UNSET,
+    convert_datum: TimeseriesfiltersactionsConvertDatum | Unset = UNSET,
+    download_as_file: str | Unset = UNSET,
+    document_format: TimeseriesfiltersactionsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get the timeseries for the actions for a set of filters
 
      Get the timeseries for the actions for a set of filters
 
     Args:
-        filter_id (Union[Unset, str]):
-        parameter_group_id (Union[Unset, str]):
-        parameter_ids (Union[Unset, str]):
-        location_ids (Union[Unset, str]):
-        task_run_ids (Union[Unset, str]):
-        time_zero (Union[Unset, str]):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        filter_id (str | Unset):
+        parameter_group_id (str | Unset):
+        parameter_ids (str | Unset):
+        location_ids (str | Unset):
+        task_run_ids (str | Unset):
+        time_zero (str | Unset):
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
-            Example: 2020-03-18T15:00:00Z.
-        full_data_period (Union[Unset, TimeseriesfiltersactionsFullDataPeriod]):
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        full_data_period (TimeseriesfiltersactionsFullDataPeriod | Unset):
+        start_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        forecast_count (Union[Unset, str]):
-        current_forecasts_always_visible (Union[Unset,
-            TimeseriesfiltersactionsCurrentForecastsAlwaysVisible]):
-        use_display_units (Union[Unset, TimeseriesfiltersactionsUseDisplayUnits]):
-        convert_datum (Union[Unset, TimeseriesfiltersactionsConvertDatum]):
-        download_as_file (Union[Unset, str]):
-        document_format (Union[Unset, TimeseriesfiltersactionsDocumentFormat]):
-        document_version (Union[Unset, str]):
+        end_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        forecast_count (str | Unset):
+        current_forecasts_always_visible (TimeseriesfiltersactionsCurrentForecastsAlwaysVisible |
+            Unset):
+        use_display_units (TimeseriesfiltersactionsUseDisplayUnits | Unset):
+        convert_datum (TimeseriesfiltersactionsConvertDatum | Unset):
+        download_as_file (str | Unset):
+        document_format (TimeseriesfiltersactionsDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -223,54 +223,54 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    filter_id: Union[Unset, str] = UNSET,
-    parameter_group_id: Union[Unset, str] = UNSET,
-    parameter_ids: Union[Unset, str] = UNSET,
-    location_ids: Union[Unset, str] = UNSET,
-    task_run_ids: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    full_data_period: Union[Unset, TimeseriesfiltersactionsFullDataPeriod] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    current_forecasts_always_visible: Union[Unset, TimeseriesfiltersactionsCurrentForecastsAlwaysVisible] = UNSET,
-    use_display_units: Union[Unset, TimeseriesfiltersactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TimeseriesfiltersactionsConvertDatum] = UNSET,
-    download_as_file: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, TimeseriesfiltersactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    filter_id: str | Unset = UNSET,
+    parameter_group_id: str | Unset = UNSET,
+    parameter_ids: str | Unset = UNSET,
+    location_ids: str | Unset = UNSET,
+    task_run_ids: str | Unset = UNSET,
+    time_zero: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    full_data_period: TimeseriesfiltersactionsFullDataPeriod | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    forecast_count: str | Unset = UNSET,
+    current_forecasts_always_visible: TimeseriesfiltersactionsCurrentForecastsAlwaysVisible | Unset = UNSET,
+    use_display_units: TimeseriesfiltersactionsUseDisplayUnits | Unset = UNSET,
+    convert_datum: TimeseriesfiltersactionsConvertDatum | Unset = UNSET,
+    download_as_file: str | Unset = UNSET,
+    document_format: TimeseriesfiltersactionsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get the timeseries for the actions for a set of filters
 
      Get the timeseries for the actions for a set of filters
 
     Args:
-        filter_id (Union[Unset, str]):
-        parameter_group_id (Union[Unset, str]):
-        parameter_ids (Union[Unset, str]):
-        location_ids (Union[Unset, str]):
-        task_run_ids (Union[Unset, str]):
-        time_zero (Union[Unset, str]):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        filter_id (str | Unset):
+        parameter_group_id (str | Unset):
+        parameter_ids (str | Unset):
+        location_ids (str | Unset):
+        task_run_ids (str | Unset):
+        time_zero (str | Unset):
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
-            Example: 2020-03-18T15:00:00Z.
-        full_data_period (Union[Unset, TimeseriesfiltersactionsFullDataPeriod]):
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        full_data_period (TimeseriesfiltersactionsFullDataPeriod | Unset):
+        start_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        forecast_count (Union[Unset, str]):
-        current_forecasts_always_visible (Union[Unset,
-            TimeseriesfiltersactionsCurrentForecastsAlwaysVisible]):
-        use_display_units (Union[Unset, TimeseriesfiltersactionsUseDisplayUnits]):
-        convert_datum (Union[Unset, TimeseriesfiltersactionsConvertDatum]):
-        download_as_file (Union[Unset, str]):
-        document_format (Union[Unset, TimeseriesfiltersactionsDocumentFormat]):
-        document_version (Union[Unset, str]):
+        end_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        forecast_count (str | Unset):
+        current_forecasts_always_visible (TimeseriesfiltersactionsCurrentForecastsAlwaysVisible |
+            Unset):
+        use_display_units (TimeseriesfiltersactionsUseDisplayUnits | Unset):
+        convert_datum (TimeseriesfiltersactionsConvertDatum | Unset):
+        download_as_file (str | Unset):
+        document_format (TimeseriesfiltersactionsDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

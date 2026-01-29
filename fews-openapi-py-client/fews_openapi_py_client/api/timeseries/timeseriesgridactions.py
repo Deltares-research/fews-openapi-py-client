@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,18 +22,18 @@ def _get_kwargs(
     start_time: datetime.datetime,
     end_time: datetime.datetime,
     layers: str,
-    x: Union[Unset, str] = UNSET,
-    y: Union[Unset, str] = UNSET,
-    external_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    elevation: Union[Unset, str] = UNSET,
-    import_from_external_data_source: Union[Unset, TimeseriesgridactionsImportFromExternalDataSource] = UNSET,
-    show_vertical_profile: Union[Unset, TimeseriesgridactionsShowVerticalProfile] = UNSET,
-    use_display_units: Union[Unset, TimeseriesgridactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TimeseriesgridactionsConvertDatum] = UNSET,
-    document_format: Union[Unset, TimeseriesgridactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    x: str | Unset = UNSET,
+    y: str | Unset = UNSET,
+    external_forecast_time: datetime.datetime | Unset = UNSET,
+    ensemble_id: str | Unset = UNSET,
+    ensemble_member_id: str | Unset = UNSET,
+    elevation: str | Unset = UNSET,
+    import_from_external_data_source: TimeseriesgridactionsImportFromExternalDataSource | Unset = UNSET,
+    show_vertical_profile: TimeseriesgridactionsShowVerticalProfile | Unset = UNSET,
+    use_display_units: TimeseriesgridactionsUseDisplayUnits | Unset = UNSET,
+    convert_datum: TimeseriesgridactionsConvertDatum | Unset = UNSET,
+    document_format: TimeseriesgridactionsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -51,7 +51,7 @@ def _get_kwargs(
 
     params["y"] = y
 
-    json_external_forecast_time: Union[Unset, str] = UNSET
+    json_external_forecast_time: str | Unset = UNSET
     if not isinstance(external_forecast_time, Unset):
         json_external_forecast_time = external_forecast_time.isoformat()
     params["externalForecastTime"] = json_external_forecast_time
@@ -62,31 +62,31 @@ def _get_kwargs(
 
     params["elevation"] = elevation
 
-    json_import_from_external_data_source: Union[Unset, str] = UNSET
+    json_import_from_external_data_source: str | Unset = UNSET
     if not isinstance(import_from_external_data_source, Unset):
         json_import_from_external_data_source = import_from_external_data_source.value
 
     params["importFromExternalDataSource"] = json_import_from_external_data_source
 
-    json_show_vertical_profile: Union[Unset, str] = UNSET
+    json_show_vertical_profile: str | Unset = UNSET
     if not isinstance(show_vertical_profile, Unset):
         json_show_vertical_profile = show_vertical_profile.value
 
     params["showVerticalProfile"] = json_show_vertical_profile
 
-    json_use_display_units: Union[Unset, str] = UNSET
+    json_use_display_units: str | Unset = UNSET
     if not isinstance(use_display_units, Unset):
         json_use_display_units = use_display_units.value
 
     params["useDisplayUnits"] = json_use_display_units
 
-    json_convert_datum: Union[Unset, str] = UNSET
+    json_convert_datum: str | Unset = UNSET
     if not isinstance(convert_datum, Unset):
         json_convert_datum = convert_datum.value
 
     params["convertDatum"] = json_convert_datum
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -105,14 +105,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -123,23 +123,23 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     bbox: str,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
     layers: str,
-    x: Union[Unset, str] = UNSET,
-    y: Union[Unset, str] = UNSET,
-    external_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    elevation: Union[Unset, str] = UNSET,
-    import_from_external_data_source: Union[Unset, TimeseriesgridactionsImportFromExternalDataSource] = UNSET,
-    show_vertical_profile: Union[Unset, TimeseriesgridactionsShowVerticalProfile] = UNSET,
-    use_display_units: Union[Unset, TimeseriesgridactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TimeseriesgridactionsConvertDatum] = UNSET,
-    document_format: Union[Unset, TimeseriesgridactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    x: str | Unset = UNSET,
+    y: str | Unset = UNSET,
+    external_forecast_time: datetime.datetime | Unset = UNSET,
+    ensemble_id: str | Unset = UNSET,
+    ensemble_member_id: str | Unset = UNSET,
+    elevation: str | Unset = UNSET,
+    import_from_external_data_source: TimeseriesgridactionsImportFromExternalDataSource | Unset = UNSET,
+    show_vertical_profile: TimeseriesgridactionsShowVerticalProfile | Unset = UNSET,
+    use_display_units: TimeseriesgridactionsUseDisplayUnits | Unset = UNSET,
+    convert_datum: TimeseriesgridactionsConvertDatum | Unset = UNSET,
+    document_format: TimeseriesgridactionsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get the details about how to display time series from a grid cell
 
@@ -158,20 +158,20 @@ def sync_detailed(
         end_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
             2020-03-18T15:00:00Z.
         layers (str):  Example: Temp_forecast.
-        x (Union[Unset, str]):  Example: 458757.12883912364.
-        y (Union[Unset, str]):  Example: 5811252.569955047.
-        external_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        ensemble_id (Union[Unset, str]):
-        ensemble_member_id (Union[Unset, str]):
-        elevation (Union[Unset, str]):
-        import_from_external_data_source (Union[Unset,
-            TimeseriesgridactionsImportFromExternalDataSource]):
-        show_vertical_profile (Union[Unset, TimeseriesgridactionsShowVerticalProfile]):
-        use_display_units (Union[Unset, TimeseriesgridactionsUseDisplayUnits]):
-        convert_datum (Union[Unset, TimeseriesgridactionsConvertDatum]):
-        document_format (Union[Unset, TimeseriesgridactionsDocumentFormat]):
-        document_version (Union[Unset, str]):
+        x (str | Unset):  Example: 458757.12883912364.
+        y (str | Unset):  Example: 5811252.569955047.
+        external_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
+            3339. Example: 2020-03-18T15:00:00Z.
+        ensemble_id (str | Unset):
+        ensemble_member_id (str | Unset):
+        elevation (str | Unset):
+        import_from_external_data_source (TimeseriesgridactionsImportFromExternalDataSource |
+            Unset):
+        show_vertical_profile (TimeseriesgridactionsShowVerticalProfile | Unset):
+        use_display_units (TimeseriesgridactionsUseDisplayUnits | Unset):
+        convert_datum (TimeseriesgridactionsConvertDatum | Unset):
+        document_format (TimeseriesgridactionsDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -209,23 +209,23 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     bbox: str,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
     layers: str,
-    x: Union[Unset, str] = UNSET,
-    y: Union[Unset, str] = UNSET,
-    external_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    elevation: Union[Unset, str] = UNSET,
-    import_from_external_data_source: Union[Unset, TimeseriesgridactionsImportFromExternalDataSource] = UNSET,
-    show_vertical_profile: Union[Unset, TimeseriesgridactionsShowVerticalProfile] = UNSET,
-    use_display_units: Union[Unset, TimeseriesgridactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TimeseriesgridactionsConvertDatum] = UNSET,
-    document_format: Union[Unset, TimeseriesgridactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    x: str | Unset = UNSET,
+    y: str | Unset = UNSET,
+    external_forecast_time: datetime.datetime | Unset = UNSET,
+    ensemble_id: str | Unset = UNSET,
+    ensemble_member_id: str | Unset = UNSET,
+    elevation: str | Unset = UNSET,
+    import_from_external_data_source: TimeseriesgridactionsImportFromExternalDataSource | Unset = UNSET,
+    show_vertical_profile: TimeseriesgridactionsShowVerticalProfile | Unset = UNSET,
+    use_display_units: TimeseriesgridactionsUseDisplayUnits | Unset = UNSET,
+    convert_datum: TimeseriesgridactionsConvertDatum | Unset = UNSET,
+    document_format: TimeseriesgridactionsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get the details about how to display time series from a grid cell
 
@@ -244,20 +244,20 @@ async def asyncio_detailed(
         end_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
             2020-03-18T15:00:00Z.
         layers (str):  Example: Temp_forecast.
-        x (Union[Unset, str]):  Example: 458757.12883912364.
-        y (Union[Unset, str]):  Example: 5811252.569955047.
-        external_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        ensemble_id (Union[Unset, str]):
-        ensemble_member_id (Union[Unset, str]):
-        elevation (Union[Unset, str]):
-        import_from_external_data_source (Union[Unset,
-            TimeseriesgridactionsImportFromExternalDataSource]):
-        show_vertical_profile (Union[Unset, TimeseriesgridactionsShowVerticalProfile]):
-        use_display_units (Union[Unset, TimeseriesgridactionsUseDisplayUnits]):
-        convert_datum (Union[Unset, TimeseriesgridactionsConvertDatum]):
-        document_format (Union[Unset, TimeseriesgridactionsDocumentFormat]):
-        document_version (Union[Unset, str]):
+        x (str | Unset):  Example: 458757.12883912364.
+        y (str | Unset):  Example: 5811252.569955047.
+        external_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
+            3339. Example: 2020-03-18T15:00:00Z.
+        ensemble_id (str | Unset):
+        ensemble_member_id (str | Unset):
+        elevation (str | Unset):
+        import_from_external_data_source (TimeseriesgridactionsImportFromExternalDataSource |
+            Unset):
+        show_vertical_profile (TimeseriesgridactionsShowVerticalProfile | Unset):
+        use_display_units (TimeseriesgridactionsUseDisplayUnits | Unset):
+        convert_datum (TimeseriesgridactionsConvertDatum | Unset):
+        document_format (TimeseriesgridactionsDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

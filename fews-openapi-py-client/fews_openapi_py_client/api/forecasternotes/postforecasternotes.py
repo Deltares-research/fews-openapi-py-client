@@ -1,17 +1,17 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.postforecasternotes_body import PostforecasternotesBody
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    body: PostforecasternotesBody,
+    body: PostforecasternotesBody | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -20,7 +20,8 @@ def _get_kwargs(
         "url": "/forecasternotes",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/json"
 
@@ -28,7 +29,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[str]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> str | None:
     if response.status_code == 200:
         response_200 = response.text
         return response_200
@@ -39,7 +40,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,8 +51,8 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PostforecasternotesBody,
+    client: AuthenticatedClient | Client,
+    body: PostforecasternotesBody | Unset = UNSET,
 ) -> Response[str]:
     """Create or update a forecaster note
 
@@ -65,7 +66,7 @@ def sync_detailed(
     years.
 
     Args:
-        body (PostforecasternotesBody):
+        body (PostforecasternotesBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -88,9 +89,9 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PostforecasternotesBody,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    body: PostforecasternotesBody | Unset = UNSET,
+) -> str | None:
     """Create or update a forecaster note
 
      Create or update a forecaster note.<p>The Forecaster Note has to be passed in JSON format in the
@@ -103,7 +104,7 @@ def sync(
     years.
 
     Args:
-        body (PostforecasternotesBody):
+        body (PostforecasternotesBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -121,8 +122,8 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PostforecasternotesBody,
+    client: AuthenticatedClient | Client,
+    body: PostforecasternotesBody | Unset = UNSET,
 ) -> Response[str]:
     """Create or update a forecaster note
 
@@ -136,7 +137,7 @@ async def asyncio_detailed(
     years.
 
     Args:
-        body (PostforecasternotesBody):
+        body (PostforecasternotesBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -157,9 +158,9 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PostforecasternotesBody,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    body: PostforecasternotesBody | Unset = UNSET,
+) -> str | None:
     """Create or update a forecaster note
 
      Create or update a forecaster note.<p>The Forecaster Note has to be passed in JSON format in the
@@ -172,7 +173,7 @@ async def asyncio(
     years.
 
     Args:
-        body (PostforecasternotesBody):
+        body (PostforecasternotesBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

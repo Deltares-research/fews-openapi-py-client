@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,9 +13,9 @@ T = TypeVar("T", bound="PosttimeseriesBody")
 
 @_attrs_define
 class PosttimeseriesBody:
-    pi_time_series_xml_content: Union[Unset, str] = UNSET
+    pi_time_series_xml_content: str | Unset = UNSET
     """ https://fewsdocs.deltares.nl/schemas/version1.0/pi-schemas/pi_timeseries.xsd """
-    pi_time_series_json_content: Union[Unset, str] = UNSET
+    pi_time_series_json_content: str | Unset = UNSET
     """ Since 2023.02. https://fewsdocs.deltares.nl/webservices/rest-api/v1/schemas/pirest/pi_rest_timeseries.json
     """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)

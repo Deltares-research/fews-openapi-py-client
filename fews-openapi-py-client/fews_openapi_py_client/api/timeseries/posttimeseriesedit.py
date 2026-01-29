@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,13 +13,13 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    body: PosttimeserieseditBody,
+    body: PosttimeserieseditBody | Unset = UNSET,
     time_series_id: str,
     location_id: str,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    convert_datum: Union[Unset, PosttimeserieseditConvertDatum] = UNSET,
-    use_display_units: Union[Unset, PosttimeserieseditUseDisplayUnits] = UNSET,
+    ensemble_id: str | Unset = UNSET,
+    ensemble_member_id: str | Unset = UNSET,
+    convert_datum: PosttimeserieseditConvertDatum | Unset = UNSET,
+    use_display_units: PosttimeserieseditUseDisplayUnits | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -33,13 +33,13 @@ def _get_kwargs(
 
     params["ensembleMemberId"] = ensemble_member_id
 
-    json_convert_datum: Union[Unset, str] = UNSET
+    json_convert_datum: str | Unset = UNSET
     if not isinstance(convert_datum, Unset):
         json_convert_datum = convert_datum.value
 
     params["convertDatum"] = json_convert_datum
 
-    json_use_display_units: Union[Unset, str] = UNSET
+    json_use_display_units: str | Unset = UNSET
     if not isinstance(use_display_units, Unset):
         json_use_display_units = use_display_units.value
 
@@ -53,7 +53,8 @@ def _get_kwargs(
         "params": params,
     }
 
-    _kwargs["json"] = body.to_dict()
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/json"
 
@@ -61,7 +62,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[str]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> str | None:
     if response.status_code == 200:
         response_200 = response.text
         return response_200
@@ -72,7 +73,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -83,14 +84,14 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PosttimeserieseditBody,
+    client: AuthenticatedClient | Client,
+    body: PosttimeserieseditBody | Unset = UNSET,
     time_series_id: str,
     location_id: str,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    convert_datum: Union[Unset, PosttimeserieseditConvertDatum] = UNSET,
-    use_display_units: Union[Unset, PosttimeserieseditUseDisplayUnits] = UNSET,
+    ensemble_id: str | Unset = UNSET,
+    ensemble_member_id: str | Unset = UNSET,
+    convert_datum: PosttimeserieseditConvertDatum | Unset = UNSET,
+    use_display_units: PosttimeserieseditUseDisplayUnits | Unset = UNSET,
 ) -> Response[str]:
     """Update a time series that have been edited in timeseries pi json format
 
@@ -102,11 +103,11 @@ def sync_detailed(
     Args:
         time_series_id (str):
         location_id (str):
-        ensemble_id (Union[Unset, str]):
-        ensemble_member_id (Union[Unset, str]):
-        convert_datum (Union[Unset, PosttimeserieseditConvertDatum]):
-        use_display_units (Union[Unset, PosttimeserieseditUseDisplayUnits]):
-        body (PosttimeserieseditBody):
+        ensemble_id (str | Unset):
+        ensemble_member_id (str | Unset):
+        convert_datum (PosttimeserieseditConvertDatum | Unset):
+        use_display_units (PosttimeserieseditUseDisplayUnits | Unset):
+        body (PosttimeserieseditBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -135,15 +136,15 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PosttimeserieseditBody,
+    client: AuthenticatedClient | Client,
+    body: PosttimeserieseditBody | Unset = UNSET,
     time_series_id: str,
     location_id: str,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    convert_datum: Union[Unset, PosttimeserieseditConvertDatum] = UNSET,
-    use_display_units: Union[Unset, PosttimeserieseditUseDisplayUnits] = UNSET,
-) -> Optional[str]:
+    ensemble_id: str | Unset = UNSET,
+    ensemble_member_id: str | Unset = UNSET,
+    convert_datum: PosttimeserieseditConvertDatum | Unset = UNSET,
+    use_display_units: PosttimeserieseditUseDisplayUnits | Unset = UNSET,
+) -> str | None:
     """Update a time series that have been edited in timeseries pi json format
 
      Update a time series that have been edited in timeseries pi json format.<p>Only one timeseries can
@@ -154,11 +155,11 @@ def sync(
     Args:
         time_series_id (str):
         location_id (str):
-        ensemble_id (Union[Unset, str]):
-        ensemble_member_id (Union[Unset, str]):
-        convert_datum (Union[Unset, PosttimeserieseditConvertDatum]):
-        use_display_units (Union[Unset, PosttimeserieseditUseDisplayUnits]):
-        body (PosttimeserieseditBody):
+        ensemble_id (str | Unset):
+        ensemble_member_id (str | Unset):
+        convert_datum (PosttimeserieseditConvertDatum | Unset):
+        use_display_units (PosttimeserieseditUseDisplayUnits | Unset):
+        body (PosttimeserieseditBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,14 +183,14 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PosttimeserieseditBody,
+    client: AuthenticatedClient | Client,
+    body: PosttimeserieseditBody | Unset = UNSET,
     time_series_id: str,
     location_id: str,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    convert_datum: Union[Unset, PosttimeserieseditConvertDatum] = UNSET,
-    use_display_units: Union[Unset, PosttimeserieseditUseDisplayUnits] = UNSET,
+    ensemble_id: str | Unset = UNSET,
+    ensemble_member_id: str | Unset = UNSET,
+    convert_datum: PosttimeserieseditConvertDatum | Unset = UNSET,
+    use_display_units: PosttimeserieseditUseDisplayUnits | Unset = UNSET,
 ) -> Response[str]:
     """Update a time series that have been edited in timeseries pi json format
 
@@ -201,11 +202,11 @@ async def asyncio_detailed(
     Args:
         time_series_id (str):
         location_id (str):
-        ensemble_id (Union[Unset, str]):
-        ensemble_member_id (Union[Unset, str]):
-        convert_datum (Union[Unset, PosttimeserieseditConvertDatum]):
-        use_display_units (Union[Unset, PosttimeserieseditUseDisplayUnits]):
-        body (PosttimeserieseditBody):
+        ensemble_id (str | Unset):
+        ensemble_member_id (str | Unset):
+        convert_datum (PosttimeserieseditConvertDatum | Unset):
+        use_display_units (PosttimeserieseditUseDisplayUnits | Unset):
+        body (PosttimeserieseditBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -232,15 +233,15 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PosttimeserieseditBody,
+    client: AuthenticatedClient | Client,
+    body: PosttimeserieseditBody | Unset = UNSET,
     time_series_id: str,
     location_id: str,
-    ensemble_id: Union[Unset, str] = UNSET,
-    ensemble_member_id: Union[Unset, str] = UNSET,
-    convert_datum: Union[Unset, PosttimeserieseditConvertDatum] = UNSET,
-    use_display_units: Union[Unset, PosttimeserieseditUseDisplayUnits] = UNSET,
-) -> Optional[str]:
+    ensemble_id: str | Unset = UNSET,
+    ensemble_member_id: str | Unset = UNSET,
+    convert_datum: PosttimeserieseditConvertDatum | Unset = UNSET,
+    use_display_units: PosttimeserieseditUseDisplayUnits | Unset = UNSET,
+) -> str | None:
     """Update a time series that have been edited in timeseries pi json format
 
      Update a time series that have been edited in timeseries pi json format.<p>Only one timeseries can
@@ -251,11 +252,11 @@ async def asyncio(
     Args:
         time_series_id (str):
         location_id (str):
-        ensemble_id (Union[Unset, str]):
-        ensemble_member_id (Union[Unset, str]):
-        convert_datum (Union[Unset, PosttimeserieseditConvertDatum]):
-        use_display_units (Union[Unset, PosttimeserieseditUseDisplayUnits]):
-        body (PosttimeserieseditBody):
+        ensemble_id (str | Unset):
+        ensemble_member_id (str | Unset):
+        convert_datum (PosttimeserieseditConvertDatum | Unset):
+        use_display_units (PosttimeserieseditUseDisplayUnits | Unset):
+        body (PosttimeserieseditBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

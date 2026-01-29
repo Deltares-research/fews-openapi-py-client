@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,19 +12,19 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    only_resampling: Union[Unset, TimestepsOnlyResampling] = UNSET,
-    document_format: Union[Unset, TimestepsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    only_resampling: TimestepsOnlyResampling | Unset = UNSET,
+    document_format: TimestepsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_only_resampling: Union[Unset, str] = UNSET
+    json_only_resampling: str | Unset = UNSET
     if not isinstance(only_resampling, Unset):
         json_only_resampling = only_resampling.value
 
     params["onlyResampling"] = json_only_resampling
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -43,14 +43,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -61,10 +61,10 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    only_resampling: Union[Unset, TimestepsOnlyResampling] = UNSET,
-    document_format: Union[Unset, TimestepsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    only_resampling: TimestepsOnlyResampling | Unset = UNSET,
+    document_format: TimestepsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get the time steps that have been configured in the TimeSteps
 
@@ -72,9 +72,9 @@ def sync_detailed(
     timeSteps that can be used to do resampling
 
     Args:
-        only_resampling (Union[Unset, TimestepsOnlyResampling]):
-        document_format (Union[Unset, TimestepsDocumentFormat]):
-        document_version (Union[Unset, str]):
+        only_resampling (TimestepsOnlyResampling | Unset):
+        document_format (TimestepsDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -99,10 +99,10 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    only_resampling: Union[Unset, TimestepsOnlyResampling] = UNSET,
-    document_format: Union[Unset, TimestepsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    only_resampling: TimestepsOnlyResampling | Unset = UNSET,
+    document_format: TimestepsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get the time steps that have been configured in the TimeSteps
 
@@ -110,9 +110,9 @@ async def asyncio_detailed(
     timeSteps that can be used to do resampling
 
     Args:
-        only_resampling (Union[Unset, TimestepsOnlyResampling]):
-        document_format (Union[Unset, TimestepsDocumentFormat]):
-        document_version (Union[Unset, str]):
+        only_resampling (TimestepsOnlyResampling | Unset):
+        document_format (TimestepsDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

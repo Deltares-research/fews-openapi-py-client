@@ -1,27 +1,31 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
+from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.logdisplayslog_display_idaction_body import LogdisplayslogDisplayIdactionBody
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     log_display_id: str,
     *,
-    body: LogdisplayslogDisplayIdactionBody,
+    body: LogdisplayslogDisplayIdactionBody | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/logdisplays/{log_display_id}/action",
+        "url": "/logdisplays/{log_display_id}/action".format(
+            log_display_id=quote(str(log_display_id), safe=""),
+        ),
     }
 
-    _kwargs["json"] = body.to_dict()
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/json"
 
@@ -29,7 +33,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[str]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> str | None:
     if response.status_code == 200:
         response_200 = response.text
         return response_200
@@ -40,7 +44,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,8 +56,8 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     log_display_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: LogdisplayslogDisplayIdactionBody,
+    client: AuthenticatedClient | Client,
+    body: LogdisplayslogDisplayIdactionBody | Unset = UNSET,
 ) -> Response[str]:
     """Write a LogDisplay action
 
@@ -64,7 +68,7 @@ def sync_detailed(
 
     Args:
         log_display_id (str):
-        body (LogdisplayslogDisplayIdactionBody):
+        body (LogdisplayslogDisplayIdactionBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -89,9 +93,9 @@ def sync_detailed(
 def sync(
     log_display_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: LogdisplayslogDisplayIdactionBody,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    body: LogdisplayslogDisplayIdactionBody | Unset = UNSET,
+) -> str | None:
     """Write a LogDisplay action
 
      Write a LogDisplay action.<p>The Log Display ActionId has to be passed in the path url and the Log
@@ -101,7 +105,7 @@ def sync(
 
     Args:
         log_display_id (str):
-        body (LogdisplayslogDisplayIdactionBody):
+        body (LogdisplayslogDisplayIdactionBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -121,8 +125,8 @@ def sync(
 async def asyncio_detailed(
     log_display_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: LogdisplayslogDisplayIdactionBody,
+    client: AuthenticatedClient | Client,
+    body: LogdisplayslogDisplayIdactionBody | Unset = UNSET,
 ) -> Response[str]:
     """Write a LogDisplay action
 
@@ -133,7 +137,7 @@ async def asyncio_detailed(
 
     Args:
         log_display_id (str):
-        body (LogdisplayslogDisplayIdactionBody):
+        body (LogdisplayslogDisplayIdactionBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -156,9 +160,9 @@ async def asyncio_detailed(
 async def asyncio(
     log_display_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: LogdisplayslogDisplayIdactionBody,
-) -> Optional[str]:
+    client: AuthenticatedClient | Client,
+    body: LogdisplayslogDisplayIdactionBody | Unset = UNSET,
+) -> str | None:
     """Write a LogDisplay action
 
      Write a LogDisplay action.<p>The Log Display ActionId has to be passed in the path url and the Log
@@ -168,7 +172,7 @@ async def asyncio(
 
     Args:
         log_display_id (str):
-        body (LogdisplayslogDisplayIdactionBody):
+        body (LogdisplayslogDisplayIdactionBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

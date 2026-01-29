@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -17,17 +17,17 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     node_id: str,
-    task_run_ids: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
-    full_data_period: Union[Unset, TopologyactionsFullDataPeriod] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    current_forecasts_always_visible: Union[Unset, TopologyactionsCurrentForecastsAlwaysVisible] = UNSET,
-    use_display_units: Union[Unset, TopologyactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TopologyactionsConvertDatum] = UNSET,
-    document_format: Union[Unset, TopologyactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    task_run_ids: str | Unset = UNSET,
+    time_zero: str | Unset = UNSET,
+    full_data_period: TopologyactionsFullDataPeriod | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    forecast_count: str | Unset = UNSET,
+    current_forecasts_always_visible: TopologyactionsCurrentForecastsAlwaysVisible | Unset = UNSET,
+    use_display_units: TopologyactionsUseDisplayUnits | Unset = UNSET,
+    convert_datum: TopologyactionsConvertDatum | Unset = UNSET,
+    document_format: TopologyactionsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -37,43 +37,43 @@ def _get_kwargs(
 
     params["timeZero"] = time_zero
 
-    json_full_data_period: Union[Unset, str] = UNSET
+    json_full_data_period: str | Unset = UNSET
     if not isinstance(full_data_period, Unset):
         json_full_data_period = full_data_period.value
 
     params["fullDataPeriod"] = json_full_data_period
 
-    json_start_forecast_time: Union[Unset, str] = UNSET
+    json_start_forecast_time: str | Unset = UNSET
     if not isinstance(start_forecast_time, Unset):
         json_start_forecast_time = start_forecast_time.isoformat()
     params["startForecastTime"] = json_start_forecast_time
 
-    json_end_forecast_time: Union[Unset, str] = UNSET
+    json_end_forecast_time: str | Unset = UNSET
     if not isinstance(end_forecast_time, Unset):
         json_end_forecast_time = end_forecast_time.isoformat()
     params["endForecastTime"] = json_end_forecast_time
 
     params["forecastCount"] = forecast_count
 
-    json_current_forecasts_always_visible: Union[Unset, str] = UNSET
+    json_current_forecasts_always_visible: str | Unset = UNSET
     if not isinstance(current_forecasts_always_visible, Unset):
         json_current_forecasts_always_visible = current_forecasts_always_visible.value
 
     params["currentForecastsAlwaysVisible"] = json_current_forecasts_always_visible
 
-    json_use_display_units: Union[Unset, str] = UNSET
+    json_use_display_units: str | Unset = UNSET
     if not isinstance(use_display_units, Unset):
         json_use_display_units = use_display_units.value
 
     params["useDisplayUnits"] = json_use_display_units
 
-    json_convert_datum: Union[Unset, str] = UNSET
+    json_convert_datum: str | Unset = UNSET
     if not isinstance(convert_datum, Unset):
         json_convert_datum = convert_datum.value
 
     params["convertDatum"] = json_convert_datum
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -92,14 +92,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -110,19 +110,19 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     node_id: str,
-    task_run_ids: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
-    full_data_period: Union[Unset, TopologyactionsFullDataPeriod] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    current_forecasts_always_visible: Union[Unset, TopologyactionsCurrentForecastsAlwaysVisible] = UNSET,
-    use_display_units: Union[Unset, TopologyactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TopologyactionsConvertDatum] = UNSET,
-    document_format: Union[Unset, TopologyactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    task_run_ids: str | Unset = UNSET,
+    time_zero: str | Unset = UNSET,
+    full_data_period: TopologyactionsFullDataPeriod | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    forecast_count: str | Unset = UNSET,
+    current_forecasts_always_visible: TopologyactionsCurrentForecastsAlwaysVisible | Unset = UNSET,
+    use_display_units: TopologyactionsUseDisplayUnits | Unset = UNSET,
+    convert_datum: TopologyactionsConvertDatum | Unset = UNSET,
+    document_format: TopologyactionsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get the display group actions for a certain topology node
 
@@ -130,20 +130,19 @@ def sync_detailed(
 
     Args:
         node_id (str):
-        task_run_ids (Union[Unset, str]):
-        time_zero (Union[Unset, str]):
-        full_data_period (Union[Unset, TopologyactionsFullDataPeriod]):
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        task_run_ids (str | Unset):
+        time_zero (str | Unset):
+        full_data_period (TopologyactionsFullDataPeriod | Unset):
+        start_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        forecast_count (Union[Unset, str]):
-        current_forecasts_always_visible (Union[Unset,
-            TopologyactionsCurrentForecastsAlwaysVisible]):
-        use_display_units (Union[Unset, TopologyactionsUseDisplayUnits]):
-        convert_datum (Union[Unset, TopologyactionsConvertDatum]):
-        document_format (Union[Unset, TopologyactionsDocumentFormat]):
-        document_version (Union[Unset, str]):
+        end_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        forecast_count (str | Unset):
+        current_forecasts_always_visible (TopologyactionsCurrentForecastsAlwaysVisible | Unset):
+        use_display_units (TopologyactionsUseDisplayUnits | Unset):
+        convert_datum (TopologyactionsConvertDatum | Unset):
+        document_format (TopologyactionsDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -177,19 +176,19 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient | Client,
     node_id: str,
-    task_run_ids: Union[Unset, str] = UNSET,
-    time_zero: Union[Unset, str] = UNSET,
-    full_data_period: Union[Unset, TopologyactionsFullDataPeriod] = UNSET,
-    start_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    end_forecast_time: Union[Unset, datetime.datetime] = UNSET,
-    forecast_count: Union[Unset, str] = UNSET,
-    current_forecasts_always_visible: Union[Unset, TopologyactionsCurrentForecastsAlwaysVisible] = UNSET,
-    use_display_units: Union[Unset, TopologyactionsUseDisplayUnits] = UNSET,
-    convert_datum: Union[Unset, TopologyactionsConvertDatum] = UNSET,
-    document_format: Union[Unset, TopologyactionsDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    task_run_ids: str | Unset = UNSET,
+    time_zero: str | Unset = UNSET,
+    full_data_period: TopologyactionsFullDataPeriod | Unset = UNSET,
+    start_forecast_time: datetime.datetime | Unset = UNSET,
+    end_forecast_time: datetime.datetime | Unset = UNSET,
+    forecast_count: str | Unset = UNSET,
+    current_forecasts_always_visible: TopologyactionsCurrentForecastsAlwaysVisible | Unset = UNSET,
+    use_display_units: TopologyactionsUseDisplayUnits | Unset = UNSET,
+    convert_datum: TopologyactionsConvertDatum | Unset = UNSET,
+    document_format: TopologyactionsDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get the display group actions for a certain topology node
 
@@ -197,20 +196,19 @@ async def asyncio_detailed(
 
     Args:
         node_id (str):
-        task_run_ids (Union[Unset, str]):
-        time_zero (Union[Unset, str]):
-        full_data_period (Union[Unset, TopologyactionsFullDataPeriod]):
-        start_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_forecast_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        task_run_ids (str | Unset):
+        time_zero (str | Unset):
+        full_data_period (TopologyactionsFullDataPeriod | Unset):
+        start_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        forecast_count (Union[Unset, str]):
-        current_forecasts_always_visible (Union[Unset,
-            TopologyactionsCurrentForecastsAlwaysVisible]):
-        use_display_units (Union[Unset, TopologyactionsUseDisplayUnits]):
-        convert_datum (Union[Unset, TopologyactionsConvertDatum]):
-        document_format (Union[Unset, TopologyactionsDocumentFormat]):
-        document_version (Union[Unset, str]):
+        end_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        forecast_count (str | Unset):
+        current_forecasts_always_visible (TopologyactionsCurrentForecastsAlwaysVisible | Unset):
+        use_display_units (TopologyactionsUseDisplayUnits | Unset):
+        convert_datum (TopologyactionsConvertDatum | Unset):
+        document_format (TopologyactionsDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

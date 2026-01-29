@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -14,17 +14,17 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    body: PostruntaskBody,
+    body: PostruntaskBody | Unset = UNSET,
     workflow_id: str,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    cold_state_id: Union[Unset, str] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    user_id: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
-    run_option: Union[Unset, PostruntaskRunOption] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, PostruntaskRunLocallyAndPromoteToServer] = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    time_zero: datetime.datetime | Unset = UNSET,
+    cold_state_id: str | Unset = UNSET,
+    scenario_id: str | Unset = UNSET,
+    user_id: str | Unset = UNSET,
+    description: str | Unset = UNSET,
+    run_option: PostruntaskRunOption | Unset = UNSET,
+    run_locally_and_promote_to_server: PostruntaskRunLocallyAndPromoteToServer | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -32,17 +32,17 @@ def _get_kwargs(
 
     params["workflowId"] = workflow_id
 
-    json_start_time: Union[Unset, str] = UNSET
+    json_start_time: str | Unset = UNSET
     if not isinstance(start_time, Unset):
         json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
 
-    json_end_time: Union[Unset, str] = UNSET
+    json_end_time: str | Unset = UNSET
     if not isinstance(end_time, Unset):
         json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
 
-    json_time_zero: Union[Unset, str] = UNSET
+    json_time_zero: str | Unset = UNSET
     if not isinstance(time_zero, Unset):
         json_time_zero = time_zero.isoformat()
     params["timeZero"] = json_time_zero
@@ -55,13 +55,13 @@ def _get_kwargs(
 
     params["description"] = description
 
-    json_run_option: Union[Unset, str] = UNSET
+    json_run_option: str | Unset = UNSET
     if not isinstance(run_option, Unset):
         json_run_option = run_option.value
 
     params["runOption"] = json_run_option
 
-    json_run_locally_and_promote_to_server: Union[Unset, str] = UNSET
+    json_run_locally_and_promote_to_server: str | Unset = UNSET
     if not isinstance(run_locally_and_promote_to_server, Unset):
         json_run_locally_and_promote_to_server = run_locally_and_promote_to_server.value
 
@@ -75,7 +75,8 @@ def _get_kwargs(
         "params": params,
     }
 
-    _kwargs["data"] = body.to_dict()
+    if not isinstance(body, Unset):
+        _kwargs["data"] = body.to_dict()
 
     headers["Content-Type"] = "application/x-www-form-urlencoded"
 
@@ -83,7 +84,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[str]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> str | None:
     if response.status_code == 200:
         response_200 = response.text
         return response_200
@@ -94,7 +95,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -105,18 +106,18 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PostruntaskBody,
+    client: AuthenticatedClient | Client,
+    body: PostruntaskBody | Unset = UNSET,
     workflow_id: str,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    cold_state_id: Union[Unset, str] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    user_id: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
-    run_option: Union[Unset, PostruntaskRunOption] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, PostruntaskRunLocallyAndPromoteToServer] = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    time_zero: datetime.datetime | Unset = UNSET,
+    cold_state_id: str | Unset = UNSET,
+    scenario_id: str | Unset = UNSET,
+    user_id: str | Unset = UNSET,
+    description: str | Unset = UNSET,
+    run_option: PostruntaskRunOption | Unset = UNSET,
+    run_locally_and_promote_to_server: PostruntaskRunLocallyAndPromoteToServer | Unset = UNSET,
 ) -> Response[str]:
     """Runs a one-off task for a given workflowId
 
@@ -133,19 +134,19 @@ def sync_detailed(
 
     Args:
         workflow_id (str):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
-            Example: 2020-03-18T15:00:00Z.
-        time_zero (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
-            Example: 2020-03-18T15:00:00Z.
-        cold_state_id (Union[Unset, str]):
-        scenario_id (Union[Unset, str]):
-        user_id (Union[Unset, str]):
-        description (Union[Unset, str]):
-        run_option (Union[Unset, PostruntaskRunOption]):
-        run_locally_and_promote_to_server (Union[Unset, PostruntaskRunLocallyAndPromoteToServer]):
-        body (PostruntaskBody):
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        time_zero (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        cold_state_id (str | Unset):
+        scenario_id (str | Unset):
+        user_id (str | Unset):
+        description (str | Unset):
+        run_option (PostruntaskRunOption | Unset):
+        run_locally_and_promote_to_server (PostruntaskRunLocallyAndPromoteToServer | Unset):
+        body (PostruntaskBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -178,19 +179,19 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PostruntaskBody,
+    client: AuthenticatedClient | Client,
+    body: PostruntaskBody | Unset = UNSET,
     workflow_id: str,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    cold_state_id: Union[Unset, str] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    user_id: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
-    run_option: Union[Unset, PostruntaskRunOption] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, PostruntaskRunLocallyAndPromoteToServer] = UNSET,
-) -> Optional[str]:
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    time_zero: datetime.datetime | Unset = UNSET,
+    cold_state_id: str | Unset = UNSET,
+    scenario_id: str | Unset = UNSET,
+    user_id: str | Unset = UNSET,
+    description: str | Unset = UNSET,
+    run_option: PostruntaskRunOption | Unset = UNSET,
+    run_locally_and_promote_to_server: PostruntaskRunLocallyAndPromoteToServer | Unset = UNSET,
+) -> str | None:
     """Runs a one-off task for a given workflowId
 
      Runs a one-off task for a given workflowId. The application/x-www-form-urlencoded encoding has to be
@@ -206,19 +207,19 @@ def sync(
 
     Args:
         workflow_id (str):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
-            Example: 2020-03-18T15:00:00Z.
-        time_zero (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
-            Example: 2020-03-18T15:00:00Z.
-        cold_state_id (Union[Unset, str]):
-        scenario_id (Union[Unset, str]):
-        user_id (Union[Unset, str]):
-        description (Union[Unset, str]):
-        run_option (Union[Unset, PostruntaskRunOption]):
-        run_locally_and_promote_to_server (Union[Unset, PostruntaskRunLocallyAndPromoteToServer]):
-        body (PostruntaskBody):
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        time_zero (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        cold_state_id (str | Unset):
+        scenario_id (str | Unset):
+        user_id (str | Unset):
+        description (str | Unset):
+        run_option (PostruntaskRunOption | Unset):
+        run_locally_and_promote_to_server (PostruntaskRunLocallyAndPromoteToServer | Unset):
+        body (PostruntaskBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -246,18 +247,18 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PostruntaskBody,
+    client: AuthenticatedClient | Client,
+    body: PostruntaskBody | Unset = UNSET,
     workflow_id: str,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    cold_state_id: Union[Unset, str] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    user_id: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
-    run_option: Union[Unset, PostruntaskRunOption] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, PostruntaskRunLocallyAndPromoteToServer] = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    time_zero: datetime.datetime | Unset = UNSET,
+    cold_state_id: str | Unset = UNSET,
+    scenario_id: str | Unset = UNSET,
+    user_id: str | Unset = UNSET,
+    description: str | Unset = UNSET,
+    run_option: PostruntaskRunOption | Unset = UNSET,
+    run_locally_and_promote_to_server: PostruntaskRunLocallyAndPromoteToServer | Unset = UNSET,
 ) -> Response[str]:
     """Runs a one-off task for a given workflowId
 
@@ -274,19 +275,19 @@ async def asyncio_detailed(
 
     Args:
         workflow_id (str):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
-            Example: 2020-03-18T15:00:00Z.
-        time_zero (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
-            Example: 2020-03-18T15:00:00Z.
-        cold_state_id (Union[Unset, str]):
-        scenario_id (Union[Unset, str]):
-        user_id (Union[Unset, str]):
-        description (Union[Unset, str]):
-        run_option (Union[Unset, PostruntaskRunOption]):
-        run_locally_and_promote_to_server (Union[Unset, PostruntaskRunLocallyAndPromoteToServer]):
-        body (PostruntaskBody):
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        time_zero (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        cold_state_id (str | Unset):
+        scenario_id (str | Unset):
+        user_id (str | Unset):
+        description (str | Unset):
+        run_option (PostruntaskRunOption | Unset):
+        run_locally_and_promote_to_server (PostruntaskRunLocallyAndPromoteToServer | Unset):
+        body (PostruntaskBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -317,19 +318,19 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: PostruntaskBody,
+    client: AuthenticatedClient | Client,
+    body: PostruntaskBody | Unset = UNSET,
     workflow_id: str,
-    start_time: Union[Unset, datetime.datetime] = UNSET,
-    end_time: Union[Unset, datetime.datetime] = UNSET,
-    time_zero: Union[Unset, datetime.datetime] = UNSET,
-    cold_state_id: Union[Unset, str] = UNSET,
-    scenario_id: Union[Unset, str] = UNSET,
-    user_id: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
-    run_option: Union[Unset, PostruntaskRunOption] = UNSET,
-    run_locally_and_promote_to_server: Union[Unset, PostruntaskRunLocallyAndPromoteToServer] = UNSET,
-) -> Optional[str]:
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    time_zero: datetime.datetime | Unset = UNSET,
+    cold_state_id: str | Unset = UNSET,
+    scenario_id: str | Unset = UNSET,
+    user_id: str | Unset = UNSET,
+    description: str | Unset = UNSET,
+    run_option: PostruntaskRunOption | Unset = UNSET,
+    run_locally_and_promote_to_server: PostruntaskRunLocallyAndPromoteToServer | Unset = UNSET,
+) -> str | None:
     """Runs a one-off task for a given workflowId
 
      Runs a one-off task for a given workflowId. The application/x-www-form-urlencoded encoding has to be
@@ -345,19 +346,19 @@ async def asyncio(
 
     Args:
         workflow_id (str):
-        start_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        end_time (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
-            Example: 2020-03-18T15:00:00Z.
-        time_zero (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC 3339.
-            Example: 2020-03-18T15:00:00Z.
-        cold_state_id (Union[Unset, str]):
-        scenario_id (Union[Unset, str]):
-        user_id (Union[Unset, str]):
-        description (Union[Unset, str]):
-        run_option (Union[Unset, PostruntaskRunOption]):
-        run_locally_and_promote_to_server (Union[Unset, PostruntaskRunLocallyAndPromoteToServer]):
-        body (PostruntaskBody):
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        time_zero (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        cold_state_id (str | Unset):
+        scenario_id (str | Unset):
+        user_id (str | Unset):
+        description (str | Unset):
+        run_option (PostruntaskRunOption | Unset):
+        run_locally_and_promote_to_server (PostruntaskRunLocallyAndPromoteToServer | Unset):
+        body (PostruntaskBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

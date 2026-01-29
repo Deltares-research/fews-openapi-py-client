@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,27 +12,27 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    start_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    end_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    modifier_type: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ModifiersDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    start_time_modifiers: datetime.datetime | Unset = UNSET,
+    end_time_modifiers: datetime.datetime | Unset = UNSET,
+    modifier_type: str | Unset = UNSET,
+    document_format: ModifiersDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_start_time_modifiers: Union[Unset, str] = UNSET
+    json_start_time_modifiers: str | Unset = UNSET
     if not isinstance(start_time_modifiers, Unset):
         json_start_time_modifiers = start_time_modifiers.isoformat()
     params["startTimeModifiers"] = json_start_time_modifiers
 
-    json_end_time_modifiers: Union[Unset, str] = UNSET
+    json_end_time_modifiers: str | Unset = UNSET
     if not isinstance(end_time_modifiers, Unset):
         json_end_time_modifiers = end_time_modifiers.isoformat()
     params["endTimeModifiers"] = json_end_time_modifiers
 
     params["modifierType"] = modifier_type
 
-    json_document_format: Union[Unset, str] = UNSET
+    json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
 
@@ -51,14 +51,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,25 +69,25 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    start_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    end_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    modifier_type: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ModifiersDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    start_time_modifiers: datetime.datetime | Unset = UNSET,
+    end_time_modifiers: datetime.datetime | Unset = UNSET,
+    modifier_type: str | Unset = UNSET,
+    document_format: ModifiersDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get modifiers filtered by parameters like start time, end time and modifier type
 
      Get modifiers filtered by parameters like start time, end time and modifier type.
 
     Args:
-        start_time_modifiers (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_time_modifiers (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        start_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        modifier_type (Union[Unset, str]):
-        document_format (Union[Unset, ModifiersDocumentFormat]):
-        document_version (Union[Unset, str]):
+        end_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        modifier_type (str | Unset):
+        document_format (ModifiersDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -114,25 +114,25 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    start_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    end_time_modifiers: Union[Unset, datetime.datetime] = UNSET,
-    modifier_type: Union[Unset, str] = UNSET,
-    document_format: Union[Unset, ModifiersDocumentFormat] = UNSET,
-    document_version: Union[Unset, str] = UNSET,
+    client: AuthenticatedClient | Client,
+    start_time_modifiers: datetime.datetime | Unset = UNSET,
+    end_time_modifiers: datetime.datetime | Unset = UNSET,
+    modifier_type: str | Unset = UNSET,
+    document_format: ModifiersDocumentFormat | Unset = UNSET,
+    document_version: str | Unset = UNSET,
 ) -> Response[Any]:
     """Get modifiers filtered by parameters like start time, end time and modifier type
 
      Get modifiers filtered by parameters like start time, end time and modifier type.
 
     Args:
-        start_time_modifiers (Union[Unset, datetime.datetime]): Date-time string that adheres to
-            RFC 3339. Example: 2020-03-18T15:00:00Z.
-        end_time_modifiers (Union[Unset, datetime.datetime]): Date-time string that adheres to RFC
+        start_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
-        modifier_type (Union[Unset, str]):
-        document_format (Union[Unset, ModifiersDocumentFormat]):
-        document_version (Union[Unset, str]):
+        end_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+            Example: 2020-03-18T15:00:00Z.
+        modifier_type (str | Unset):
+        document_format (ModifiersDocumentFormat | Unset):
+        document_version (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
