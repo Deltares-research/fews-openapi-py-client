@@ -101,17 +101,21 @@ source = { editable = "." }
 dependencies = [
     { name = "attrs" },
     { name = "httpx" },
+    { name = "python-dateutil" },
+]
+
+[package.optional-dependencies]
+dev = [
     { name = "openapi-python-client" },
     { name = "pre-commit" },
-    { name = "python-dateutil" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "attrs", specifier = ">=22.2.0" },
     { name = "httpx", specifier = ">=0.23.0,<0.29.0" },
-    { name = "openapi-python-client", specifier = ">=0.28.1" },
-    { name = "pre-commit", specifier = ">=4.4.0" },
+    { name = "openapi-python-client", marker = "extra == 'dev'", specifier = ">=0.28.1" },
+    { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=4.4.0" },
     { name = "python-dateutil", specifier = ">=2.8.0" },
 ]
 provides-extras = ["dev"]
