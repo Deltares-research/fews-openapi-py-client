@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "A client library for accessing Delft-FEWS Web Services REST API v1"
 authors = []
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.10"
 dependencies = [
     "httpx>=0.23.0,<0.29.0",

@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "A client library for accessing Delft-FEWS Web Services REST API v1"
 authors = []
 readme = "README.md"
+license = "MIT"
 packages = [
     { include = "fews_openapi_py_client" },
 ]
