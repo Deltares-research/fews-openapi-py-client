@@ -64,7 +64,7 @@ The script uses Python's `re.sub()` function, so you can use capture groups (for
 
 ## Publishing to PyPI
 
-This repository publishes to PyPI from GitHub Actions when a tag starting with `version` is pushed.
+This repository publishes to PyPI from GitHub Actions when a tag starting with `v` is pushed, for example `v0.1.0`.
 
 Before the first release:
 
@@ -79,8 +79,8 @@ To publish a release:
 ```bash
 git checkout main
 git pull
-git tag version0.1.0
-git push origin version0.1.0
+git tag v0.1.0
+git push origin v0.1.0
 ```
 
 The workflow verifies that the tagged commit is on `main`, builds the source distribution and wheel, checks the package metadata, and publishes the artifacts to PyPI.
