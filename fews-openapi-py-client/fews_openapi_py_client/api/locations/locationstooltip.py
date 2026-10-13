@@ -5,19 +5,27 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response
+from ...models.locationstooltip_verbose import LocationstooltipVerbose
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     filter_id: str,
     location_id: str,
+    verbose: LocationstooltipVerbose | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["filterId"] = filter_id
 
     params["locationId"] = location_id
+
+    json_verbose: str | Unset = UNSET
+    if not isinstance(verbose, Unset):
+        json_verbose = verbose.value
+
+    params["verbose"] = json_verbose
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -55,6 +63,7 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     filter_id: str,
     location_id: str,
+    verbose: LocationstooltipVerbose | Unset = UNSET,
 ) -> Response[str]:
     """Get the tooltip for a location
 
@@ -63,6 +72,7 @@ def sync_detailed(
     Args:
         filter_id (str):
         location_id (str):
+        verbose (LocationstooltipVerbose | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -75,6 +85,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         filter_id=filter_id,
         location_id=location_id,
+        verbose=verbose,
     )
 
     response = client.get_httpx_client().request(
@@ -89,6 +100,7 @@ def sync(
     client: AuthenticatedClient | Client,
     filter_id: str,
     location_id: str,
+    verbose: LocationstooltipVerbose | Unset = UNSET,
 ) -> str | None:
     """Get the tooltip for a location
 
@@ -97,6 +109,7 @@ def sync(
     Args:
         filter_id (str):
         location_id (str):
+        verbose (LocationstooltipVerbose | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -110,6 +123,7 @@ def sync(
         client=client,
         filter_id=filter_id,
         location_id=location_id,
+        verbose=verbose,
     ).parsed
 
 
@@ -118,6 +132,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     filter_id: str,
     location_id: str,
+    verbose: LocationstooltipVerbose | Unset = UNSET,
 ) -> Response[str]:
     """Get the tooltip for a location
 
@@ -126,6 +141,7 @@ async def asyncio_detailed(
     Args:
         filter_id (str):
         location_id (str):
+        verbose (LocationstooltipVerbose | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -138,6 +154,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         filter_id=filter_id,
         location_id=location_id,
+        verbose=verbose,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -150,6 +167,7 @@ async def asyncio(
     client: AuthenticatedClient | Client,
     filter_id: str,
     location_id: str,
+    verbose: LocationstooltipVerbose | Unset = UNSET,
 ) -> str | None:
     """Get the tooltip for a location
 
@@ -158,6 +176,7 @@ async def asyncio(
     Args:
         filter_id (str):
         location_id (str):
+        verbose (LocationstooltipVerbose | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -172,5 +191,6 @@ async def asyncio(
             client=client,
             filter_id=filter_id,
             location_id=location_id,
+            verbose=verbose,
         )
     ).parsed

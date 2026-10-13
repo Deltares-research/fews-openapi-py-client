@@ -76,9 +76,9 @@ def _get_kwargs(
     }
 
     if not isinstance(body, Unset):
-        _kwargs["data"] = body.to_dict()
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/x-www-form-urlencoded"
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs

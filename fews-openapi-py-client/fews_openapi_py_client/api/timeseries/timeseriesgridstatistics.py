@@ -14,6 +14,7 @@ def _get_kwargs(
     *,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
+    task_run_id: str | Unset = UNSET,
     layer_id: str,
     location_id: str,
     aggregation: str | Unset = UNSET,
@@ -28,6 +29,8 @@ def _get_kwargs(
 
     json_end_time = end_time.isoformat()
     params["endTime"] = json_end_time
+
+    params["taskRunId"] = task_run_id
 
     params["layerId"] = layer_id
 
@@ -77,6 +80,7 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
+    task_run_id: str | Unset = UNSET,
     layer_id: str,
     location_id: str,
     aggregation: str | Unset = UNSET,
@@ -97,6 +101,7 @@ def sync_detailed(
             2020-03-18T15:00:00Z.
         end_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
             2020-03-18T15:00:00Z.
+        task_run_id (str | Unset):
         layer_id (str):  Example: Temp_forecast.
         location_id (str):
         aggregation (str | Unset):
@@ -115,6 +120,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         start_time=start_time,
         end_time=end_time,
+        task_run_id=task_run_id,
         layer_id=layer_id,
         location_id=location_id,
         aggregation=aggregation,
@@ -135,6 +141,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
+    task_run_id: str | Unset = UNSET,
     layer_id: str,
     location_id: str,
     aggregation: str | Unset = UNSET,
@@ -155,6 +162,7 @@ async def asyncio_detailed(
             2020-03-18T15:00:00Z.
         end_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
             2020-03-18T15:00:00Z.
+        task_run_id (str | Unset):
         layer_id (str):  Example: Temp_forecast.
         location_id (str):
         aggregation (str | Unset):
@@ -173,6 +181,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         start_time=start_time,
         end_time=end_time,
+        task_run_id=task_run_id,
         layer_id=layer_id,
         location_id=location_id,
         aggregation=aggregation,

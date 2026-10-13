@@ -9,6 +9,7 @@ from ...client import AuthenticatedClient, Client
 from ...models.timeseriesgrid_convert_datum import TimeseriesgridConvertDatum
 from ...models.timeseriesgrid_document_format import TimeseriesgridDocumentFormat
 from ...models.timeseriesgrid_import_from_external_data_source import TimeseriesgridImportFromExternalDataSource
+from ...models.timeseriesgrid_netcdf_format import TimeseriesgridNetcdfFormat
 from ...models.timeseriesgrid_omit_empty_time_series import TimeseriesgridOmitEmptyTimeSeries
 from ...models.timeseriesgrid_omit_missing import TimeseriesgridOmitMissing
 from ...models.timeseriesgrid_only_forecasts import TimeseriesgridOnlyForecasts
@@ -16,6 +17,7 @@ from ...models.timeseriesgrid_only_headers import TimeseriesgridOnlyHeaders
 from ...models.timeseriesgrid_only_manual_edits import TimeseriesgridOnlyManualEdits
 from ...models.timeseriesgrid_point_cloud import TimeseriesgridPointCloud
 from ...models.timeseriesgrid_show_ensemble_member_ids import TimeseriesgridShowEnsembleMemberIds
+from ...models.timeseriesgrid_show_fews_time_series_metadata import TimeseriesgridShowFewsTimeSeriesMetadata
 from ...models.timeseriesgrid_show_products import TimeseriesgridShowProducts
 from ...models.timeseriesgrid_show_statistics import TimeseriesgridShowStatistics
 from ...models.timeseriesgrid_show_thresholds import TimeseriesgridShowThresholds
@@ -28,6 +30,8 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     bbox: str | Unset = UNSET,
+    crs: str | Unset = UNSET,
+    thinning: str | Unset = UNSET,
     before_start_time_count: str | Unset = UNSET,
     after_end_time_count: str | Unset = UNSET,
     start_time: datetime.datetime | Unset = UNSET,
@@ -36,9 +40,12 @@ def _get_kwargs(
     x: str | Unset = UNSET,
     y: str | Unset = UNSET,
     external_forecast_time: datetime.datetime | Unset = UNSET,
+    task_run_id: str | Unset = UNSET,
     ensemble_id: str | Unset = UNSET,
     ensemble_member_id: str | Unset = UNSET,
     elevation: str | Unset = UNSET,
+    netcdf_format: TimeseriesgridNetcdfFormat | Unset = UNSET,
+    show_fews_time_series_metadata: TimeseriesgridShowFewsTimeSeriesMetadata | Unset = UNSET,
     point_cloud: TimeseriesgridPointCloud | Unset = UNSET,
     import_from_external_data_source: TimeseriesgridImportFromExternalDataSource | Unset = UNSET,
     convert_datum: TimeseriesgridConvertDatum | Unset = UNSET,
@@ -61,6 +68,10 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["bbox"] = bbox
+
+    params["crs"] = crs
+
+    params["thinning"] = thinning
 
     params["beforeStartTimeCount"] = before_start_time_count
 
@@ -87,11 +98,25 @@ def _get_kwargs(
         json_external_forecast_time = external_forecast_time.isoformat()
     params["externalForecastTime"] = json_external_forecast_time
 
+    params["taskRunId"] = task_run_id
+
     params["ensembleId"] = ensemble_id
 
     params["ensembleMemberId"] = ensemble_member_id
 
     params["elevation"] = elevation
+
+    json_netcdf_format: str | Unset = UNSET
+    if not isinstance(netcdf_format, Unset):
+        json_netcdf_format = netcdf_format.value
+
+    params["netcdfFormat"] = json_netcdf_format
+
+    json_show_fews_time_series_metadata: str | Unset = UNSET
+    if not isinstance(show_fews_time_series_metadata, Unset):
+        json_show_fews_time_series_metadata = show_fews_time_series_metadata.value
+
+    params["showFewsTimeSeriesMetadata"] = json_show_fews_time_series_metadata
 
     json_point_cloud: str | Unset = UNSET
     if not isinstance(point_cloud, Unset):
@@ -224,6 +249,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     bbox: str | Unset = UNSET,
+    crs: str | Unset = UNSET,
+    thinning: str | Unset = UNSET,
     before_start_time_count: str | Unset = UNSET,
     after_end_time_count: str | Unset = UNSET,
     start_time: datetime.datetime | Unset = UNSET,
@@ -232,9 +259,12 @@ def sync_detailed(
     x: str | Unset = UNSET,
     y: str | Unset = UNSET,
     external_forecast_time: datetime.datetime | Unset = UNSET,
+    task_run_id: str | Unset = UNSET,
     ensemble_id: str | Unset = UNSET,
     ensemble_member_id: str | Unset = UNSET,
     elevation: str | Unset = UNSET,
+    netcdf_format: TimeseriesgridNetcdfFormat | Unset = UNSET,
+    show_fews_time_series_metadata: TimeseriesgridShowFewsTimeSeriesMetadata | Unset = UNSET,
     point_cloud: TimeseriesgridPointCloud | Unset = UNSET,
     import_from_external_data_source: TimeseriesgridImportFromExternalDataSource | Unset = UNSET,
     convert_datum: TimeseriesgridConvertDatum | Unset = UNSET,
@@ -273,6 +303,8 @@ def sync_detailed(
     Args:
         bbox (str | Unset):  Example:
             -1558755.612890017,4979850.04379049,1623657.8112034467,6709422.556884765.
+        crs (str | Unset):  Example: EPSG:4326.
+        thinning (str | Unset):  Example: 1000.
         before_start_time_count (str | Unset):  Example: 5.
         after_end_time_count (str | Unset):  Example: 5.
         start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
@@ -284,9 +316,12 @@ def sync_detailed(
         y (str | Unset):  Example: 5811252.569955047.
         external_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
+        task_run_id (str | Unset):
         ensemble_id (str | Unset):
         ensemble_member_id (str | Unset):
         elevation (str | Unset):
+        netcdf_format (TimeseriesgridNetcdfFormat | Unset):
+        show_fews_time_series_metadata (TimeseriesgridShowFewsTimeSeriesMetadata | Unset):
         point_cloud (TimeseriesgridPointCloud | Unset):
         import_from_external_data_source (TimeseriesgridImportFromExternalDataSource | Unset):
         convert_datum (TimeseriesgridConvertDatum | Unset):
@@ -316,6 +351,8 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         bbox=bbox,
+        crs=crs,
+        thinning=thinning,
         before_start_time_count=before_start_time_count,
         after_end_time_count=after_end_time_count,
         start_time=start_time,
@@ -324,9 +361,12 @@ def sync_detailed(
         x=x,
         y=y,
         external_forecast_time=external_forecast_time,
+        task_run_id=task_run_id,
         ensemble_id=ensemble_id,
         ensemble_member_id=ensemble_member_id,
         elevation=elevation,
+        netcdf_format=netcdf_format,
+        show_fews_time_series_metadata=show_fews_time_series_metadata,
         point_cloud=point_cloud,
         import_from_external_data_source=import_from_external_data_source,
         convert_datum=convert_datum,
@@ -358,6 +398,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     bbox: str | Unset = UNSET,
+    crs: str | Unset = UNSET,
+    thinning: str | Unset = UNSET,
     before_start_time_count: str | Unset = UNSET,
     after_end_time_count: str | Unset = UNSET,
     start_time: datetime.datetime | Unset = UNSET,
@@ -366,9 +408,12 @@ async def asyncio_detailed(
     x: str | Unset = UNSET,
     y: str | Unset = UNSET,
     external_forecast_time: datetime.datetime | Unset = UNSET,
+    task_run_id: str | Unset = UNSET,
     ensemble_id: str | Unset = UNSET,
     ensemble_member_id: str | Unset = UNSET,
     elevation: str | Unset = UNSET,
+    netcdf_format: TimeseriesgridNetcdfFormat | Unset = UNSET,
+    show_fews_time_series_metadata: TimeseriesgridShowFewsTimeSeriesMetadata | Unset = UNSET,
     point_cloud: TimeseriesgridPointCloud | Unset = UNSET,
     import_from_external_data_source: TimeseriesgridImportFromExternalDataSource | Unset = UNSET,
     convert_datum: TimeseriesgridConvertDatum | Unset = UNSET,
@@ -407,6 +452,8 @@ async def asyncio_detailed(
     Args:
         bbox (str | Unset):  Example:
             -1558755.612890017,4979850.04379049,1623657.8112034467,6709422.556884765.
+        crs (str | Unset):  Example: EPSG:4326.
+        thinning (str | Unset):  Example: 1000.
         before_start_time_count (str | Unset):  Example: 5.
         after_end_time_count (str | Unset):  Example: 5.
         start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
@@ -418,9 +465,12 @@ async def asyncio_detailed(
         y (str | Unset):  Example: 5811252.569955047.
         external_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
+        task_run_id (str | Unset):
         ensemble_id (str | Unset):
         ensemble_member_id (str | Unset):
         elevation (str | Unset):
+        netcdf_format (TimeseriesgridNetcdfFormat | Unset):
+        show_fews_time_series_metadata (TimeseriesgridShowFewsTimeSeriesMetadata | Unset):
         point_cloud (TimeseriesgridPointCloud | Unset):
         import_from_external_data_source (TimeseriesgridImportFromExternalDataSource | Unset):
         convert_datum (TimeseriesgridConvertDatum | Unset):
@@ -450,6 +500,8 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         bbox=bbox,
+        crs=crs,
+        thinning=thinning,
         before_start_time_count=before_start_time_count,
         after_end_time_count=after_end_time_count,
         start_time=start_time,
@@ -458,9 +510,12 @@ async def asyncio_detailed(
         x=x,
         y=y,
         external_forecast_time=external_forecast_time,
+        task_run_id=task_run_id,
         ensemble_id=ensemble_id,
         ensemble_member_id=ensemble_member_id,
         elevation=elevation,
+        netcdf_format=netcdf_format,
+        show_fews_time_series_metadata=show_fews_time_series_metadata,
         point_cloud=point_cloud,
         import_from_external_data_source=import_from_external_data_source,
         convert_datum=convert_datum,

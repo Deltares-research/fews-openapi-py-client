@@ -7,9 +7,6 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.timeseriesfiltersactions_convert_datum import TimeseriesfiltersactionsConvertDatum
-from ...models.timeseriesfiltersactions_current_forecasts_always_visible import (
-    TimeseriesfiltersactionsCurrentForecastsAlwaysVisible,
-)
 from ...models.timeseriesfiltersactions_document_format import TimeseriesfiltersactionsDocumentFormat
 from ...models.timeseriesfiltersactions_full_data_period import TimeseriesfiltersactionsFullDataPeriod
 from ...models.timeseriesfiltersactions_use_display_units import TimeseriesfiltersactionsUseDisplayUnits
@@ -20,9 +17,9 @@ def _get_kwargs(
     *,
     filter_id: str | Unset = UNSET,
     parameter_group_id: str | Unset = UNSET,
-    parameter_ids: str | Unset = UNSET,
-    location_ids: str | Unset = UNSET,
-    task_run_ids: str | Unset = UNSET,
+    parameter_ids: list[str] | Unset = UNSET,
+    location_ids: list[str] | Unset = UNSET,
+    task_run_ids: list[str] | Unset = UNSET,
     time_zero: str | Unset = UNSET,
     start_time: datetime.datetime | Unset = UNSET,
     end_time: datetime.datetime | Unset = UNSET,
@@ -30,7 +27,6 @@ def _get_kwargs(
     start_forecast_time: datetime.datetime | Unset = UNSET,
     end_forecast_time: datetime.datetime | Unset = UNSET,
     forecast_count: str | Unset = UNSET,
-    current_forecasts_always_visible: TimeseriesfiltersactionsCurrentForecastsAlwaysVisible | Unset = UNSET,
     use_display_units: TimeseriesfiltersactionsUseDisplayUnits | Unset = UNSET,
     convert_datum: TimeseriesfiltersactionsConvertDatum | Unset = UNSET,
     download_as_file: str | Unset = UNSET,
@@ -43,11 +39,23 @@ def _get_kwargs(
 
     params["parameterGroupId"] = parameter_group_id
 
-    params["parameterIds"] = parameter_ids
+    json_parameter_ids: list[str] | Unset = UNSET
+    if not isinstance(parameter_ids, Unset):
+        json_parameter_ids = parameter_ids
 
-    params["locationIds"] = location_ids
+    params["parameterIds"] = json_parameter_ids
 
-    params["taskRunIds"] = task_run_ids
+    json_location_ids: list[str] | Unset = UNSET
+    if not isinstance(location_ids, Unset):
+        json_location_ids = location_ids
+
+    params["locationIds"] = json_location_ids
+
+    json_task_run_ids: list[str] | Unset = UNSET
+    if not isinstance(task_run_ids, Unset):
+        json_task_run_ids = task_run_ids
+
+    params["taskRunIds"] = json_task_run_ids
 
     params["timeZero"] = time_zero
 
@@ -78,12 +86,6 @@ def _get_kwargs(
     params["endForecastTime"] = json_end_forecast_time
 
     params["forecastCount"] = forecast_count
-
-    json_current_forecasts_always_visible: str | Unset = UNSET
-    if not isinstance(current_forecasts_always_visible, Unset):
-        json_current_forecasts_always_visible = current_forecasts_always_visible.value
-
-    params["currentForecastsAlwaysVisible"] = json_current_forecasts_always_visible
 
     json_use_display_units: str | Unset = UNSET
     if not isinstance(use_display_units, Unset):
@@ -139,9 +141,9 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     filter_id: str | Unset = UNSET,
     parameter_group_id: str | Unset = UNSET,
-    parameter_ids: str | Unset = UNSET,
-    location_ids: str | Unset = UNSET,
-    task_run_ids: str | Unset = UNSET,
+    parameter_ids: list[str] | Unset = UNSET,
+    location_ids: list[str] | Unset = UNSET,
+    task_run_ids: list[str] | Unset = UNSET,
     time_zero: str | Unset = UNSET,
     start_time: datetime.datetime | Unset = UNSET,
     end_time: datetime.datetime | Unset = UNSET,
@@ -149,7 +151,6 @@ def sync_detailed(
     start_forecast_time: datetime.datetime | Unset = UNSET,
     end_forecast_time: datetime.datetime | Unset = UNSET,
     forecast_count: str | Unset = UNSET,
-    current_forecasts_always_visible: TimeseriesfiltersactionsCurrentForecastsAlwaysVisible | Unset = UNSET,
     use_display_units: TimeseriesfiltersactionsUseDisplayUnits | Unset = UNSET,
     convert_datum: TimeseriesfiltersactionsConvertDatum | Unset = UNSET,
     download_as_file: str | Unset = UNSET,
@@ -163,9 +164,9 @@ def sync_detailed(
     Args:
         filter_id (str | Unset):
         parameter_group_id (str | Unset):
-        parameter_ids (str | Unset):
-        location_ids (str | Unset):
-        task_run_ids (str | Unset):
+        parameter_ids (list[str] | Unset): The parameter can be repeated
+        location_ids (list[str] | Unset): The parameter can be repeated
+        task_run_ids (list[str] | Unset): The parameter can be repeated
         time_zero (str | Unset):
         start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
@@ -177,8 +178,6 @@ def sync_detailed(
         end_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
         forecast_count (str | Unset):
-        current_forecasts_always_visible (TimeseriesfiltersactionsCurrentForecastsAlwaysVisible |
-            Unset):
         use_display_units (TimeseriesfiltersactionsUseDisplayUnits | Unset):
         convert_datum (TimeseriesfiltersactionsConvertDatum | Unset):
         download_as_file (str | Unset):
@@ -206,7 +205,6 @@ def sync_detailed(
         start_forecast_time=start_forecast_time,
         end_forecast_time=end_forecast_time,
         forecast_count=forecast_count,
-        current_forecasts_always_visible=current_forecasts_always_visible,
         use_display_units=use_display_units,
         convert_datum=convert_datum,
         download_as_file=download_as_file,
@@ -226,9 +224,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     filter_id: str | Unset = UNSET,
     parameter_group_id: str | Unset = UNSET,
-    parameter_ids: str | Unset = UNSET,
-    location_ids: str | Unset = UNSET,
-    task_run_ids: str | Unset = UNSET,
+    parameter_ids: list[str] | Unset = UNSET,
+    location_ids: list[str] | Unset = UNSET,
+    task_run_ids: list[str] | Unset = UNSET,
     time_zero: str | Unset = UNSET,
     start_time: datetime.datetime | Unset = UNSET,
     end_time: datetime.datetime | Unset = UNSET,
@@ -236,7 +234,6 @@ async def asyncio_detailed(
     start_forecast_time: datetime.datetime | Unset = UNSET,
     end_forecast_time: datetime.datetime | Unset = UNSET,
     forecast_count: str | Unset = UNSET,
-    current_forecasts_always_visible: TimeseriesfiltersactionsCurrentForecastsAlwaysVisible | Unset = UNSET,
     use_display_units: TimeseriesfiltersactionsUseDisplayUnits | Unset = UNSET,
     convert_datum: TimeseriesfiltersactionsConvertDatum | Unset = UNSET,
     download_as_file: str | Unset = UNSET,
@@ -250,9 +247,9 @@ async def asyncio_detailed(
     Args:
         filter_id (str | Unset):
         parameter_group_id (str | Unset):
-        parameter_ids (str | Unset):
-        location_ids (str | Unset):
-        task_run_ids (str | Unset):
+        parameter_ids (list[str] | Unset): The parameter can be repeated
+        location_ids (list[str] | Unset): The parameter can be repeated
+        task_run_ids (list[str] | Unset): The parameter can be repeated
         time_zero (str | Unset):
         start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
@@ -264,8 +261,6 @@ async def asyncio_detailed(
         end_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
         forecast_count (str | Unset):
-        current_forecasts_always_visible (TimeseriesfiltersactionsCurrentForecastsAlwaysVisible |
-            Unset):
         use_display_units (TimeseriesfiltersactionsUseDisplayUnits | Unset):
         convert_datum (TimeseriesfiltersactionsConvertDatum | Unset):
         download_as_file (str | Unset):
@@ -293,7 +288,6 @@ async def asyncio_detailed(
         start_forecast_time=start_forecast_time,
         end_forecast_time=end_forecast_time,
         forecast_count=forecast_count,
-        current_forecasts_always_visible=current_forecasts_always_visible,
         use_display_units=use_display_units,
         convert_datum=convert_datum,
         download_as_file=download_as_file,

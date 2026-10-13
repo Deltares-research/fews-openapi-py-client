@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class TimeseriesfiltersactionsCurrentForecastsAlwaysVisible(str, Enum):
+class FiltersactionsFullDataPeriod(str, Enum):
     FALSE = "false"
     TRUE = "true"
 

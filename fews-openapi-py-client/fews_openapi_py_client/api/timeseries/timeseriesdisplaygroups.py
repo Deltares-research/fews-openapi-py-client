@@ -17,7 +17,6 @@ from ...models.timeseriesdisplaygroups_show_ensemble_member_ids import Timeserie
 from ...models.timeseriesdisplaygroups_show_products import TimeseriesdisplaygroupsShowProducts
 from ...models.timeseriesdisplaygroups_show_statistics import TimeseriesdisplaygroupsShowStatistics
 from ...models.timeseriesdisplaygroups_show_thresholds import TimeseriesdisplaygroupsShowThresholds
-from ...models.timeseriesdisplaygroups_time_series_type import TimeseriesdisplaygroupsTimeSeriesType
 from ...models.timeseriesdisplaygroups_use_display_units import TimeseriesdisplaygroupsUseDisplayUnits
 from ...models.timeseriesdisplaygroups_use_milliseconds import TimeseriesdisplaygroupsUseMilliseconds
 from ...types import UNSET, Response, Unset
@@ -42,7 +41,6 @@ def _get_kwargs(
     show_statistics: TimeseriesdisplaygroupsShowStatistics | Unset = UNSET,
     use_milliseconds: TimeseriesdisplaygroupsUseMilliseconds | Unset = UNSET,
     show_products: TimeseriesdisplaygroupsShowProducts | Unset = UNSET,
-    time_series_type: TimeseriesdisplaygroupsTimeSeriesType | Unset = UNSET,
     document_format: TimeseriesdisplaygroupsDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -140,12 +138,6 @@ def _get_kwargs(
 
     params["showProducts"] = json_show_products
 
-    json_time_series_type: str | Unset = UNSET
-    if not isinstance(time_series_type, Unset):
-        json_time_series_type = time_series_type.value
-
-    params["timeSeriesType"] = json_time_series_type
-
     json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
         json_document_format = document_format.value
@@ -201,7 +193,6 @@ def sync_detailed(
     show_statistics: TimeseriesdisplaygroupsShowStatistics | Unset = UNSET,
     use_milliseconds: TimeseriesdisplaygroupsUseMilliseconds | Unset = UNSET,
     show_products: TimeseriesdisplaygroupsShowProducts | Unset = UNSET,
-    time_series_type: TimeseriesdisplaygroupsTimeSeriesType | Unset = UNSET,
     document_format: TimeseriesdisplaygroupsDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -234,7 +225,6 @@ def sync_detailed(
         show_statistics (TimeseriesdisplaygroupsShowStatistics | Unset):
         use_milliseconds (TimeseriesdisplaygroupsUseMilliseconds | Unset):
         show_products (TimeseriesdisplaygroupsShowProducts | Unset):
-        time_series_type (TimeseriesdisplaygroupsTimeSeriesType | Unset):
         document_format (TimeseriesdisplaygroupsDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -264,7 +254,6 @@ def sync_detailed(
         show_statistics=show_statistics,
         use_milliseconds=use_milliseconds,
         show_products=show_products,
-        time_series_type=time_series_type,
         document_format=document_format,
         document_version=document_version,
     )
@@ -296,7 +285,6 @@ async def asyncio_detailed(
     show_statistics: TimeseriesdisplaygroupsShowStatistics | Unset = UNSET,
     use_milliseconds: TimeseriesdisplaygroupsUseMilliseconds | Unset = UNSET,
     show_products: TimeseriesdisplaygroupsShowProducts | Unset = UNSET,
-    time_series_type: TimeseriesdisplaygroupsTimeSeriesType | Unset = UNSET,
     document_format: TimeseriesdisplaygroupsDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -329,7 +317,6 @@ async def asyncio_detailed(
         show_statistics (TimeseriesdisplaygroupsShowStatistics | Unset):
         use_milliseconds (TimeseriesdisplaygroupsUseMilliseconds | Unset):
         show_products (TimeseriesdisplaygroupsShowProducts | Unset):
-        time_series_type (TimeseriesdisplaygroupsTimeSeriesType | Unset):
         document_format (TimeseriesdisplaygroupsDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -359,7 +346,6 @@ async def asyncio_detailed(
         show_statistics=show_statistics,
         use_milliseconds=use_milliseconds,
         show_products=show_products,
-        time_series_type=time_series_type,
         document_format=document_format,
         document_version=document_version,
     )
