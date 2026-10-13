@@ -8,16 +8,18 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="PosttimeseriesBody")
+T = TypeVar("T", bound="PosttimeseriesDataBody")
 
 
 @_attrs_define
-class PosttimeseriesBody:
+class PosttimeseriesDataBody:
     pi_time_series_xml_content: str | Unset = UNSET
-    """ https://fewsdocs.deltares.nl/schemas/version1.0/pi-schemas/pi_timeseries.xsd """
+    """ Time Series sent in timeseries pi XML using content-type  application/x-www-form-urlencoded in the body of
+    the post request. https://fewsdocs.deltares.nl/schemas/version1.0/pi-schemas/pi_timeseries.xsd """
     pi_time_series_json_content: str | Unset = UNSET
-    """ Since 2023.02. https://fewsdocs.deltares.nl/webservices/rest-api/v1/schemas/pirest/pi_rest_timeseries.json
-    """
+    """ Since 2023.02.  Time Series sent in timeseries pi json using content-type  application/x-www-form-urlencoded
+    in the body of the post request. Json format is: https://fewsdocs.deltares.nl/webservices/rest-
+    api/v1/schemas/pirest/pi_rest_timeseries.json """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,13 +44,13 @@ class PosttimeseriesBody:
 
         pi_time_series_json_content = d.pop("piTimeSeriesJsonContent", UNSET)
 
-        posttimeseries_body = cls(
+        posttimeseries_data_body = cls(
             pi_time_series_xml_content=pi_time_series_xml_content,
             pi_time_series_json_content=pi_time_series_json_content,
         )
 
-        posttimeseries_body.additional_properties = d
-        return posttimeseries_body
+        posttimeseries_data_body.additional_properties = d
+        return posttimeseries_data_body
 
     @property
     def additional_keys(self) -> list[str]:

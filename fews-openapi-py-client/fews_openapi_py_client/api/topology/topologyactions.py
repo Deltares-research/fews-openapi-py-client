@@ -17,7 +17,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     node_id: str,
-    task_run_ids: str | Unset = UNSET,
+    task_run_ids: list[str] | Unset = UNSET,
     time_zero: str | Unset = UNSET,
     full_data_period: TopologyactionsFullDataPeriod | Unset = UNSET,
     start_forecast_time: datetime.datetime | Unset = UNSET,
@@ -33,7 +33,11 @@ def _get_kwargs(
 
     params["nodeId"] = node_id
 
-    params["taskRunIds"] = task_run_ids
+    json_task_run_ids: list[str] | Unset = UNSET
+    if not isinstance(task_run_ids, Unset):
+        json_task_run_ids = task_run_ids
+
+    params["taskRunIds"] = json_task_run_ids
 
     params["timeZero"] = time_zero
 
@@ -112,7 +116,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     node_id: str,
-    task_run_ids: str | Unset = UNSET,
+    task_run_ids: list[str] | Unset = UNSET,
     time_zero: str | Unset = UNSET,
     full_data_period: TopologyactionsFullDataPeriod | Unset = UNSET,
     start_forecast_time: datetime.datetime | Unset = UNSET,
@@ -130,7 +134,7 @@ def sync_detailed(
 
     Args:
         node_id (str):
-        task_run_ids (str | Unset):
+        task_run_ids (list[str] | Unset): The parameter can be repeated
         time_zero (str | Unset):
         full_data_period (TopologyactionsFullDataPeriod | Unset):
         start_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
@@ -178,7 +182,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     node_id: str,
-    task_run_ids: str | Unset = UNSET,
+    task_run_ids: list[str] | Unset = UNSET,
     time_zero: str | Unset = UNSET,
     full_data_period: TopologyactionsFullDataPeriod | Unset = UNSET,
     start_forecast_time: datetime.datetime | Unset = UNSET,
@@ -196,7 +200,7 @@ async def asyncio_detailed(
 
     Args:
         node_id (str):
-        task_run_ids (str | Unset):
+        task_run_ids (list[str] | Unset): The parameter can be repeated
         time_zero (str | Unset):
         full_data_period (TopologyactionsFullDataPeriod | Unset):
         start_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC

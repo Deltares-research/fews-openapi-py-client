@@ -11,8 +11,10 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    parameter_ids: str | Unset = UNSET,
-    location_ids: str | Unset = UNSET,
+    parameter_ids: list[str] | Unset = UNSET,
+    parameter_id: list[str] | Unset = UNSET,
+    location_ids: list[str] | Unset = UNSET,
+    location_id: list[str] | Unset = UNSET,
     module_instance_ids: list[str] | Unset = UNSET,
     area_ids: list[str] | Unset = UNSET,
     source_ids: list[str] | Unset = UNSET,
@@ -22,9 +24,29 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    params["parameterIds"] = parameter_ids
+    json_parameter_ids: list[str] | Unset = UNSET
+    if not isinstance(parameter_ids, Unset):
+        json_parameter_ids = parameter_ids
 
-    params["locationIds"] = location_ids
+    params["parameterIds"] = json_parameter_ids
+
+    json_parameter_id: list[str] | Unset = UNSET
+    if not isinstance(parameter_id, Unset):
+        json_parameter_id = parameter_id
+
+    params["parameterId"] = json_parameter_id
+
+    json_location_ids: list[str] | Unset = UNSET
+    if not isinstance(location_ids, Unset):
+        json_location_ids = location_ids
+
+    params["locationIds"] = json_location_ids
+
+    json_location_id: list[str] | Unset = UNSET
+    if not isinstance(location_id, Unset):
+        json_location_id = location_id
+
+    params["locationId"] = json_location_id
 
     json_module_instance_ids: list[str] | Unset = UNSET
     if not isinstance(module_instance_ids, Unset):
@@ -88,8 +110,10 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
-    parameter_ids: str | Unset = UNSET,
-    location_ids: str | Unset = UNSET,
+    parameter_ids: list[str] | Unset = UNSET,
+    parameter_id: list[str] | Unset = UNSET,
+    location_ids: list[str] | Unset = UNSET,
+    location_id: list[str] | Unset = UNSET,
     module_instance_ids: list[str] | Unset = UNSET,
     area_ids: list[str] | Unset = UNSET,
     source_ids: list[str] | Unset = UNSET,
@@ -103,8 +127,10 @@ def sync_detailed(
     filtered by one or more attribute keys, a parameter ids or a location id.
 
     Args:
-        parameter_ids (str | Unset):
-        location_ids (str | Unset):
+        parameter_ids (list[str] | Unset): The parameter can be repeated
+        parameter_id (list[str] | Unset): The parameter can be repeated
+        location_ids (list[str] | Unset): The parameter can be repeated
+        location_id (list[str] | Unset): The parameter can be repeated
         module_instance_ids (list[str] | Unset): The parameter can be repeated
         area_ids (list[str] | Unset): The parameter can be repeated
         source_ids (list[str] | Unset): The parameter can be repeated
@@ -122,7 +148,9 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         parameter_ids=parameter_ids,
+        parameter_id=parameter_id,
         location_ids=location_ids,
+        location_id=location_id,
         module_instance_ids=module_instance_ids,
         area_ids=area_ids,
         source_ids=source_ids,
@@ -141,8 +169,10 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
-    parameter_ids: str | Unset = UNSET,
-    location_ids: str | Unset = UNSET,
+    parameter_ids: list[str] | Unset = UNSET,
+    parameter_id: list[str] | Unset = UNSET,
+    location_ids: list[str] | Unset = UNSET,
+    location_id: list[str] | Unset = UNSET,
     module_instance_ids: list[str] | Unset = UNSET,
     area_ids: list[str] | Unset = UNSET,
     source_ids: list[str] | Unset = UNSET,
@@ -156,8 +186,10 @@ async def asyncio_detailed(
     filtered by one or more attribute keys, a parameter ids or a location id.
 
     Args:
-        parameter_ids (str | Unset):
-        location_ids (str | Unset):
+        parameter_ids (list[str] | Unset): The parameter can be repeated
+        parameter_id (list[str] | Unset): The parameter can be repeated
+        location_ids (list[str] | Unset): The parameter can be repeated
+        location_id (list[str] | Unset): The parameter can be repeated
         module_instance_ids (list[str] | Unset): The parameter can be repeated
         area_ids (list[str] | Unset): The parameter can be repeated
         source_ids (list[str] | Unset): The parameter can be repeated
@@ -175,7 +207,9 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         parameter_ids=parameter_ids,
+        parameter_id=parameter_id,
         location_ids=location_ids,
+        location_id=location_id,
         module_instance_ids=module_instance_ids,
         area_ids=area_ids,
         source_ids=source_ids,

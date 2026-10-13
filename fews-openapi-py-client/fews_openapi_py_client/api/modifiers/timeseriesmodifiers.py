@@ -6,37 +6,37 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.timeseriesmodifiers_active import TimeseriesmodifiersActive
 from ...models.timeseriesmodifiers_document_format import TimeseriesmodifiersDocumentFormat
-from ...models.timeseriesmodifiers_only_active_modifiers import TimeseriesmodifiersOnlyActiveModifiers
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    start_time_modifiers: datetime.datetime | Unset = UNSET,
-    end_time_modifiers: datetime.datetime | Unset = UNSET,
-    modifier_type: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    modifier_type_id: str | Unset = UNSET,
     user_id: str | Unset = UNSET,
     location_ids: list[str] | Unset = UNSET,
     module_instance_ids: list[str] | Unset = UNSET,
-    only_active_modifiers: TimeseriesmodifiersOnlyActiveModifiers | Unset = UNSET,
-    user_defined_modifier_description: str | Unset = UNSET,
+    active: TimeseriesmodifiersActive | Unset = UNSET,
+    user_defined_modifier_description_key_value_pair: list[str] | Unset = UNSET,
     document_format: TimeseriesmodifiersDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_start_time_modifiers: str | Unset = UNSET
-    if not isinstance(start_time_modifiers, Unset):
-        json_start_time_modifiers = start_time_modifiers.isoformat()
-    params["startTimeModifiers"] = json_start_time_modifiers
+    json_start_time: str | Unset = UNSET
+    if not isinstance(start_time, Unset):
+        json_start_time = start_time.isoformat()
+    params["startTime"] = json_start_time
 
-    json_end_time_modifiers: str | Unset = UNSET
-    if not isinstance(end_time_modifiers, Unset):
-        json_end_time_modifiers = end_time_modifiers.isoformat()
-    params["endTimeModifiers"] = json_end_time_modifiers
+    json_end_time: str | Unset = UNSET
+    if not isinstance(end_time, Unset):
+        json_end_time = end_time.isoformat()
+    params["endTime"] = json_end_time
 
-    params["modifierType"] = modifier_type
+    params["modifierTypeId"] = modifier_type_id
 
     params["userId"] = user_id
 
@@ -52,13 +52,17 @@ def _get_kwargs(
 
     params["moduleInstanceIds"] = json_module_instance_ids
 
-    json_only_active_modifiers: str | Unset = UNSET
-    if not isinstance(only_active_modifiers, Unset):
-        json_only_active_modifiers = only_active_modifiers.value
+    json_active: str | Unset = UNSET
+    if not isinstance(active, Unset):
+        json_active = active.value
 
-    params["onlyActiveModifiers"] = json_only_active_modifiers
+    params["active"] = json_active
 
-    params["userDefinedModifierDescription"] = user_defined_modifier_description
+    json_user_defined_modifier_description_key_value_pair: list[str] | Unset = UNSET
+    if not isinstance(user_defined_modifier_description_key_value_pair, Unset):
+        json_user_defined_modifier_description_key_value_pair = user_defined_modifier_description_key_value_pair
+
+    params["userDefinedModifierDescriptionKeyValuePair"] = json_user_defined_modifier_description_key_value_pair
 
     json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
@@ -98,14 +102,14 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
-    start_time_modifiers: datetime.datetime | Unset = UNSET,
-    end_time_modifiers: datetime.datetime | Unset = UNSET,
-    modifier_type: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    modifier_type_id: str | Unset = UNSET,
     user_id: str | Unset = UNSET,
     location_ids: list[str] | Unset = UNSET,
     module_instance_ids: list[str] | Unset = UNSET,
-    only_active_modifiers: TimeseriesmodifiersOnlyActiveModifiers | Unset = UNSET,
-    user_defined_modifier_description: str | Unset = UNSET,
+    active: TimeseriesmodifiersActive | Unset = UNSET,
+    user_defined_modifier_description_key_value_pair: list[str] | Unset = UNSET,
     document_format: TimeseriesmodifiersDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -114,16 +118,17 @@ def sync_detailed(
      Get timeseries modifiers filtered by parameters like start time, end time and modifier type.
 
     Args:
-        start_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        end_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        modifier_type (str | Unset):
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        modifier_type_id (str | Unset):
         user_id (str | Unset):
         location_ids (list[str] | Unset): The parameter can be repeated
         module_instance_ids (list[str] | Unset): The parameter can be repeated
-        only_active_modifiers (TimeseriesmodifiersOnlyActiveModifiers | Unset):
-        user_defined_modifier_description (str | Unset):
+        active (TimeseriesmodifiersActive | Unset):
+        user_defined_modifier_description_key_value_pair (list[str] | Unset): The parameter can be
+            repeated
         document_format (TimeseriesmodifiersDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -136,14 +141,14 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        start_time_modifiers=start_time_modifiers,
-        end_time_modifiers=end_time_modifiers,
-        modifier_type=modifier_type,
+        start_time=start_time,
+        end_time=end_time,
+        modifier_type_id=modifier_type_id,
         user_id=user_id,
         location_ids=location_ids,
         module_instance_ids=module_instance_ids,
-        only_active_modifiers=only_active_modifiers,
-        user_defined_modifier_description=user_defined_modifier_description,
+        active=active,
+        user_defined_modifier_description_key_value_pair=user_defined_modifier_description_key_value_pair,
         document_format=document_format,
         document_version=document_version,
     )
@@ -158,14 +163,14 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
-    start_time_modifiers: datetime.datetime | Unset = UNSET,
-    end_time_modifiers: datetime.datetime | Unset = UNSET,
-    modifier_type: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    modifier_type_id: str | Unset = UNSET,
     user_id: str | Unset = UNSET,
     location_ids: list[str] | Unset = UNSET,
     module_instance_ids: list[str] | Unset = UNSET,
-    only_active_modifiers: TimeseriesmodifiersOnlyActiveModifiers | Unset = UNSET,
-    user_defined_modifier_description: str | Unset = UNSET,
+    active: TimeseriesmodifiersActive | Unset = UNSET,
+    user_defined_modifier_description_key_value_pair: list[str] | Unset = UNSET,
     document_format: TimeseriesmodifiersDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -174,16 +179,17 @@ async def asyncio_detailed(
      Get timeseries modifiers filtered by parameters like start time, end time and modifier type.
 
     Args:
-        start_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        end_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        modifier_type (str | Unset):
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        modifier_type_id (str | Unset):
         user_id (str | Unset):
         location_ids (list[str] | Unset): The parameter can be repeated
         module_instance_ids (list[str] | Unset): The parameter can be repeated
-        only_active_modifiers (TimeseriesmodifiersOnlyActiveModifiers | Unset):
-        user_defined_modifier_description (str | Unset):
+        active (TimeseriesmodifiersActive | Unset):
+        user_defined_modifier_description_key_value_pair (list[str] | Unset): The parameter can be
+            repeated
         document_format (TimeseriesmodifiersDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -196,14 +202,14 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        start_time_modifiers=start_time_modifiers,
-        end_time_modifiers=end_time_modifiers,
-        modifier_type=modifier_type,
+        start_time=start_time,
+        end_time=end_time,
+        modifier_type_id=modifier_type_id,
         user_id=user_id,
         location_ids=location_ids,
         module_instance_ids=module_instance_ids,
-        only_active_modifiers=only_active_modifiers,
-        user_defined_modifier_description=user_defined_modifier_description,
+        active=active,
+        user_defined_modifier_description_key_value_pair=user_defined_modifier_description_key_value_pair,
         document_format=document_format,
         document_version=document_version,
     )

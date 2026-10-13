@@ -17,6 +17,7 @@ def _get_kwargs(
     start_time: datetime.datetime | Unset = UNSET,
     end_time: datetime.datetime | Unset = UNSET,
     forecast_count: str | Unset = UNSET,
+    version_key: list[str] | Unset = UNSET,
     document_format: ArchiveproductsmetadataDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -43,6 +44,12 @@ def _get_kwargs(
     params["endTime"] = json_end_time
 
     params["forecastCount"] = forecast_count
+
+    json_version_key: list[str] | Unset = UNSET
+    if not isinstance(version_key, Unset):
+        json_version_key = version_key
+
+    params["versionKey"] = json_version_key
 
     json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
@@ -87,6 +94,7 @@ def sync_detailed(
     start_time: datetime.datetime | Unset = UNSET,
     end_time: datetime.datetime | Unset = UNSET,
     forecast_count: str | Unset = UNSET,
+    version_key: list[str] | Unset = UNSET,
     document_format: ArchiveproductsmetadataDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -106,6 +114,7 @@ def sync_detailed(
         end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
             2020-03-18T15:00:00Z.
         forecast_count (str | Unset):  Example: 1.
+        version_key (list[str] | Unset): The parameter can be repeated
         document_format (ArchiveproductsmetadataDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -123,6 +132,7 @@ def sync_detailed(
         start_time=start_time,
         end_time=end_time,
         forecast_count=forecast_count,
+        version_key=version_key,
         document_format=document_format,
         document_version=document_version,
     )
@@ -142,6 +152,7 @@ async def asyncio_detailed(
     start_time: datetime.datetime | Unset = UNSET,
     end_time: datetime.datetime | Unset = UNSET,
     forecast_count: str | Unset = UNSET,
+    version_key: list[str] | Unset = UNSET,
     document_format: ArchiveproductsmetadataDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -161,6 +172,7 @@ async def asyncio_detailed(
         end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
             2020-03-18T15:00:00Z.
         forecast_count (str | Unset):  Example: 1.
+        version_key (list[str] | Unset): The parameter can be repeated
         document_format (ArchiveproductsmetadataDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -178,6 +190,7 @@ async def asyncio_detailed(
         start_time=start_time,
         end_time=end_time,
         forecast_count=forecast_count,
+        version_key=version_key,
         document_format=document_format,
         document_version=document_version,
     )

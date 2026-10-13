@@ -5,6 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.locations_convert_datum import LocationsConvertDatum
 from ...models.locations_document_format import LocationsDocumentFormat
 from ...models.locations_include_icon_names import LocationsIncludeIconNames
 from ...models.locations_include_location_relations import LocationsIncludeLocationRelations
@@ -19,17 +20,20 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     filter_id: str | Unset = UNSET,
-    parameter_ids: str | Unset = UNSET,
+    parameter_ids: list[str] | Unset = UNSET,
     location_ids: list[str] | Unset = UNSET,
-    show_time_series_info: LocationsShowTimeSeriesInfo | Unset = UNSET,
+    location_set_id: str | Unset = UNSET,
     parameter_group_id: str | Unset = UNSET,
-    show_attributes: LocationsShowAttributes | Unset = UNSET,
     attribute_ids: list[str] | Unset = UNSET,
+    layer_id: str | Unset = UNSET,
+    show_time_series_info: LocationsShowTimeSeriesInfo | Unset = UNSET,
+    show_attributes: LocationsShowAttributes | Unset = UNSET,
     show_parent_locations: LocationsShowParentLocations | Unset = UNSET,
     show_thresholds: LocationsShowThresholds | Unset = UNSET,
     include_icon_names: LocationsIncludeIconNames | Unset = UNSET,
     include_location_relations: LocationsIncludeLocationRelations | Unset = UNSET,
     include_time_dependency: LocationsIncludeTimeDependency | Unset = UNSET,
+    convert_datum: LocationsConvertDatum | Unset = UNSET,
     document_format: LocationsDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -37,7 +41,11 @@ def _get_kwargs(
 
     params["filterId"] = filter_id
 
-    params["parameterIds"] = parameter_ids
+    json_parameter_ids: list[str] | Unset = UNSET
+    if not isinstance(parameter_ids, Unset):
+        json_parameter_ids = parameter_ids
+
+    params["parameterIds"] = json_parameter_ids
 
     json_location_ids: list[str] | Unset = UNSET
     if not isinstance(location_ids, Unset):
@@ -45,25 +53,29 @@ def _get_kwargs(
 
     params["locationIds"] = json_location_ids
 
-    json_show_time_series_info: str | Unset = UNSET
-    if not isinstance(show_time_series_info, Unset):
-        json_show_time_series_info = show_time_series_info.value
-
-    params["showTimeSeriesInfo"] = json_show_time_series_info
+    params["locationSetId"] = location_set_id
 
     params["parameterGroupId"] = parameter_group_id
-
-    json_show_attributes: str | Unset = UNSET
-    if not isinstance(show_attributes, Unset):
-        json_show_attributes = show_attributes.value
-
-    params["showAttributes"] = json_show_attributes
 
     json_attribute_ids: list[str] | Unset = UNSET
     if not isinstance(attribute_ids, Unset):
         json_attribute_ids = attribute_ids
 
     params["attributeIds"] = json_attribute_ids
+
+    params["layerId"] = layer_id
+
+    json_show_time_series_info: str | Unset = UNSET
+    if not isinstance(show_time_series_info, Unset):
+        json_show_time_series_info = show_time_series_info.value
+
+    params["showTimeSeriesInfo"] = json_show_time_series_info
+
+    json_show_attributes: str | Unset = UNSET
+    if not isinstance(show_attributes, Unset):
+        json_show_attributes = show_attributes.value
+
+    params["showAttributes"] = json_show_attributes
 
     json_show_parent_locations: str | Unset = UNSET
     if not isinstance(show_parent_locations, Unset):
@@ -94,6 +106,12 @@ def _get_kwargs(
         json_include_time_dependency = include_time_dependency.value
 
     params["includeTimeDependency"] = json_include_time_dependency
+
+    json_convert_datum: str | Unset = UNSET
+    if not isinstance(convert_datum, Unset):
+        json_convert_datum = convert_datum.value
+
+    params["convertDatum"] = json_convert_datum
 
     json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
@@ -134,17 +152,20 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     filter_id: str | Unset = UNSET,
-    parameter_ids: str | Unset = UNSET,
+    parameter_ids: list[str] | Unset = UNSET,
     location_ids: list[str] | Unset = UNSET,
-    show_time_series_info: LocationsShowTimeSeriesInfo | Unset = UNSET,
+    location_set_id: str | Unset = UNSET,
     parameter_group_id: str | Unset = UNSET,
-    show_attributes: LocationsShowAttributes | Unset = UNSET,
     attribute_ids: list[str] | Unset = UNSET,
+    layer_id: str | Unset = UNSET,
+    show_time_series_info: LocationsShowTimeSeriesInfo | Unset = UNSET,
+    show_attributes: LocationsShowAttributes | Unset = UNSET,
     show_parent_locations: LocationsShowParentLocations | Unset = UNSET,
     show_thresholds: LocationsShowThresholds | Unset = UNSET,
     include_icon_names: LocationsIncludeIconNames | Unset = UNSET,
     include_location_relations: LocationsIncludeLocationRelations | Unset = UNSET,
     include_time_dependency: LocationsIncludeTimeDependency | Unset = UNSET,
+    convert_datum: LocationsConvertDatum | Unset = UNSET,
     document_format: LocationsDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -156,17 +177,20 @@ def sync_detailed(
 
     Args:
         filter_id (str | Unset):
-        parameter_ids (str | Unset):
+        parameter_ids (list[str] | Unset): The parameter can be repeated
         location_ids (list[str] | Unset): The parameter can be repeated
-        show_time_series_info (LocationsShowTimeSeriesInfo | Unset):
+        location_set_id (str | Unset):
         parameter_group_id (str | Unset):
-        show_attributes (LocationsShowAttributes | Unset):
         attribute_ids (list[str] | Unset): The parameter can be repeated
+        layer_id (str | Unset):  Example: Temp_forecast.
+        show_time_series_info (LocationsShowTimeSeriesInfo | Unset):
+        show_attributes (LocationsShowAttributes | Unset):
         show_parent_locations (LocationsShowParentLocations | Unset):
         show_thresholds (LocationsShowThresholds | Unset):
         include_icon_names (LocationsIncludeIconNames | Unset):
         include_location_relations (LocationsIncludeLocationRelations | Unset):
         include_time_dependency (LocationsIncludeTimeDependency | Unset):
+        convert_datum (LocationsConvertDatum | Unset):
         document_format (LocationsDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -182,15 +206,18 @@ def sync_detailed(
         filter_id=filter_id,
         parameter_ids=parameter_ids,
         location_ids=location_ids,
-        show_time_series_info=show_time_series_info,
+        location_set_id=location_set_id,
         parameter_group_id=parameter_group_id,
-        show_attributes=show_attributes,
         attribute_ids=attribute_ids,
+        layer_id=layer_id,
+        show_time_series_info=show_time_series_info,
+        show_attributes=show_attributes,
         show_parent_locations=show_parent_locations,
         show_thresholds=show_thresholds,
         include_icon_names=include_icon_names,
         include_location_relations=include_location_relations,
         include_time_dependency=include_time_dependency,
+        convert_datum=convert_datum,
         document_format=document_format,
         document_version=document_version,
     )
@@ -206,17 +233,20 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     filter_id: str | Unset = UNSET,
-    parameter_ids: str | Unset = UNSET,
+    parameter_ids: list[str] | Unset = UNSET,
     location_ids: list[str] | Unset = UNSET,
-    show_time_series_info: LocationsShowTimeSeriesInfo | Unset = UNSET,
+    location_set_id: str | Unset = UNSET,
     parameter_group_id: str | Unset = UNSET,
-    show_attributes: LocationsShowAttributes | Unset = UNSET,
     attribute_ids: list[str] | Unset = UNSET,
+    layer_id: str | Unset = UNSET,
+    show_time_series_info: LocationsShowTimeSeriesInfo | Unset = UNSET,
+    show_attributes: LocationsShowAttributes | Unset = UNSET,
     show_parent_locations: LocationsShowParentLocations | Unset = UNSET,
     show_thresholds: LocationsShowThresholds | Unset = UNSET,
     include_icon_names: LocationsIncludeIconNames | Unset = UNSET,
     include_location_relations: LocationsIncludeLocationRelations | Unset = UNSET,
     include_time_dependency: LocationsIncludeTimeDependency | Unset = UNSET,
+    convert_datum: LocationsConvertDatum | Unset = UNSET,
     document_format: LocationsDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -228,17 +258,20 @@ async def asyncio_detailed(
 
     Args:
         filter_id (str | Unset):
-        parameter_ids (str | Unset):
+        parameter_ids (list[str] | Unset): The parameter can be repeated
         location_ids (list[str] | Unset): The parameter can be repeated
-        show_time_series_info (LocationsShowTimeSeriesInfo | Unset):
+        location_set_id (str | Unset):
         parameter_group_id (str | Unset):
-        show_attributes (LocationsShowAttributes | Unset):
         attribute_ids (list[str] | Unset): The parameter can be repeated
+        layer_id (str | Unset):  Example: Temp_forecast.
+        show_time_series_info (LocationsShowTimeSeriesInfo | Unset):
+        show_attributes (LocationsShowAttributes | Unset):
         show_parent_locations (LocationsShowParentLocations | Unset):
         show_thresholds (LocationsShowThresholds | Unset):
         include_icon_names (LocationsIncludeIconNames | Unset):
         include_location_relations (LocationsIncludeLocationRelations | Unset):
         include_time_dependency (LocationsIncludeTimeDependency | Unset):
+        convert_datum (LocationsConvertDatum | Unset):
         document_format (LocationsDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -254,15 +287,18 @@ async def asyncio_detailed(
         filter_id=filter_id,
         parameter_ids=parameter_ids,
         location_ids=location_ids,
-        show_time_series_info=show_time_series_info,
+        location_set_id=location_set_id,
         parameter_group_id=parameter_group_id,
-        show_attributes=show_attributes,
         attribute_ids=attribute_ids,
+        layer_id=layer_id,
+        show_time_series_info=show_time_series_info,
+        show_attributes=show_attributes,
         show_parent_locations=show_parent_locations,
         show_thresholds=show_thresholds,
         include_icon_names=include_icon_names,
         include_location_relations=include_location_relations,
         include_time_dependency=include_time_dependency,
+        convert_datum=convert_datum,
         document_format=document_format,
         document_version=document_version,
     )

@@ -1,11 +1,11 @@
 [project]
 name = "fews-openapi-py-client"
-version = "0.1.0"
+version = "1.1.1"
 description = "A client library for accessing Delft-FEWS Web Services REST API v1"
 authors = [{ name = "Deltares" }]
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "httpx>=0.23.0,<0.29.0",
     "attrs>=22.2.0",
@@ -31,7 +31,7 @@ include = ["fews-openapi-py-client/fews_openapi_py_client/py.typed"]
 
 [tool.ruff]
 line-length = 120
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.lint]
 select = ["F", "I", "UP", "E", "N", "W"]

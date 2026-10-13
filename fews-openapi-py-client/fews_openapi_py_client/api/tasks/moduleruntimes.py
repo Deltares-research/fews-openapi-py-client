@@ -6,18 +6,26 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.moduleruntimes_document_format import ModuleruntimesDocumentFormat
+from ...models.moduleruntimes_include_manual_tasks import ModuleruntimesIncludeManualTasks
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     workflow_id: str | Unset = UNSET,
+    include_manual_tasks: ModuleruntimesIncludeManualTasks | Unset = UNSET,
     document_format: ModuleruntimesDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["workflowId"] = workflow_id
+
+    json_include_manual_tasks: str | Unset = UNSET
+    if not isinstance(include_manual_tasks, Unset):
+        json_include_manual_tasks = include_manual_tasks.value
+
+    params["includeManualTasks"] = json_include_manual_tasks
 
     json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
@@ -58,6 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     workflow_id: str | Unset = UNSET,
+    include_manual_tasks: ModuleruntimesIncludeManualTasks | Unset = UNSET,
     document_format: ModuleruntimesDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -77,6 +86,7 @@ def sync_detailed(
 
     Args:
         workflow_id (str | Unset):
+        include_manual_tasks (ModuleruntimesIncludeManualTasks | Unset):
         document_format (ModuleruntimesDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -90,6 +100,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
+        include_manual_tasks=include_manual_tasks,
         document_format=document_format,
         document_version=document_version,
     )
@@ -105,6 +116,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     workflow_id: str | Unset = UNSET,
+    include_manual_tasks: ModuleruntimesIncludeManualTasks | Unset = UNSET,
     document_format: ModuleruntimesDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -124,6 +136,7 @@ async def asyncio_detailed(
 
     Args:
         workflow_id (str | Unset):
+        include_manual_tasks (ModuleruntimesIncludeManualTasks | Unset):
         document_format (ModuleruntimesDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -137,6 +150,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
+        include_manual_tasks=include_manual_tasks,
         document_format=document_format,
         document_version=document_version,
     )
