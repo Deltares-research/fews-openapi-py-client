@@ -1,6 +1,6 @@
 [project]
 name = "fews-openapi-py-client"
-version = "0.2.0"
+version = "0.2.1"
 description = "A client library for accessing Delft-FEWS Web Services REST API v1"
 authors = [{ name = "Deltares" }]
 readme = "README.md"
