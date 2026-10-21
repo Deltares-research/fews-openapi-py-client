@@ -6,17 +6,18 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.timeserieshistory_convert_datum import TimeserieshistoryConvertDatum
 from ...models.timeserieshistory_document_format import TimeserieshistoryDocumentFormat
+from ...models.timeserieshistory_use_display_units import TimeserieshistoryUseDisplayUnits
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     times: datetime.datetime | Unset = UNSET,
-    location_id: str | Unset = UNSET,
-    ensemble_id: str | Unset = UNSET,
-    ensemble_member_id: str | Unset = UNSET,
     time_series_id: str | Unset = UNSET,
+    convert_datum: TimeserieshistoryConvertDatum | Unset = UNSET,
+    use_display_units: TimeserieshistoryUseDisplayUnits | Unset = UNSET,
     document_format: TimeserieshistoryDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -27,13 +28,19 @@ def _get_kwargs(
         json_times = times.isoformat()
     params["times"] = json_times
 
-    params["locationId"] = location_id
-
-    params["ensembleId"] = ensemble_id
-
-    params["ensembleMemberId"] = ensemble_member_id
-
     params["timeSeriesId"] = time_series_id
+
+    json_convert_datum: str | Unset = UNSET
+    if not isinstance(convert_datum, Unset):
+        json_convert_datum = convert_datum.value
+
+    params["convertDatum"] = json_convert_datum
+
+    json_use_display_units: str | Unset = UNSET
+    if not isinstance(use_display_units, Unset):
+        json_use_display_units = use_display_units.value
+
+    params["useDisplayUnits"] = json_use_display_units
 
     json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
@@ -74,10 +81,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     times: datetime.datetime | Unset = UNSET,
-    location_id: str | Unset = UNSET,
-    ensemble_id: str | Unset = UNSET,
-    ensemble_member_id: str | Unset = UNSET,
     time_series_id: str | Unset = UNSET,
+    convert_datum: TimeserieshistoryConvertDatum | Unset = UNSET,
+    use_display_units: TimeserieshistoryUseDisplayUnits | Unset = UNSET,
     document_format: TimeserieshistoryDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -89,10 +95,9 @@ def sync_detailed(
     Args:
         times (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
             2020-03-18T15:00:00Z.
-        location_id (str | Unset):  Example: myLocationId.
-        ensemble_id (str | Unset):  Example: myEnsembleId.
-        ensemble_member_id (str | Unset):  Example: myEnsembleId.
         time_series_id (str | Unset):
+        convert_datum (TimeserieshistoryConvertDatum | Unset):
+        use_display_units (TimeserieshistoryUseDisplayUnits | Unset):
         document_format (TimeserieshistoryDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -106,10 +111,9 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         times=times,
-        location_id=location_id,
-        ensemble_id=ensemble_id,
-        ensemble_member_id=ensemble_member_id,
         time_series_id=time_series_id,
+        convert_datum=convert_datum,
+        use_display_units=use_display_units,
         document_format=document_format,
         document_version=document_version,
     )
@@ -125,10 +129,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     times: datetime.datetime | Unset = UNSET,
-    location_id: str | Unset = UNSET,
-    ensemble_id: str | Unset = UNSET,
-    ensemble_member_id: str | Unset = UNSET,
     time_series_id: str | Unset = UNSET,
+    convert_datum: TimeserieshistoryConvertDatum | Unset = UNSET,
+    use_display_units: TimeserieshistoryUseDisplayUnits | Unset = UNSET,
     document_format: TimeserieshistoryDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -140,10 +143,9 @@ async def asyncio_detailed(
     Args:
         times (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
             2020-03-18T15:00:00Z.
-        location_id (str | Unset):  Example: myLocationId.
-        ensemble_id (str | Unset):  Example: myEnsembleId.
-        ensemble_member_id (str | Unset):  Example: myEnsembleId.
         time_series_id (str | Unset):
+        convert_datum (TimeserieshistoryConvertDatum | Unset):
+        use_display_units (TimeserieshistoryUseDisplayUnits | Unset):
         document_format (TimeserieshistoryDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -157,10 +159,9 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         times=times,
-        location_id=location_id,
-        ensemble_id=ensemble_id,
-        ensemble_member_id=ensemble_member_id,
         time_series_id=time_series_id,
+        convert_datum=convert_datum,
+        use_display_units=use_display_units,
         document_format=document_format,
         document_version=document_version,
     )

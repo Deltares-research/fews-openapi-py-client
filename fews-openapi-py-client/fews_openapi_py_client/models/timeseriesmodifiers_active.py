@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class TimeseriesmodifiersOnlyActiveModifiers(str, Enum):
+class TimeseriesmodifiersActive(str, Enum):
     FALSE = "false"
     TRUE = "true"
 

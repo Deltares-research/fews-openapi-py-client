@@ -12,25 +12,25 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    start_time_modifiers: datetime.datetime | Unset = UNSET,
-    end_time_modifiers: datetime.datetime | Unset = UNSET,
-    modifier_type: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    modifier_type_id: str | Unset = UNSET,
     document_format: ModifiersDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_start_time_modifiers: str | Unset = UNSET
-    if not isinstance(start_time_modifiers, Unset):
-        json_start_time_modifiers = start_time_modifiers.isoformat()
-    params["startTimeModifiers"] = json_start_time_modifiers
+    json_start_time: str | Unset = UNSET
+    if not isinstance(start_time, Unset):
+        json_start_time = start_time.isoformat()
+    params["startTime"] = json_start_time
 
-    json_end_time_modifiers: str | Unset = UNSET
-    if not isinstance(end_time_modifiers, Unset):
-        json_end_time_modifiers = end_time_modifiers.isoformat()
-    params["endTimeModifiers"] = json_end_time_modifiers
+    json_end_time: str | Unset = UNSET
+    if not isinstance(end_time, Unset):
+        json_end_time = end_time.isoformat()
+    params["endTime"] = json_end_time
 
-    params["modifierType"] = modifier_type
+    params["modifierTypeId"] = modifier_type_id
 
     json_document_format: str | Unset = UNSET
     if not isinstance(document_format, Unset):
@@ -70,9 +70,9 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
-    start_time_modifiers: datetime.datetime | Unset = UNSET,
-    end_time_modifiers: datetime.datetime | Unset = UNSET,
-    modifier_type: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    modifier_type_id: str | Unset = UNSET,
     document_format: ModifiersDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -81,11 +81,11 @@ def sync_detailed(
      Get modifiers filtered by parameters like start time, end time and modifier type.
 
     Args:
-        start_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        end_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        modifier_type (str | Unset):
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        modifier_type_id (str | Unset):
         document_format (ModifiersDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -98,9 +98,9 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        start_time_modifiers=start_time_modifiers,
-        end_time_modifiers=end_time_modifiers,
-        modifier_type=modifier_type,
+        start_time=start_time,
+        end_time=end_time,
+        modifier_type_id=modifier_type_id,
         document_format=document_format,
         document_version=document_version,
     )
@@ -115,9 +115,9 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
-    start_time_modifiers: datetime.datetime | Unset = UNSET,
-    end_time_modifiers: datetime.datetime | Unset = UNSET,
-    modifier_type: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    modifier_type_id: str | Unset = UNSET,
     document_format: ModifiersDocumentFormat | Unset = UNSET,
     document_version: str | Unset = UNSET,
 ) -> Response[Any]:
@@ -126,11 +126,11 @@ async def asyncio_detailed(
      Get modifiers filtered by parameters like start time, end time and modifier type.
 
     Args:
-        start_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC
-            3339. Example: 2020-03-18T15:00:00Z.
-        end_time_modifiers (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
+        start_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
-        modifier_type (str | Unset):
+        end_time (datetime.datetime | Unset): Date-time string that adheres to RFC 3339. Example:
+            2020-03-18T15:00:00Z.
+        modifier_type_id (str | Unset):
         document_format (ModifiersDocumentFormat | Unset):
         document_version (str | Unset):
 
@@ -143,9 +143,9 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        start_time_modifiers=start_time_modifiers,
-        end_time_modifiers=end_time_modifiers,
-        modifier_type=modifier_type,
+        start_time=start_time,
+        end_time=end_time,
+        modifier_type_id=modifier_type_id,
         document_format=document_format,
         document_version=document_version,
     )

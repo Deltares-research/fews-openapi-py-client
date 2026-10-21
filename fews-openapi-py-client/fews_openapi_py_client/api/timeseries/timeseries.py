@@ -27,6 +27,7 @@ from ...models.timeseries_only_manual_edits import TimeseriesOnlyManualEdits
 from ...models.timeseries_resampling_method import TimeseriesResamplingMethod
 from ...models.timeseries_resampling_omit_missing import TimeseriesResamplingOmitMissing
 from ...models.timeseries_show_ensemble_member_ids import TimeseriesShowEnsembleMemberIds
+from ...models.timeseries_show_fews_time_series_metadata import TimeseriesShowFewsTimeSeriesMetadata
 from ...models.timeseries_show_products import TimeseriesShowProducts
 from ...models.timeseries_show_statistics import TimeseriesShowStatistics
 from ...models.timeseries_show_thresholds import TimeseriesShowThresholds
@@ -40,13 +41,18 @@ def _get_kwargs(
     *,
     filter_id: str | Unset = UNSET,
     location_ids: list[str] | Unset = UNSET,
+    layer_id: str | Unset = UNSET,
     parameter_ids: list[str] | Unset = UNSET,
     module_instance_ids: list[str] | Unset = UNSET,
     qualifier_ids: list[str] | Unset = UNSET,
     task_run_ids: list[str] | Unset = UNSET,
     statistical_function: str | Unset = UNSET,
+    aggregation: str | Unset = UNSET,
     percentile_exceedance: str | Unset = UNSET,
-    percentil_non_exceedance: str | Unset = UNSET,
+    percentile_non_exceedance: str | Unset = UNSET,
+    time_step_millis: str | Unset = UNSET,
+    event_lower_value: str | Unset = UNSET,
+    event_upper_value: str | Unset = UNSET,
     start_time: str | Unset = UNSET,
     end_time: str | Unset = UNSET,
     before_start_time_count: str | Unset = UNSET,
@@ -75,6 +81,7 @@ def _get_kwargs(
     import_from_external_data_source: TimeseriesImportFromExternalDataSource | Unset = UNSET,
     convert_datum: TimeseriesConvertDatum | Unset = UNSET,
     convert_values_to_enumeration_labels: TimeseriesConvertValuesToEnumerationLabels | Unset = UNSET,
+    show_fews_time_series_metadata: TimeseriesShowFewsTimeSeriesMetadata | Unset = UNSET,
     show_ensemble_member_ids: TimeseriesShowEnsembleMemberIds | Unset = UNSET,
     use_display_units: TimeseriesUseDisplayUnits | Unset = UNSET,
     show_thresholds: TimeseriesShowThresholds | Unset = UNSET,
@@ -109,6 +116,8 @@ def _get_kwargs(
 
     params["locationIds"] = json_location_ids
 
+    params["layerId"] = layer_id
+
     json_parameter_ids: list[str] | Unset = UNSET
     if not isinstance(parameter_ids, Unset):
         json_parameter_ids = parameter_ids
@@ -135,9 +144,17 @@ def _get_kwargs(
 
     params["statisticalFunction"] = statistical_function
 
+    params["aggregation"] = aggregation
+
     params["percentileExceedance"] = percentile_exceedance
 
-    params["percentilNonExceedance"] = percentil_non_exceedance
+    params["percentileNonExceedance"] = percentile_non_exceedance
+
+    params["timeStepMillis"] = time_step_millis
+
+    params["eventLowerValue"] = event_lower_value
+
+    params["eventUpperValue"] = event_upper_value
 
     json_start_time: str | Unset = UNSET
     if not isinstance(start_time, Unset):
@@ -244,6 +261,12 @@ def _get_kwargs(
         json_convert_values_to_enumeration_labels = convert_values_to_enumeration_labels.value
 
     params["convertValuesToEnumerationLabels"] = json_convert_values_to_enumeration_labels
+
+    json_show_fews_time_series_metadata: str | Unset = UNSET
+    if not isinstance(show_fews_time_series_metadata, Unset):
+        json_show_fews_time_series_metadata = show_fews_time_series_metadata.value
+
+    params["showFewsTimeSeriesMetadata"] = json_show_fews_time_series_metadata
 
     json_show_ensemble_member_ids: str | Unset = UNSET
     if not isinstance(show_ensemble_member_ids, Unset):
@@ -411,13 +434,18 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     filter_id: str | Unset = UNSET,
     location_ids: list[str] | Unset = UNSET,
+    layer_id: str | Unset = UNSET,
     parameter_ids: list[str] | Unset = UNSET,
     module_instance_ids: list[str] | Unset = UNSET,
     qualifier_ids: list[str] | Unset = UNSET,
     task_run_ids: list[str] | Unset = UNSET,
     statistical_function: str | Unset = UNSET,
+    aggregation: str | Unset = UNSET,
     percentile_exceedance: str | Unset = UNSET,
-    percentil_non_exceedance: str | Unset = UNSET,
+    percentile_non_exceedance: str | Unset = UNSET,
+    time_step_millis: str | Unset = UNSET,
+    event_lower_value: str | Unset = UNSET,
+    event_upper_value: str | Unset = UNSET,
     start_time: str | Unset = UNSET,
     end_time: str | Unset = UNSET,
     before_start_time_count: str | Unset = UNSET,
@@ -446,6 +474,7 @@ def sync_detailed(
     import_from_external_data_source: TimeseriesImportFromExternalDataSource | Unset = UNSET,
     convert_datum: TimeseriesConvertDatum | Unset = UNSET,
     convert_values_to_enumeration_labels: TimeseriesConvertValuesToEnumerationLabels | Unset = UNSET,
+    show_fews_time_series_metadata: TimeseriesShowFewsTimeSeriesMetadata | Unset = UNSET,
     show_ensemble_member_ids: TimeseriesShowEnsembleMemberIds | Unset = UNSET,
     use_display_units: TimeseriesUseDisplayUnits | Unset = UNSET,
     show_thresholds: TimeseriesShowThresholds | Unset = UNSET,
@@ -635,13 +664,18 @@ def sync_detailed(
     Args:
         filter_id (str | Unset):
         location_ids (list[str] | Unset): The parameter can be repeated
+        layer_id (str | Unset):  Example: Temp_forecast.
         parameter_ids (list[str] | Unset): The parameter can be repeated
         module_instance_ids (list[str] | Unset): The parameter can be repeated
         qualifier_ids (list[str] | Unset): The parameter can be repeated
         task_run_ids (list[str] | Unset): The parameter can be repeated
         statistical_function (str | Unset):
+        aggregation (str | Unset):
         percentile_exceedance (str | Unset):
-        percentil_non_exceedance (str | Unset):
+        percentile_non_exceedance (str | Unset):
+        time_step_millis (str | Unset):  Example: 3600000.
+        event_lower_value (str | Unset):
+        event_upper_value (str | Unset):
         start_time (str | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
         end_time (str | Unset): Date-time string that adheres to RFC 3339. Example:
@@ -677,6 +711,7 @@ def sync_detailed(
         import_from_external_data_source (TimeseriesImportFromExternalDataSource | Unset):
         convert_datum (TimeseriesConvertDatum | Unset):
         convert_values_to_enumeration_labels (TimeseriesConvertValuesToEnumerationLabels | Unset):
+        show_fews_time_series_metadata (TimeseriesShowFewsTimeSeriesMetadata | Unset):
         show_ensemble_member_ids (TimeseriesShowEnsembleMemberIds | Unset):
         use_display_units (TimeseriesUseDisplayUnits | Unset):
         show_thresholds (TimeseriesShowThresholds | Unset):
@@ -712,13 +747,18 @@ def sync_detailed(
     kwargs = _get_kwargs(
         filter_id=filter_id,
         location_ids=location_ids,
+        layer_id=layer_id,
         parameter_ids=parameter_ids,
         module_instance_ids=module_instance_ids,
         qualifier_ids=qualifier_ids,
         task_run_ids=task_run_ids,
         statistical_function=statistical_function,
+        aggregation=aggregation,
         percentile_exceedance=percentile_exceedance,
-        percentil_non_exceedance=percentil_non_exceedance,
+        percentile_non_exceedance=percentile_non_exceedance,
+        time_step_millis=time_step_millis,
+        event_lower_value=event_lower_value,
+        event_upper_value=event_upper_value,
         start_time=start_time,
         end_time=end_time,
         before_start_time_count=before_start_time_count,
@@ -747,6 +787,7 @@ def sync_detailed(
         import_from_external_data_source=import_from_external_data_source,
         convert_datum=convert_datum,
         convert_values_to_enumeration_labels=convert_values_to_enumeration_labels,
+        show_fews_time_series_metadata=show_fews_time_series_metadata,
         show_ensemble_member_ids=show_ensemble_member_ids,
         use_display_units=use_display_units,
         show_thresholds=show_thresholds,
@@ -784,13 +825,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     filter_id: str | Unset = UNSET,
     location_ids: list[str] | Unset = UNSET,
+    layer_id: str | Unset = UNSET,
     parameter_ids: list[str] | Unset = UNSET,
     module_instance_ids: list[str] | Unset = UNSET,
     qualifier_ids: list[str] | Unset = UNSET,
     task_run_ids: list[str] | Unset = UNSET,
     statistical_function: str | Unset = UNSET,
+    aggregation: str | Unset = UNSET,
     percentile_exceedance: str | Unset = UNSET,
-    percentil_non_exceedance: str | Unset = UNSET,
+    percentile_non_exceedance: str | Unset = UNSET,
+    time_step_millis: str | Unset = UNSET,
+    event_lower_value: str | Unset = UNSET,
+    event_upper_value: str | Unset = UNSET,
     start_time: str | Unset = UNSET,
     end_time: str | Unset = UNSET,
     before_start_time_count: str | Unset = UNSET,
@@ -819,6 +865,7 @@ async def asyncio_detailed(
     import_from_external_data_source: TimeseriesImportFromExternalDataSource | Unset = UNSET,
     convert_datum: TimeseriesConvertDatum | Unset = UNSET,
     convert_values_to_enumeration_labels: TimeseriesConvertValuesToEnumerationLabels | Unset = UNSET,
+    show_fews_time_series_metadata: TimeseriesShowFewsTimeSeriesMetadata | Unset = UNSET,
     show_ensemble_member_ids: TimeseriesShowEnsembleMemberIds | Unset = UNSET,
     use_display_units: TimeseriesUseDisplayUnits | Unset = UNSET,
     show_thresholds: TimeseriesShowThresholds | Unset = UNSET,
@@ -1008,13 +1055,18 @@ async def asyncio_detailed(
     Args:
         filter_id (str | Unset):
         location_ids (list[str] | Unset): The parameter can be repeated
+        layer_id (str | Unset):  Example: Temp_forecast.
         parameter_ids (list[str] | Unset): The parameter can be repeated
         module_instance_ids (list[str] | Unset): The parameter can be repeated
         qualifier_ids (list[str] | Unset): The parameter can be repeated
         task_run_ids (list[str] | Unset): The parameter can be repeated
         statistical_function (str | Unset):
+        aggregation (str | Unset):
         percentile_exceedance (str | Unset):
-        percentil_non_exceedance (str | Unset):
+        percentile_non_exceedance (str | Unset):
+        time_step_millis (str | Unset):  Example: 3600000.
+        event_lower_value (str | Unset):
+        event_upper_value (str | Unset):
         start_time (str | Unset): Date-time string that adheres to RFC 3339.
             Example: 2020-03-18T15:00:00Z.
         end_time (str | Unset): Date-time string that adheres to RFC 3339. Example:
@@ -1050,6 +1102,7 @@ async def asyncio_detailed(
         import_from_external_data_source (TimeseriesImportFromExternalDataSource | Unset):
         convert_datum (TimeseriesConvertDatum | Unset):
         convert_values_to_enumeration_labels (TimeseriesConvertValuesToEnumerationLabels | Unset):
+        show_fews_time_series_metadata (TimeseriesShowFewsTimeSeriesMetadata | Unset):
         show_ensemble_member_ids (TimeseriesShowEnsembleMemberIds | Unset):
         use_display_units (TimeseriesUseDisplayUnits | Unset):
         show_thresholds (TimeseriesShowThresholds | Unset):
@@ -1085,13 +1138,18 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         filter_id=filter_id,
         location_ids=location_ids,
+        layer_id=layer_id,
         parameter_ids=parameter_ids,
         module_instance_ids=module_instance_ids,
         qualifier_ids=qualifier_ids,
         task_run_ids=task_run_ids,
         statistical_function=statistical_function,
+        aggregation=aggregation,
         percentile_exceedance=percentile_exceedance,
-        percentil_non_exceedance=percentil_non_exceedance,
+        percentile_non_exceedance=percentile_non_exceedance,
+        time_step_millis=time_step_millis,
+        event_lower_value=event_lower_value,
+        event_upper_value=event_upper_value,
         start_time=start_time,
         end_time=end_time,
         before_start_time_count=before_start_time_count,
@@ -1120,6 +1178,7 @@ async def asyncio_detailed(
         import_from_external_data_source=import_from_external_data_source,
         convert_datum=convert_datum,
         convert_values_to_enumeration_labels=convert_values_to_enumeration_labels,
+        show_fews_time_series_metadata=show_fews_time_series_metadata,
         show_ensemble_member_ids=show_ensemble_member_ids,
         use_display_units=use_display_units,
         show_thresholds=show_thresholds,

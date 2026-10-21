@@ -19,6 +19,7 @@ def _get_kwargs(
     layers: str,
     aggregation: str | Unset = UNSET,
     external_forecast_time: datetime.datetime | Unset = UNSET,
+    task_run_id: str | Unset = UNSET,
     convert_datum: TimeseriesgridmaxvaluesConvertDatum | Unset = UNSET,
     use_display_units: TimeseriesgridmaxvaluesUseDisplayUnits | Unset = UNSET,
     download_as_file: str | Unset = UNSET,
@@ -45,6 +46,8 @@ def _get_kwargs(
     if not isinstance(external_forecast_time, Unset):
         json_external_forecast_time = external_forecast_time.isoformat()
     params["externalForecastTime"] = json_external_forecast_time
+
+    params["taskRunId"] = task_run_id
 
     json_convert_datum: str | Unset = UNSET
     if not isinstance(convert_datum, Unset):
@@ -103,6 +106,7 @@ def sync_detailed(
     layers: str,
     aggregation: str | Unset = UNSET,
     external_forecast_time: datetime.datetime | Unset = UNSET,
+    task_run_id: str | Unset = UNSET,
     convert_datum: TimeseriesgridmaxvaluesConvertDatum | Unset = UNSET,
     use_display_units: TimeseriesgridmaxvaluesUseDisplayUnits | Unset = UNSET,
     download_as_file: str | Unset = UNSET,
@@ -127,6 +131,7 @@ def sync_detailed(
         aggregation (str | Unset):  Example: day.
         external_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
+        task_run_id (str | Unset):
         convert_datum (TimeseriesgridmaxvaluesConvertDatum | Unset):
         use_display_units (TimeseriesgridmaxvaluesUseDisplayUnits | Unset):
         download_as_file (str | Unset):
@@ -147,6 +152,7 @@ def sync_detailed(
         layers=layers,
         aggregation=aggregation,
         external_forecast_time=external_forecast_time,
+        task_run_id=task_run_id,
         convert_datum=convert_datum,
         use_display_units=use_display_units,
         download_as_file=download_as_file,
@@ -169,6 +175,7 @@ async def asyncio_detailed(
     layers: str,
     aggregation: str | Unset = UNSET,
     external_forecast_time: datetime.datetime | Unset = UNSET,
+    task_run_id: str | Unset = UNSET,
     convert_datum: TimeseriesgridmaxvaluesConvertDatum | Unset = UNSET,
     use_display_units: TimeseriesgridmaxvaluesUseDisplayUnits | Unset = UNSET,
     download_as_file: str | Unset = UNSET,
@@ -193,6 +200,7 @@ async def asyncio_detailed(
         aggregation (str | Unset):  Example: day.
         external_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
+        task_run_id (str | Unset):
         convert_datum (TimeseriesgridmaxvaluesConvertDatum | Unset):
         use_display_units (TimeseriesgridmaxvaluesUseDisplayUnits | Unset):
         download_as_file (str | Unset):
@@ -213,6 +221,7 @@ async def asyncio_detailed(
         layers=layers,
         aggregation=aggregation,
         external_forecast_time=external_forecast_time,
+        task_run_id=task_run_id,
         convert_datum=convert_datum,
         use_display_units=use_display_units,
         download_as_file=download_as_file,

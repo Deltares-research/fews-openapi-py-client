@@ -17,6 +17,8 @@ def _get_kwargs(
     area_id: str | Unset = UNSET,
     source_id: str | Unset = UNSET,
     sub_folder: str | Unset = UNSET,
+    file_name: str | Unset = UNSET,
+    version_key: list[str] | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -32,6 +34,14 @@ def _get_kwargs(
     params["sourceId"] = source_id
 
     params["subFolder"] = sub_folder
+
+    params["fileName"] = file_name
+
+    json_version_key: list[str] | Unset = UNSET
+    if not isinstance(version_key, Unset):
+        json_version_key = version_key
+
+    params["versionKey"] = json_version_key
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -76,6 +86,8 @@ def sync_detailed(
     area_id: str | Unset = UNSET,
     source_id: str | Unset = UNSET,
     sub_folder: str | Unset = UNSET,
+    file_name: str | Unset = UNSET,
+    version_key: list[str] | Unset = UNSET,
 ) -> Response[str]:
     """upload new products to the archive
 
@@ -89,6 +101,8 @@ def sync_detailed(
         area_id (str | Unset):
         source_id (str | Unset):
         sub_folder (str | Unset):
+        file_name (str | Unset):  Example: weerbeeld_maas.txt.
+        version_key (list[str] | Unset): The parameter can be repeated
         body (PostarchiveproductsBody | Unset):
 
     Raises:
@@ -105,6 +119,8 @@ def sync_detailed(
         area_id=area_id,
         source_id=source_id,
         sub_folder=sub_folder,
+        file_name=file_name,
+        version_key=version_key,
     )
 
     response = client.get_httpx_client().request(
@@ -122,6 +138,8 @@ def sync(
     area_id: str | Unset = UNSET,
     source_id: str | Unset = UNSET,
     sub_folder: str | Unset = UNSET,
+    file_name: str | Unset = UNSET,
+    version_key: list[str] | Unset = UNSET,
 ) -> str | None:
     """upload new products to the archive
 
@@ -135,6 +153,8 @@ def sync(
         area_id (str | Unset):
         source_id (str | Unset):
         sub_folder (str | Unset):
+        file_name (str | Unset):  Example: weerbeeld_maas.txt.
+        version_key (list[str] | Unset): The parameter can be repeated
         body (PostarchiveproductsBody | Unset):
 
     Raises:
@@ -152,6 +172,8 @@ def sync(
         area_id=area_id,
         source_id=source_id,
         sub_folder=sub_folder,
+        file_name=file_name,
+        version_key=version_key,
     ).parsed
 
 
@@ -163,6 +185,8 @@ async def asyncio_detailed(
     area_id: str | Unset = UNSET,
     source_id: str | Unset = UNSET,
     sub_folder: str | Unset = UNSET,
+    file_name: str | Unset = UNSET,
+    version_key: list[str] | Unset = UNSET,
 ) -> Response[str]:
     """upload new products to the archive
 
@@ -176,6 +200,8 @@ async def asyncio_detailed(
         area_id (str | Unset):
         source_id (str | Unset):
         sub_folder (str | Unset):
+        file_name (str | Unset):  Example: weerbeeld_maas.txt.
+        version_key (list[str] | Unset): The parameter can be repeated
         body (PostarchiveproductsBody | Unset):
 
     Raises:
@@ -192,6 +218,8 @@ async def asyncio_detailed(
         area_id=area_id,
         source_id=source_id,
         sub_folder=sub_folder,
+        file_name=file_name,
+        version_key=version_key,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -207,6 +235,8 @@ async def asyncio(
     area_id: str | Unset = UNSET,
     source_id: str | Unset = UNSET,
     sub_folder: str | Unset = UNSET,
+    file_name: str | Unset = UNSET,
+    version_key: list[str] | Unset = UNSET,
 ) -> str | None:
     """upload new products to the archive
 
@@ -220,6 +250,8 @@ async def asyncio(
         area_id (str | Unset):
         source_id (str | Unset):
         sub_folder (str | Unset):
+        file_name (str | Unset):  Example: weerbeeld_maas.txt.
+        version_key (list[str] | Unset): The parameter can be repeated
         body (PostarchiveproductsBody | Unset):
 
     Raises:
@@ -238,5 +270,7 @@ async def asyncio(
             area_id=area_id,
             source_id=source_id,
             sub_folder=sub_folder,
+            file_name=file_name,
+            version_key=version_key,
         )
     ).parsed

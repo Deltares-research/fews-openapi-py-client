@@ -61,27 +61,3 @@ REPLACEMENT_PATTERNS = {
 ```
 
 The script uses Python's `re.sub()` function, so you can use capture groups (for example, `\1` or `\2`) in replacement strings to reference matched groups from the pattern.
-
-## Publishing to PyPI
-
-This repository publishes to PyPI from GitHub Actions when a tag starting with `v` is pushed, for example `v0.1.0`.
-
-Before the first release:
-
-1. Create the project on PyPI, or reserve the name by publishing the first release.
-2. Configure a PyPI Trusted Publisher for this GitHub repository with:
-   - Workflow: `.github/workflows/publish-to-pypi.yml`
-   - Environment: `pypi`
-3. Ensure the version in `pyproject.toml` is the version you want to publish.
-
-To publish a release:
-
-```bash
-git checkout main
-git pull
-git tag v0.1.0
-git push origin v0.1.0
-```
-
-The workflow verifies that the tagged commit is on `main`, builds the source distribution and wheel, checks the package metadata, and publishes the artifacts to PyPI.
-

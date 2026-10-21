@@ -15,9 +15,6 @@ def _get_kwargs(
     *,
     body: PosttimeserieseditBody | Unset = UNSET,
     time_series_id: str,
-    location_id: str,
-    ensemble_id: str | Unset = UNSET,
-    ensemble_member_id: str | Unset = UNSET,
     convert_datum: PosttimeserieseditConvertDatum | Unset = UNSET,
     use_display_units: PosttimeserieseditUseDisplayUnits | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -26,12 +23,6 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["timeSeriesId"] = time_series_id
-
-    params["locationId"] = location_id
-
-    params["ensembleId"] = ensemble_id
-
-    params["ensembleMemberId"] = ensemble_member_id
 
     json_convert_datum: str | Unset = UNSET
     if not isinstance(convert_datum, Unset):
@@ -87,9 +78,6 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     body: PosttimeserieseditBody | Unset = UNSET,
     time_series_id: str,
-    location_id: str,
-    ensemble_id: str | Unset = UNSET,
-    ensemble_member_id: str | Unset = UNSET,
     convert_datum: PosttimeserieseditConvertDatum | Unset = UNSET,
     use_display_units: PosttimeserieseditUseDisplayUnits | Unset = UNSET,
 ) -> Response[str]:
@@ -97,14 +85,11 @@ def sync_detailed(
 
      Update a time series that have been edited in timeseries pi json format.<p>Only one timeseries can
     be updated at a time. The sent timeseries should be in pi json format without header information.
-    The header is determine by the timeSeriesIndex in combination with a locationId and optionally a
+    The header is determine by the timeSeriesId in combination with a locationId and optionally a
     ensembleId and ensemlbleMemberId..
 
     Args:
         time_series_id (str):
-        location_id (str):
-        ensemble_id (str | Unset):
-        ensemble_member_id (str | Unset):
         convert_datum (PosttimeserieseditConvertDatum | Unset):
         use_display_units (PosttimeserieseditUseDisplayUnits | Unset):
         body (PosttimeserieseditBody | Unset):
@@ -120,9 +105,6 @@ def sync_detailed(
     kwargs = _get_kwargs(
         body=body,
         time_series_id=time_series_id,
-        location_id=location_id,
-        ensemble_id=ensemble_id,
-        ensemble_member_id=ensemble_member_id,
         convert_datum=convert_datum,
         use_display_units=use_display_units,
     )
@@ -139,9 +121,6 @@ def sync(
     client: AuthenticatedClient | Client,
     body: PosttimeserieseditBody | Unset = UNSET,
     time_series_id: str,
-    location_id: str,
-    ensemble_id: str | Unset = UNSET,
-    ensemble_member_id: str | Unset = UNSET,
     convert_datum: PosttimeserieseditConvertDatum | Unset = UNSET,
     use_display_units: PosttimeserieseditUseDisplayUnits | Unset = UNSET,
 ) -> str | None:
@@ -149,14 +128,11 @@ def sync(
 
      Update a time series that have been edited in timeseries pi json format.<p>Only one timeseries can
     be updated at a time. The sent timeseries should be in pi json format without header information.
-    The header is determine by the timeSeriesIndex in combination with a locationId and optionally a
+    The header is determine by the timeSeriesId in combination with a locationId and optionally a
     ensembleId and ensemlbleMemberId..
 
     Args:
         time_series_id (str):
-        location_id (str):
-        ensemble_id (str | Unset):
-        ensemble_member_id (str | Unset):
         convert_datum (PosttimeserieseditConvertDatum | Unset):
         use_display_units (PosttimeserieseditUseDisplayUnits | Unset):
         body (PosttimeserieseditBody | Unset):
@@ -173,9 +149,6 @@ def sync(
         client=client,
         body=body,
         time_series_id=time_series_id,
-        location_id=location_id,
-        ensemble_id=ensemble_id,
-        ensemble_member_id=ensemble_member_id,
         convert_datum=convert_datum,
         use_display_units=use_display_units,
     ).parsed
@@ -186,9 +159,6 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     body: PosttimeserieseditBody | Unset = UNSET,
     time_series_id: str,
-    location_id: str,
-    ensemble_id: str | Unset = UNSET,
-    ensemble_member_id: str | Unset = UNSET,
     convert_datum: PosttimeserieseditConvertDatum | Unset = UNSET,
     use_display_units: PosttimeserieseditUseDisplayUnits | Unset = UNSET,
 ) -> Response[str]:
@@ -196,14 +166,11 @@ async def asyncio_detailed(
 
      Update a time series that have been edited in timeseries pi json format.<p>Only one timeseries can
     be updated at a time. The sent timeseries should be in pi json format without header information.
-    The header is determine by the timeSeriesIndex in combination with a locationId and optionally a
+    The header is determine by the timeSeriesId in combination with a locationId and optionally a
     ensembleId and ensemlbleMemberId..
 
     Args:
         time_series_id (str):
-        location_id (str):
-        ensemble_id (str | Unset):
-        ensemble_member_id (str | Unset):
         convert_datum (PosttimeserieseditConvertDatum | Unset):
         use_display_units (PosttimeserieseditUseDisplayUnits | Unset):
         body (PosttimeserieseditBody | Unset):
@@ -219,9 +186,6 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         body=body,
         time_series_id=time_series_id,
-        location_id=location_id,
-        ensemble_id=ensemble_id,
-        ensemble_member_id=ensemble_member_id,
         convert_datum=convert_datum,
         use_display_units=use_display_units,
     )
@@ -236,9 +200,6 @@ async def asyncio(
     client: AuthenticatedClient | Client,
     body: PosttimeserieseditBody | Unset = UNSET,
     time_series_id: str,
-    location_id: str,
-    ensemble_id: str | Unset = UNSET,
-    ensemble_member_id: str | Unset = UNSET,
     convert_datum: PosttimeserieseditConvertDatum | Unset = UNSET,
     use_display_units: PosttimeserieseditUseDisplayUnits | Unset = UNSET,
 ) -> str | None:
@@ -246,14 +207,11 @@ async def asyncio(
 
      Update a time series that have been edited in timeseries pi json format.<p>Only one timeseries can
     be updated at a time. The sent timeseries should be in pi json format without header information.
-    The header is determine by the timeSeriesIndex in combination with a locationId and optionally a
+    The header is determine by the timeSeriesId in combination with a locationId and optionally a
     ensembleId and ensemlbleMemberId..
 
     Args:
         time_series_id (str):
-        location_id (str):
-        ensemble_id (str | Unset):
-        ensemble_member_id (str | Unset):
         convert_datum (PosttimeserieseditConvertDatum | Unset):
         use_display_units (PosttimeserieseditUseDisplayUnits | Unset):
         body (PosttimeserieseditBody | Unset):
@@ -271,9 +229,6 @@ async def asyncio(
             client=client,
             body=body,
             time_series_id=time_series_id,
-            location_id=location_id,
-            ensemble_id=ensemble_id,
-            ensemble_member_id=ensemble_member_id,
             convert_datum=convert_datum,
             use_display_units=use_display_units,
         )

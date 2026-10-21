@@ -19,12 +19,14 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     bbox: str,
+    crs: str | Unset = UNSET,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
     layers: str,
     x: str | Unset = UNSET,
     y: str | Unset = UNSET,
     external_forecast_time: datetime.datetime | Unset = UNSET,
+    task_run_id: str | Unset = UNSET,
     ensemble_id: str | Unset = UNSET,
     ensemble_member_id: str | Unset = UNSET,
     elevation: str | Unset = UNSET,
@@ -38,6 +40,8 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["bbox"] = bbox
+
+    params["crs"] = crs
 
     json_start_time = start_time.isoformat()
     params["startTime"] = json_start_time
@@ -55,6 +59,8 @@ def _get_kwargs(
     if not isinstance(external_forecast_time, Unset):
         json_external_forecast_time = external_forecast_time.isoformat()
     params["externalForecastTime"] = json_external_forecast_time
+
+    params["taskRunId"] = task_run_id
 
     params["ensembleId"] = ensemble_id
 
@@ -125,12 +131,14 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     bbox: str,
+    crs: str | Unset = UNSET,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
     layers: str,
     x: str | Unset = UNSET,
     y: str | Unset = UNSET,
     external_forecast_time: datetime.datetime | Unset = UNSET,
+    task_run_id: str | Unset = UNSET,
     ensemble_id: str | Unset = UNSET,
     ensemble_member_id: str | Unset = UNSET,
     elevation: str | Unset = UNSET,
@@ -153,6 +161,7 @@ def sync_detailed(
     Args:
         bbox (str):  Example:
             -1558755.612890017,4979850.04379049,1623657.8112034467,6709422.556884765.
+        crs (str | Unset):  Example: EPSG:4326.
         start_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
             2020-03-18T15:00:00Z.
         end_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
@@ -162,6 +171,7 @@ def sync_detailed(
         y (str | Unset):  Example: 5811252.569955047.
         external_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
+        task_run_id (str | Unset):
         ensemble_id (str | Unset):
         ensemble_member_id (str | Unset):
         elevation (str | Unset):
@@ -183,12 +193,14 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         bbox=bbox,
+        crs=crs,
         start_time=start_time,
         end_time=end_time,
         layers=layers,
         x=x,
         y=y,
         external_forecast_time=external_forecast_time,
+        task_run_id=task_run_id,
         ensemble_id=ensemble_id,
         ensemble_member_id=ensemble_member_id,
         elevation=elevation,
@@ -211,12 +223,14 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     bbox: str,
+    crs: str | Unset = UNSET,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
     layers: str,
     x: str | Unset = UNSET,
     y: str | Unset = UNSET,
     external_forecast_time: datetime.datetime | Unset = UNSET,
+    task_run_id: str | Unset = UNSET,
     ensemble_id: str | Unset = UNSET,
     ensemble_member_id: str | Unset = UNSET,
     elevation: str | Unset = UNSET,
@@ -239,6 +253,7 @@ async def asyncio_detailed(
     Args:
         bbox (str):  Example:
             -1558755.612890017,4979850.04379049,1623657.8112034467,6709422.556884765.
+        crs (str | Unset):  Example: EPSG:4326.
         start_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
             2020-03-18T15:00:00Z.
         end_time (datetime.datetime): Date-time string that adheres to RFC 3339. Example:
@@ -248,6 +263,7 @@ async def asyncio_detailed(
         y (str | Unset):  Example: 5811252.569955047.
         external_forecast_time (datetime.datetime | Unset): Date-time string that adheres to RFC
             3339. Example: 2020-03-18T15:00:00Z.
+        task_run_id (str | Unset):
         ensemble_id (str | Unset):
         ensemble_member_id (str | Unset):
         elevation (str | Unset):
@@ -269,12 +285,14 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         bbox=bbox,
+        crs=crs,
         start_time=start_time,
         end_time=end_time,
         layers=layers,
         x=x,
         y=y,
         external_forecast_time=external_forecast_time,
+        task_run_id=task_run_id,
         ensemble_id=ensemble_id,
         ensemble_member_id=ensemble_member_id,
         elevation=elevation,

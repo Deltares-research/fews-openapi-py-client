@@ -5,14 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.posttimeseries_body import PosttimeseriesBody
 from ...models.posttimeseries_convert_datum import PosttimeseriesConvertDatum
+from ...models.posttimeseries_data_body import PosttimeseriesDataBody
+from ...models.posttimeseries_json_body import PosttimeseriesJsonBody
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    body: PosttimeseriesBody | Unset = UNSET,
+    body: PosttimeseriesJsonBody | PosttimeseriesDataBody | Unset = UNSET,
     filter_id: str | Unset = UNSET,
     convert_datum: PosttimeseriesConvertDatum | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -36,10 +37,16 @@ def _get_kwargs(
         "params": params,
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["data"] = body.to_dict()
+    if isinstance(body, PosttimeseriesJsonBody):
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/x-www-form-urlencoded"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, PosttimeseriesDataBody):
+        if not isinstance(body, Unset):
+            _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -64,21 +71,21 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
-    body: PosttimeseriesBody | Unset = UNSET,
+    body: PosttimeseriesJsonBody | PosttimeseriesDataBody | Unset = UNSET,
     filter_id: str | Unset = UNSET,
     convert_datum: PosttimeseriesConvertDatum | Unset = UNSET,
 ) -> Response[Any]:
     r"""Timeseries will be written that are part of the timeseries sets defined by the filters
 
      Timeseries will be written that are part of the timeseries sets defined by the filters. The
-    application/x-www-form-urlencoded encoding has to be used. Readonly mode has to be disable in the
-    FewsPiService.properties to allow this functionality.<p>The timeseries you post to the rest service
-    should match one of the time series sets in the default filter or one of its sub filters. To make
-    sure you only write time series for a specific filter, you can pass a filterId with the POST
-    request. Only timeseries that have timeseries sets that are configured in that filter (or one of its
-    sub filters) will be accepted. If no filterId is used, all time series will be accepted that are
-    configured in the default filter. Writing the time series works similar to importing time series
-    using the pi.xml format using the \"PI\" import type. See also: <a target='_new'
+    application/json or application/x-www-form-urlencoded encoding has to be used. Readonly mode has to
+    be disable in the FewsPiService.properties to allow this functionality.<p>The timeseries you post to
+    the rest service should match one of the time series sets in the default filter or one of its sub
+    filters. To make sure you only write time series for a specific filter, you can pass a filterId with
+    the POST request. Only timeseries that have timeseries sets that are configured in that filter (or
+    one of its sub filters) will be accepted. If no filterId is used, all time series will be accepted
+    that are configured in the default filter. Writing the time series works similar to importing time
+    series using the pi.xml format using the \"PI\" import type. See also: <a target='_new'
     href='https://publicwiki.deltares.nl/x/uIGE'>Delft-Fews Published Interface timeseries Format (PI)
     Import</a>
 
@@ -94,7 +101,8 @@ def sync_detailed(
     Args:
         filter_id (str | Unset):
         convert_datum (PosttimeseriesConvertDatum | Unset):
-        body (PosttimeseriesBody | Unset):
+        body (PosttimeseriesJsonBody | Unset):
+        body (PosttimeseriesDataBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,21 +128,21 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
-    body: PosttimeseriesBody | Unset = UNSET,
+    body: PosttimeseriesJsonBody | PosttimeseriesDataBody | Unset = UNSET,
     filter_id: str | Unset = UNSET,
     convert_datum: PosttimeseriesConvertDatum | Unset = UNSET,
 ) -> Response[Any]:
     r"""Timeseries will be written that are part of the timeseries sets defined by the filters
 
      Timeseries will be written that are part of the timeseries sets defined by the filters. The
-    application/x-www-form-urlencoded encoding has to be used. Readonly mode has to be disable in the
-    FewsPiService.properties to allow this functionality.<p>The timeseries you post to the rest service
-    should match one of the time series sets in the default filter or one of its sub filters. To make
-    sure you only write time series for a specific filter, you can pass a filterId with the POST
-    request. Only timeseries that have timeseries sets that are configured in that filter (or one of its
-    sub filters) will be accepted. If no filterId is used, all time series will be accepted that are
-    configured in the default filter. Writing the time series works similar to importing time series
-    using the pi.xml format using the \"PI\" import type. See also: <a target='_new'
+    application/json or application/x-www-form-urlencoded encoding has to be used. Readonly mode has to
+    be disable in the FewsPiService.properties to allow this functionality.<p>The timeseries you post to
+    the rest service should match one of the time series sets in the default filter or one of its sub
+    filters. To make sure you only write time series for a specific filter, you can pass a filterId with
+    the POST request. Only timeseries that have timeseries sets that are configured in that filter (or
+    one of its sub filters) will be accepted. If no filterId is used, all time series will be accepted
+    that are configured in the default filter. Writing the time series works similar to importing time
+    series using the pi.xml format using the \"PI\" import type. See also: <a target='_new'
     href='https://publicwiki.deltares.nl/x/uIGE'>Delft-Fews Published Interface timeseries Format (PI)
     Import</a>
 
@@ -150,7 +158,8 @@ async def asyncio_detailed(
     Args:
         filter_id (str | Unset):
         convert_datum (PosttimeseriesConvertDatum | Unset):
-        body (PosttimeseriesBody | Unset):
+        body (PosttimeseriesJsonBody | Unset):
+        body (PosttimeseriesDataBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
