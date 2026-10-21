@@ -76,9 +76,9 @@ def _get_kwargs(
     }
 
     if not isinstance(body, Unset):
-        _kwargs["json"] = body.to_dict()
+        _kwargs["data"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+    headers["Content-Type"] = "application/x-www-form-urlencoded"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -121,11 +121,15 @@ def sync_detailed(
 ) -> Response[str]:
     """Runs a one-off task for a given workflowId
 
-     Runs a one-off task for a given workflowId. The application/x-www-form-urlencoded encoding has to be
-    used. Returns a handle to the task in the form of a taskId. This taskId can be used to track the
-    status of the workflow using the taskrunstatus method. Since 2018.02 it is possible to use a
-    workflow descriptor attribute: waitWhenAlreadyRunning. This will allow running a task that hasn't
-    been scheduled to wait when another task of that workflow is already running.
+     Runs a one-off task for a given workflowId. Content-Type application/x-www-form-urlencoded has to be
+    set. If model parameters are posted in the body of the request, the piParametersXmlContent parameter
+    has to be used after which the actual XML content will be encodeded using the application/x-www-
+    form-urlencoded encoding. The XML model parameters XML content has to validate against the following
+    xsd: https://fewsdocs.deltares.nl/schemas/version1.0/pi-schemas/pi_modelparameters.xsd. Returns a
+    handle to the task in the form of a taskId. This taskId can be used to track the status of the
+    workflow using the taskrunstatus method. Since 2018.02 it is possible to use a workflow descriptor
+    attribute: waitWhenAlreadyRunning. This will allow running a task that hasn't been scheduled to wait
+    when another task of that workflow is already running.
     Since 2022.02 properties can be included in the url. These will be used as taskRunProperties, and
     override global or workflow properties. Each property has to be added to the URL separately.
     Example: &property(fileName)=exportFile&property(outputValue)=9.0 , where the name of the property
@@ -194,11 +198,15 @@ def sync(
 ) -> str | None:
     """Runs a one-off task for a given workflowId
 
-     Runs a one-off task for a given workflowId. The application/x-www-form-urlencoded encoding has to be
-    used. Returns a handle to the task in the form of a taskId. This taskId can be used to track the
-    status of the workflow using the taskrunstatus method. Since 2018.02 it is possible to use a
-    workflow descriptor attribute: waitWhenAlreadyRunning. This will allow running a task that hasn't
-    been scheduled to wait when another task of that workflow is already running.
+     Runs a one-off task for a given workflowId. Content-Type application/x-www-form-urlencoded has to be
+    set. If model parameters are posted in the body of the request, the piParametersXmlContent parameter
+    has to be used after which the actual XML content will be encodeded using the application/x-www-
+    form-urlencoded encoding. The XML model parameters XML content has to validate against the following
+    xsd: https://fewsdocs.deltares.nl/schemas/version1.0/pi-schemas/pi_modelparameters.xsd. Returns a
+    handle to the task in the form of a taskId. This taskId can be used to track the status of the
+    workflow using the taskrunstatus method. Since 2018.02 it is possible to use a workflow descriptor
+    attribute: waitWhenAlreadyRunning. This will allow running a task that hasn't been scheduled to wait
+    when another task of that workflow is already running.
     Since 2022.02 properties can be included in the url. These will be used as taskRunProperties, and
     override global or workflow properties. Each property has to be added to the URL separately.
     Example: &property(fileName)=exportFile&property(outputValue)=9.0 , where the name of the property
@@ -262,11 +270,15 @@ async def asyncio_detailed(
 ) -> Response[str]:
     """Runs a one-off task for a given workflowId
 
-     Runs a one-off task for a given workflowId. The application/x-www-form-urlencoded encoding has to be
-    used. Returns a handle to the task in the form of a taskId. This taskId can be used to track the
-    status of the workflow using the taskrunstatus method. Since 2018.02 it is possible to use a
-    workflow descriptor attribute: waitWhenAlreadyRunning. This will allow running a task that hasn't
-    been scheduled to wait when another task of that workflow is already running.
+     Runs a one-off task for a given workflowId. Content-Type application/x-www-form-urlencoded has to be
+    set. If model parameters are posted in the body of the request, the piParametersXmlContent parameter
+    has to be used after which the actual XML content will be encodeded using the application/x-www-
+    form-urlencoded encoding. The XML model parameters XML content has to validate against the following
+    xsd: https://fewsdocs.deltares.nl/schemas/version1.0/pi-schemas/pi_modelparameters.xsd. Returns a
+    handle to the task in the form of a taskId. This taskId can be used to track the status of the
+    workflow using the taskrunstatus method. Since 2018.02 it is possible to use a workflow descriptor
+    attribute: waitWhenAlreadyRunning. This will allow running a task that hasn't been scheduled to wait
+    when another task of that workflow is already running.
     Since 2022.02 properties can be included in the url. These will be used as taskRunProperties, and
     override global or workflow properties. Each property has to be added to the URL separately.
     Example: &property(fileName)=exportFile&property(outputValue)=9.0 , where the name of the property
@@ -333,11 +345,15 @@ async def asyncio(
 ) -> str | None:
     """Runs a one-off task for a given workflowId
 
-     Runs a one-off task for a given workflowId. The application/x-www-form-urlencoded encoding has to be
-    used. Returns a handle to the task in the form of a taskId. This taskId can be used to track the
-    status of the workflow using the taskrunstatus method. Since 2018.02 it is possible to use a
-    workflow descriptor attribute: waitWhenAlreadyRunning. This will allow running a task that hasn't
-    been scheduled to wait when another task of that workflow is already running.
+     Runs a one-off task for a given workflowId. Content-Type application/x-www-form-urlencoded has to be
+    set. If model parameters are posted in the body of the request, the piParametersXmlContent parameter
+    has to be used after which the actual XML content will be encodeded using the application/x-www-
+    form-urlencoded encoding. The XML model parameters XML content has to validate against the following
+    xsd: https://fewsdocs.deltares.nl/schemas/version1.0/pi-schemas/pi_modelparameters.xsd. Returns a
+    handle to the task in the form of a taskId. This taskId can be used to track the status of the
+    workflow using the taskrunstatus method. Since 2018.02 it is possible to use a workflow descriptor
+    attribute: waitWhenAlreadyRunning. This will allow running a task that hasn't been scheduled to wait
+    when another task of that workflow is already running.
     Since 2022.02 properties can be included in the url. These will be used as taskRunProperties, and
     override global or workflow properties. Each property has to be added to the URL separately.
     Example: &property(fileName)=exportFile&property(outputValue)=9.0 , where the name of the property
